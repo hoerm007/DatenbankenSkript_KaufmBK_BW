@@ -1,0 +1,26 @@
+\cohead{\Large\textbf{DELETE-Statement}}
+\section[DELETE-Statement]{SQL - Das DELETE-Statement}
+Mit Hilfe des DELETE-Statements lassen sich Einträge aus einer Tabelle löschen (Das DROP-Statement war zum Löschen der kompletten Tabelle):
+\begin{tcolorbox}[title=DELETE-Statement]
+	\lstinline!DELETE FROM name_der_Tabelle WHERE bedingungen;!
+\end{tcolorbox}
+\textcolor{red}{ACHTUNG: Vergisst man die WHERE-Klausel oder wählt mit der WHERE-Klausel mehr Einträge aus als beabsichtigt, werden ALLE oder mehr Einträge als beabsichtigt gelöscht.}
+
+\begin{Exercise}[title={Lösche folgende Einträge aus der Datenbank:}, label=Delete]
+	\begin{enumerate}
+		\item Den Schüler mit der \lstinline!schuelerNR! 40.
+		\item Alle Schüler mit der \lstinline!schuelerNR! 10, 20, 50 und 60.
+		\item Alle Schüler, deren \lstinline!vorname! auf ia endet.
+	\end{enumerate}
+\end{Exercise}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{Answer}[ref=Delete]
+	\begin{enumerate}
+		\item Den Schüler mit der \lstinline!schuelerNR! 40.\\
+		\lstinline!DELETE FROM schueler WHERE schuelerNR = 40;!
+		\item Alle Schüler mit der \lstinline!schuelerNR! 10, 20, 50 und 60.\\
+		\lstinline!DELETE FROM schueler WHERE schuelerNR IN (10, 20, 50, 60);!
+		\item Alle Schüler, deren \lstinline!vorname! auf ia endet.\\
+		\lstinline!DELETE FROM schueler WHERE vorname LIKE '%ia';!
+	\end{enumerate}
+\end{Answer}

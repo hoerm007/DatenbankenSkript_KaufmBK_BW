@@ -1,0 +1,57 @@
+\cohead{\Large\textbf{SELECT-Statement}}
+\section[SELECT-Statement]{SQL - Das SELECT-Statement}
+Speichere die Datei \texttt{vieleSchueler.db} in deinem Verzeichnis und öffne die DB mit \texttt{sqlite3.exe} (\lstinline!.open vieleSchueler.db!). Mit dem Befehl \lstinline!.tables! oder \lstinline!.schema! kannst du dir die Tabellen (mit Attributen) anzeigen lassen.\\
+Wie erwartet gibt es eine Tabelle \lstinline!schueler!. Um den Inhalt anzuzeigen, kannst du das SELECT-Statement von SQL verwenden:
+\begin{tcolorbox}[title=SELECT-Statement]
+	\lstinline!SELECT * FROM schueler;!
+\end{tcolorbox}
+Mit den Zusätzen \lstinline!ORDER BY nachname ASC! bzw. \lstinline!ORDER BY nachname DESC!  kannst du die Ausgabe nach einem Attribut aufsteigend (ascending) bzw. absteigend (descending) sortieren lassen. Ohne die Angabe von \lstinline!ASC! bzw. \lstinline!DESC! erfolgt die Ausgabe standardmäßig aufsteigend.
+
+\begin{Exercise}[title={Beantworte folgende Fragen mit Hilfe deiner Datenbank und dem Internet.}, label=Select]
+	\begin{enumerate}
+		\item Welche Ausgabe erzeugt das Statement \lstinline!SELECT * FROM schueler;!?
+		\item Wofür steht der Stern (\lstinline!*!) in obigem Statement?
+		\item Welche Ausgabe erzeugt \lstinline!SELECT vorname, nachname FROM schueler;!?
+		\item Finde ein Statement, um dir \lstinline!nachname!, \lstinline!plz! und \lstinline!klasse! anzeigen zu lassen.
+	\end{enumerate}
+\end{Exercise}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{Answer}[ref=Select]
+	\begin{enumerate}
+		\item Welche Ausgabe erzeugt das Statement \lstinline!SELECT * FROM schueler;!?\\
+		Das Statement gibt alle in der Tabelle vorhandenen Schüler aus:\\
+		\begin{lstlisting}
+			1|Anica|Nosudohein|6268|06.11.1998|BKFH
+			2|Marlies|Gavofu|25361|06.01.2002|BK2
+			3|Franz|Rotagateson|71296|13.01.1998|BK1
+			4|Elisabeth|Kotibodoweiner|14798|20.11.2003|BK1
+			5|Henni|Kitavare|22926|21.07.1999|BK2
+			6|Mariana|Hewalode|23879|19.05.2004|BK2
+			7|Henry|Zütuschatthein|94405|31.12.2004|BK1
+			8|Fatma|Varobason|19370|08.01.2005|BK1
+			9|Gundel|Culufledemeiner|97896|12.04.1996|BKFH
+			10|Reinhold|Tulimattson|25821|08.08.1997|BK1
+			11|Silvia|Cüwiwattemüller|88339|09.11.2001|BK2
+			...\end{lstlisting}
+		Anmerkung: Es wurden aus Platzgründen nicht alle Schüler hier aufgelistet.
+		\item Wofür steht der Stern (\lstinline!*!) in obigem Statement?\\
+		Der Stern ist eine sogenannte Wildcard. Das SELECT-Statement muss wissen, welche Attribute angezeigt werden sollen. Der Stern bedeutet, dass die Werte aller an der Tabelle vorhandenen Attribute ausgegeben werden.
+		\item Welche Ausgabe erzeugt \lstinline!SELECT vorname, nachname FROM schueler;!?
+		\begin{lstlisting}
+			Anica|Nosudohein
+			Marlies|Gavofu
+			Franz|Rotagateson
+			Elisabeth|Kotibodoweiner
+			Henni|Kitavare
+			Mariana|Hewalode
+			Henry|Zütuschatthein
+			Fatma|Varobason
+			Gundel|Culufledemeiner
+			Reinhold|Tulimattson
+			Silvia|Cüwiwattemüller
+			...\end{lstlisting}
+		Da nun nicht mehr der Stern verwendet wurde, um die Werte aller Attribute anzuzeigen, werden nur die Werte von \lstinline!vorname! und \lstinline!nachname! angezeigt.
+		\item Finde ein Statement, um dir \lstinline!nachname!, \lstinline!plz! und \lstinline!klasse! anzeigen zu lassen.\\
+		\lstinline!SELECT nachname, plz, klasse FROM schueler;!
+	\end{enumerate}
+\end{Answer}

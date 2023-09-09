@@ -1,0 +1,113 @@
+\subsection[Anomalien]{Anomalien}
+Von Anomalien spricht man, wenn die Daten auf der Datenbank inkonsistent sind, also fehlerhaft. Wir unterscheiden folgende Anomalien:\\
+\begin{tcolorbox}[title=Anomalien]
+	\begin{enumerate}
+		\item \textbf{Änderungs-Anomalien}: Diese können auftreten, wenn Attributswerte an mehreren Stellen geändert werden sollen, jedoch nicht alle Stellen geändert werden.
+		\item \textbf{Einfüge-Anomalien}: Diese können auftreten, wenn das Einfügen eines Attributswertes zum zwingenden Einfügen weiterer Attributswerte führt.
+		\item \textbf{Lösch-Anomalien}: Diese können auftreten, wenn das Löschen einer Entität das ungewollte Löschen wichtiger Infos (Attributswerte) mit sich bringt.
+	\end{enumerate}
+\end{tcolorbox}
+Zudem entspricht es dem Best Practice Redundanzen (das Speichern der gleichen Information an mehreren Stellen in der Datenbank) zu vermeiden. Betrachten wir folgendes Beispiel:\\
+Unsere Schüler engagieren sich in unterschiedlichen Schulprojekten. Der Verbindungslehrer Herr KeinDBProfi hat zu Verwaltungszwecken folgende Tabelle angelegt:
+\begin{tabular}{llllllll}
+	\multicolumn{8}{c}{\lstinline!projektinfos!}\\
+	\hline
+	\underline{\lstinline!schNR!}&\lstinline!name!&\lstinline!vorname!&\lstinline!klasse!&\lstinline!klassenbez!&\lstinline!projektNR!&\lstinline!probez!&\lstinline!prostd!\\
+	\hline
+	1 &
+	Käfer &
+	Karl &
+	BK22 &
+	Kaufm. BK2&
+	1 &
+	Homepage &
+	30 \\
+	2 &
+	Witzig  &
+	Willi &
+	BK14 &
+	Kaufm. BK1&
+	2 &
+	Foyergestaltung &
+	25 \\
+	3 &
+	Sonne &
+	Susi &
+	BK14 &
+	Kaufm. BK1&
+	1,2 &
+	Homepage,&
+	10,\\
+	&&&&&&Foyergestaltung&15\\
+	4 &
+	Mond &
+	Moni &
+	BK22 &
+	Kaufm. BK2 &
+	1,3 &
+	Homepage,&
+	15,  \\
+	&&&&&&Schulfest&35\\
+\end{tabular}\\
+Nun will man folgende Änderungen vornehmen:
+\begin{enumerate}
+	\item \textcolor{red}{Da es sich um die ÜFA-Homepage handelt, soll die Projekt-Bezeichnung entsprechend geändert werden.}
+	\item \textcolor{blue}{Das neue Projekt \texttt{Abschlussfeier} soll in die Tabelle aufgenommen werden.}
+	\item \textcolor{ForestGreen}{Die Schüler der BK22 machen ihren Abschluss und verlassen die Schule}
+\end{enumerate}
+Die geänderte Tabelle sieht nun wie folgt aus:
+\begin{tabular}{llllllll}
+	\multicolumn{8}{c}{\lstinline!projektinfos!}\\
+	\hline
+	\underline{\lstinline!schNR!}&\lstinline!name!&\lstinline!vorname!&\lstinline!klasse!&\lstinline!klassenbez!&\lstinline!projektNR!&\lstinline!probez!&\lstinline!prostd!\\
+	\hline
+	\textcolor{ForestGreen}{\sout{1}} &
+	\textcolor{ForestGreen}{\sout{Käfer}} &
+	\textcolor{ForestGreen}{\sout{Karl}} &
+	\textcolor{ForestGreen}{\sout{BK22}} &
+	\textcolor{ForestGreen}{\sout{Kaufm. BK2}}&
+	\textcolor{ForestGreen}{\sout{1}} &
+	\textcolor{red}{\sout{ÜFA-Homepage}} &
+	\textcolor{ForestGreen}{\sout{30}} \\
+	2 &
+	Witzig  &
+	Willi &
+	BK14 &
+	Kaufm. BK1&
+	2 &
+	Foyergestaltung &
+	25 \\
+	3 &
+	Sonne &
+	Susi &
+	BK14 &
+	Kaufm. BK1&
+	1,2 &
+	Homepage,&
+	10,\\
+	&&&&&&Foyergestaltung&15\\
+	\textcolor{ForestGreen}{\sout{4}}&
+	\textcolor{ForestGreen}{\sout{Mond}}&
+	\textcolor{ForestGreen}{\sout{Moni}}&
+	\textcolor{ForestGreen}{\sout{BK22}}&
+	\textcolor{ForestGreen}{\sout{Kaufm. BK2}}&
+	\textcolor{ForestGreen}{\sout{1,3}}&
+	\textcolor{red}{\sout{ÜFA-Homepage,}}&
+	\textcolor{ForestGreen}{\sout{15}}\\
+	&&&&&&\textcolor{ForestGreen}{\sout{Schulfest}}&\textcolor{ForestGreen}{\sout{35}}\\
+	\textcolor{blue}{?}&
+	&
+	&
+	&
+	&
+	\textcolor{blue}{4} &
+	\textcolor{blue}{Abschlussfeier}&
+	\\
+\end{tabular}\\
+Es sind drei verschiedene Anomlien aufgetreten
+\begin{enumerate}
+	\item \textcolor{red}{Die Projektbezeichnung wurde nicht an allen Stellen von Homepage zu ÜFA-Homepage geändert. Es ist eine Änderungs-Anomalie aufgetreten.}
+	\item \textcolor{blue}{Das Einfügen des Projekts Abschlussfeier hat zu einer Einfüge-Anomlie geführt. Da noch kein Schüler an dem Projekt arbeitet, muss der Primärschlüssel \lstinline!schNR! leer bleiben, was verboten ist. Die Entität bzw. Zeile wäre dann nicht mehr an Hand des Primärschlüssels eindeutig identifizierbar.}
+	\item \textcolor{ForestGreen}{Es ist eine Lösch-Anomalie aufgetreten. Löscht man die Schüler aus der BK22 aus der Tabelle, so wird auch das Projekt \texttt{Schulfest} gelöscht.}
+\end{enumerate}
+Zudem verfügt die Tabelle über Redundanzen, z.B. werden die Klassenbezeichnungen und Projektbezeichnungen mehrfach gespeichert.

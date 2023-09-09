@@ -1,0 +1,49 @@
+\cohead{\Large\textbf{JOIN-Statement}}
+\section[JOIN-Statement]{SQL - Das JOIN-Statement}
+Öffne die Datenbank \texttt{schuleOptimiert.db} mit dem Datenbank-Browser oder sqlite3.exe.\\
+Die Datenbank beinhaltet die gleichen Informationen wie \texttt{schule.db}, jedoch wurde die Datenbank dahingehend optimiert, dass alle zu-1-Beziehungen keine eigene Beziehungstabelle mehr haben. Dies wird das Erstellen der JOIN-Statements erleichtern.
+Bisher haben sich unsere SQL-Abfragen immer auf eine einzelne Tabelle bezogen. Viele Fragen lassen sich damit aber nicht oder nicht zufriedenstellend beantworten, z.B. gibt die Tabelle \lstinline!lehrer! indirekt über die \lstinline!abteilungNR! an, welche Lehrer welcher Abteilung zugeordnet sind. Der Anwender möchte jedoch gerne die Zuordnung der Lehrer-Namen zu den Abteilungsbezeichnungen haben, statt der Zuordnung zur \lstinline!abteilungNR!. Dies kann man mit Hilfe des JOIN-Zusatzes erreichen:
+\begin{tcolorbox}[title=JOIN-Statement]
+	\lstinline!SELECT tabelle1.attribut1, tabelle2.attribut2, usw. FROM tabelle1!\\
+	\lstinline!INNER JOIN tabelle2 ON tabelle1.attributx=tabelle2.attributy, usw.;!
+\end{tcolorbox}
+Nach dem \lstinline!SELECT! gibt man entweder \lstinline!*! für alle Attribute oder  eine Liste von Attributen an. Neu ist, dass man zwischen den Tabellen unterscheiden muss, z.B. steht \lstinline!lehrer.vorname! für das Attribut \lstinline!vorname! aus der Tabelle \lstinline!lehrer!, während \lstinline!schueler.vorname! für das Attribut \lstinline!vorname! aus der Tabelle \lstinline!schueler! steht.\\
+\lstinline!FROM tabelle1 INNER JOIN tabelle2! gibt die beiden Tabellen an, die man verknüpfen will.\\
+\lstinline!ON bedingungen! gibt an, welche Zeilen der beiden Tabellen als eine ausgegeben werden sollen.\\
+\textcolor{red}{ACHTUNG: Ohne \lstinline!ON bedingungen! wird die Potenzmenge gebildet, d.h. jede Zeile der ersten Tabelle wird jeweils mit jeder Zeile der zweiten Tabelle zu jeweils einer Zeile zusammengefasst und ausgegeben, was bei großen Datenbanken zu langen Bearbeitungszeiten führt.}\\
+Beispiel:\\
+\lstinline!SELECT vorname, nachname, abteilungNR FROM lehrer;!
+Gibt die Zuordnung von Lehrern zu Abteilungen an Hand der \lstinline!abteilungNR! an. Diese Darstellung ist abstrakt. Um die Namen der Lehrer und die Bezeichnungen der Abteilungen zu kennen, müssten wir in einer weiteren Tabellen nachschauen. Mit \lstinline!SELECT abteilungNR, bezeichnung FROM abteilung;! können wir der \lstinline!abteilungNR! die Bezeichnung zuordnen und händisch prüfen, welcher Lehrer in welcher Abteilung ist. Bei großen Datensätzen wird dies schnell mühsam.\\
+Stattdessen können wir folgendes JOIN-Statement verwenden:\\
+\lstinline!SELECT * FROM lehrer INNER JOIN abteilung!\\
+\lstinline!ON lehrer.abteilungNR = abteilung.abteilungNR;!
+Gibt jeweils in einer Zeile einen Eintrag aus \lstinline!lehrer! und \lstinline!abteilung! aus, so dass die \lstinline!abteilungNR! von beiden Einträgen übereinstimmen.\\
+Das DBMS nimmt also die erste Zeile aus \lstinline!lehrer! in die Hand, liest die \lstinline!abteilungNR! aus und geht dann in die Tabelle \lstinline!abteilung!. Es prüft für jede Zeile aus \lstinline!abteilung!, ob die beiden Nummern gleich sind und falls ja, klebt es die Zeilen aus \lstinline!lehrer! und \lstinline!abteilung! nebeneinander, z.B. lautet eine Zeile des Ergebnisses:\\
+\lstinline!5|Olaf|Scholz|3|3|WG|Scholz!\\
+Der erste Teil \lstinline!5|Olaf|Scholz|3! stammt aus \lstinline!lehrer! mit den Attributen \lstinline!lehrer.lehrerNR=5!, \lstinline!lehrer.vorname=Olaf!, \lstinline!lehrer.nachname=Scholz! und \lstinline!lehrer.abteilungNR=3!. Der zweite Teil \lstinline!3|WG|Scholz! stammt aus \lstinline!abteilung! mit den Attributen \lstinline!abteilung.abteilungNR=3!, \lstinline!abteilung.bezeichnung=WG! und \lstinline!abteilung.abteilungsleiter=Scholz!. Diese beiden Teile wurden zu einer Zeile zusammengefasst, weil die \lstinline!abteilungNR! bei beiden 3 ist.\\
+Übersichtlicher ist es, wenn man sich nur die Informationen ausgeben lässt, die relevant sind:\\
+\lstinline!SELECT lehrer.vorname, lehrer.nachname, abteilung.bezeichnung FROM lehrer!\\
+\lstinline!INNER JOIN abteilung ON lehrer.abteilungNR = abteilung.abteilungNR;!\\
+liefert als erste Zeile \lstinline!Olaf|Scholz|WG!.
+
+\begin{Exercise}[title={Bearbeite folgende Aufgaben}, label=Join]
+	\begin{enumerate}
+		\item Erzeuge eine Ausgabe, die dem Vor- und Nachnamen der Lehrer jeweils die passenden Abteilungsbezeichnungen zuordnet.
+		\item Erzeuge eine Ausgabe, die dem Vor- und Nachnamen aller Schüler jeweils die Bezeichnung der passenden Klasse zuordnet.
+		\item Erzeuge eine Ausgabe, die jeder Klassenbezeichnung die Anzahl der Schüler der Klasse zuordnet. Tipp: COUNT-Funktion verwenden.
+		\item Erzeuge eine Ausgabe, die dem Vor- und Nachnamen aller Schüler jeweils den passenden Schultyp zuordnet. Tipp: Man muss zwei JOIN-Statements verwenden.
+	\end{enumerate}
+\end{Exercise}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{Answer}[ref=Join]
+	\begin{enumerate}
+		\item Erzeuge eine Ausgabe, die dem Vor- und Nachnamen der Lehrer jeweils die passenden Abteilungsbezeichnungen zuordnet.\\
+		\lstinline!SELECT lehrer.vorname, lehrer.nachname, abteilung.bezeichnung FROM lehrer INNER JOIN abteilung ON lehrer.abteilungNR = abteilung.abteilungNR;!
+		\item Erzeuge eine Ausgabe, die dem Vor- und Nachnamen aller Schüler jeweils die Bezeichnung der passenden Klasse zuordnet.\\
+		\lstinline!SELECT schueler.vorname, schueler.nachname, klasse.bezeichnung FROM schueler INNER JOIN klasse ON schueler.klasseNR = klasse.klasseNR;!
+		\item Erzeuge eine Ausgabe, die jeder Klassenbezeichnung die Anzahl der Schüler der Klasse zuordnet. Tipp: COUNT-Funktion verwenden.\\
+		\lstinline!SELECT klasse.bezeichnung, COUNT(klasse.bezeichnung) FROM schueler INNER JOIN klasse ON schueler.klasseNR = klasse.klasseNR GROUP BY klasse.bezeichnung;!
+		\item Erzeuge eine Ausgabe, die dem Vor- und Nachnamen aller Schüler jeweils den passenden Schultyp zuordnet. Tipp: Man muss zwei JOIN-Statements verwenden.\\
+		\lstinline!SELECT schueler.vorname, schueler.nachname, abteilung.bezeichnung FROM schueler INNER JOIN klasse ON schueler.klasseNR = klasse.klasseNR INNER JOIN abteilung ON klasse.abteilungNR = abteilung.abteilungNR;!
+	\end{enumerate}
+\end{Answer}

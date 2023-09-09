@@ -1,0 +1,217 @@
+\subsection[Normalisieren]{Normalisieren von Datenbanken}
+Um Anomalien sowie Redundanzen möglichst zu vermeiden und die Datenbank einfach zu verwalten, muss diese normalisiert werden:
+\begin{tcolorbox}[title=Erste Normalform]
+	Eine Tabelle liegt in der ersten Normalform vor, wenn jeder Attributswert atomar vorliegt, d.h. jeder Wert ist nicht (sinnvoll) weiter zerlegbar.
+\end{tcolorbox}
+Betrachten wir folgenden Sachverhalt. Ein DVD-Verleih legt folgende Tabelle an. Der Primärschlüssel besteht hier aus der \underline{\lstinline!kNR!} und \underline{\lstinline!filmID!}.
+\begin{tabular}{lllllll}
+	\multicolumn{7}{c}{\lstinline!dvdVerleih!}\\
+	\hline
+	\underline{\lstinline!kNR!}&\underline{\lstinline!filmID!}&\lstinline!name!&\lstinline!plz!&\lstinline!ort!&\lstinline!filmname!&\lstinline!ausg!\\
+	\hline
+	5&1002&Keanu Reeves&70180&Stuttgart&Rambo&01.02.2023\\
+	5&1003&Keanu Reeves&70180&Stuttgart&Rambo2&06.02.2023\\
+	7&2018&Will Smith&72070&Tübingen&LotR&04.02.2023\\
+\end{tabular}\\
+Die Tabelle liegt nicht in der ersten Hauptform vor, da man den Namen noch in Vor- und Nachname aufteilen kann. Der Vorteil ist, dass man die Tabelle dann leichter nach dem Vor- oder Nachnamen sortieren bzw. durchsuchen kann:
+\begin{tabular}{llllllll}
+	\multicolumn{8}{c}{\lstinline!dvdVerleih!}\\
+	\hline
+	\underline{\lstinline!kNR!}&\underline{\lstinline!filmID!}&\lstinline!voname!&\lstinline!nachname!&\lstinline!plz!&\lstinline!ort!&\lstinline!filmname!&\lstinline!ausg!\\
+	\hline
+	5&1002&Keanu&Reeves&70180&Stuttgart&Rambo&01.02.2023\\
+	5&1003&Keanu&Reeves&70180&Stuttgart&Rambo2&06.02.2023\\
+	7&2018&Will&Smith&72070&Tübingen&LotR&04.02.2023\\
+\end{tabular}\\
+\begin{tcolorbox}[title=Zweite Normalform]
+	Eine Tabelle liegt in der zweiten Normalform vor, wenn sie in der ersten Normalform ist und zusätzlich keine Attribute enthält, die bereits von einem Teil eines Schlüsselkandidaten eindeutig bestimmt werden. Somit muss jedes Nichtschlüsselattribut voll funktional (d.h. ausschließlich) abhängig vom Primärschlüssel sein.
+\end{tcolorbox}
+In diesem Fall ist der \lstinline!filmname! nicht von \underline{\lstinline!kNR!} und \underline{\lstinline!filmID!} abhängig, sondern nur von einem Teil des Primärschlüssels, nämlich der \underline{\lstinline!filmID!}. Selbiges gilt für \lstinline!vorname! und \lstinline!nachname!, die nur von \lstinline!kNR! abhängig sind. Um dieses Problem zu lösen, legen wir zwei zusätzliche Tabelle an:\\
+\begin{minipage}{\textwidth}
+	\begin{minipage}{0.3\textwidth}
+		\begin{tabular}{lll}
+			\multicolumn{3}{c}{\lstinline!leiht!}\\
+			\hline
+			\underline{\lstinline!kNR!}&\underline{\lstinline!filmID!}&\lstinline!ausg!\\
+			\hline
+			5&1002&01.02.2023\\
+			5&1003&06.02.2023\\
+			7&2018&04.02.2023\\
+		\end{tabular}
+	\end{minipage}
+	\begin{minipage}{0.228\textwidth}
+		\begin{tabular}{ll}
+			\multicolumn{2}{c}{\lstinline!filme!}\\
+			\hline
+			\underline{\lstinline!filmID!}&\lstinline!filmname!\\
+			\hline
+			1002&Rambo\\
+			1003&Rambo2\\
+			2018&LotR\\
+		\end{tabular}
+	\end{minipage}
+	\begin{minipage}{0.472\textwidth}
+		\begin{tabular}{lllll}
+			\multicolumn{5}{c}{\lstinline!kunden!}\\
+			\hline
+			\underline{\lstinline!kNR!}&\lstinline!vorname!&\lstinline!nachname!&\lstinline!plz!&\lstinline!ort!\\
+			\hline
+			5&Keanu&Reeves&70180&Stuttgart\\
+			7&Will&Smith&72070&Tübingen\\
+			\phantom{0}&&&&\\
+		\end{tabular}
+	\end{minipage}
+\end{minipage}
+\begin{tcolorbox}[title=Dritte Normalform]
+	Eine Tabelle liegt in der dritten Normalform vor, wenn sie in der zweiten Normalform ist und zusätzlich keine Attribute enthält, die transitiv abhängig sind, d.h. Attribute, die nicht direkt vom Primärschlüssel abhängen.
+\end{tcolorbox}
+In diesem Fall ist in der Tabelle \lstinline!kunden! der \lstinline!ort! nicht von der \lstinline!kNR!, sondern von der \lstinline!plz! abhängig. Auch hier schafft eine Aufteilung in zwei Tabellen Abhilfe:
+\begin{minipage}{\textwidth}
+	\begin{minipage}{0.66\textwidth}
+		\begin{tabular}{llll}
+			\multicolumn{4}{c}{\lstinline!kunden!}\\
+			\hline
+			\underline{\lstinline!kNR!}&\lstinline!vorname!&\lstinline!nachname!&\lstinline!plz!\\
+			\hline
+			5&Keanu&Reeves&70180\\
+			7&Will&Smith&72070\\
+		\end{tabular}
+	\end{minipage}
+	\begin{minipage}{0.33\textwidth}
+		\begin{tabular}{ll}
+			\multicolumn{2}{c}{\lstinline!ort!}\\
+			\hline
+			\underline{\lstinline!plz!}&\lstinline!ort!\\
+			\hline
+			70180&Stuttgart\\
+			72070&Tübingen\\
+		\end{tabular}
+	\end{minipage}
+\end{minipage}
+
+\begin{Exercise}[title=Normalisiere folgende Tabelle und markiere die Primärschlüssel in deinem Ergebnis., label=Normal1]
+	Ein Bauunternehmer hat die folgende Tabelle erstellt, in der Daten über Bauaufträge und Daten zu den beteiligten Mitarbeitern gespeichert sind:\\
+	\begin{tabular}{lllllllll}
+		\multicolumn{9}{c}{\lstinline!bauunternehmer!}\\
+		\hline
+		\lstinline!aNR!&\lstinline!auftrag!&\lstinline!baust!&\lstinline!pNR!&\lstinline!mitarbeiter!&\lstinline!plz!&\lstinline!wohnort!&\lstinline!kkasse!&\lstinline!kkbeitrag!\\
+		\hline
+		A1&Garage&Stuttgart&13&Cem Özdemir&72070&Tübingen&AOKBW&16,2\\
+		A2&Haus&Esslingen&13&Cem Özdemir&72070&Tübingen&AOKBW&16,2\\
+		A2&Haus&Esslingen&17&Christian Lindner&70794&Filderstadt&DAK&16,3\\
+	\end{tabular}
+\end{Exercise}
+\begin{Exercise}[title=Normalisiere folgende Tabelle und markiere die Primärschlüssel in deinem Ergebnis., label=Normal2]
+	Eine Firma legt ihre Bestellungen wie folgt in einer Datenbank ab. Normalisiere die Tabelle:\\
+	\begin{tabular}{lllll}
+		\multicolumn{5}{c}{\lstinline!bestellungen!}\\
+		\hline
+		\underline{\lstinline!kundeNR!}&\lstinline!name!&\lstinline!artNR!&\lstinline!artBez!&\lstinline!anzahl!\\
+		\hline
+		\multirow{3}{*}{5001}&\multirow{3}{*}{Volker Finke e.K.}&8001&Schraubendreher 5mm&10\\
+		&&8005&Schraubendreher 8mm&15\\
+		&&8007&Schraubendreher-Set&15\\
+		\hline
+		\multirow{3}{*}{5004}&\multirow{3}{*}{Hubert Hase GmbH}&8001&Schraubendreher 5mm&20\\
+		&&8006&Schraubendreher 10mm&20\\
+		&&8007&Schraubendreher-Set&10\\
+		\hline
+		5007&Rudi Rüssel KG&8007&Schraubendreher-Set&25\\
+	\end{tabular}
+\end{Exercise}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{Answer}[ref=Normal1]
+	\begin{minipage}{\textwidth}
+		\begin{minipage}{0.33\textwidth}
+			\begin{tabular}{lll}
+				\multicolumn{3}{c}{\lstinline!auftrag!}\\
+				\hline
+				\underline{\lstinline!aNR!}&\lstinline!auftrag!&\lstinline!baust!\\
+				\hline
+				A1&Garage&Stuttgart\\
+				A2&Haus&Esslingen\\
+			\end{tabular}
+		\end{minipage}
+		\begin{minipage}{0.66\textwidth}
+			\begin{tabular}{lllll}
+				\multicolumn{5}{c}{\lstinline!personal!}\\
+				\hline
+				\underline{\lstinline!pNR!}&\lstinline!vorname!&\lstinline!nachname!&\lstinline!plz!&\lstinline!kkasse!\\
+				\hline
+				13&Cem&Özdemier&72070&AOKBW\\
+				17&Christian&Lindner&70794&DAK\\
+			\end{tabular}
+		\end{minipage}
+	\end{minipage}
+	\begin{minipage}{\textwidth}
+		\begin{minipage}{0.33\textwidth}
+			\begin{tabular}{ll}
+				\multicolumn{2}{c}{\lstinline!ort!}\\
+				\hline
+				\underline{\lstinline!plz!}&\lstinline!ort!\\
+				\hline
+				70794&Filderstadt\\
+				72070&Tübingen\\
+			\end{tabular}
+		\end{minipage}
+		\begin{minipage}{0.66\textwidth}
+			\begin{tabular}{ll}
+				\multicolumn{2}{c}{\lstinline!krankenkasse!}\\
+				\hline
+				\underline{\lstinline!kkasse!}&\lstinline!kkbeitrag!\\
+				\hline
+				AOKBW&16,2\\
+				DAK&16,3\\
+			\end{tabular}
+		\end{minipage}
+	\end{minipage}
+\end{Answer}
+\begin{Answer}[ref=Normal2]
+	\begin{minipage}{\textwidth}
+		\begin{minipage}{0.35\textwidth}
+			\begin{tabular}{ll}
+				\multicolumn{2}{c}{\lstinline!kunden!}\\
+				\hline
+				\underline{\lstinline!kundeNR!}&\lstinline!name!\\
+				\hline
+				5001&Volker Finke e.K.\\
+				5004&Hubert Hase GmbH\\
+				5007&Rudi Rüssel KG\\
+				\vphantom{0}&\\
+				\vphantom{0}&\\
+				\vphantom{0}&\\
+				\vphantom{0}&\\
+			\end{tabular}
+		\end{minipage}
+		\begin{minipage}{0.35\textwidth}
+			\begin{tabular}{ll}
+				\multicolumn{2}{c}{\lstinline!artikel!}\\
+				\hline
+				\underline{\lstinline!artNR!}&\lstinline!artBez!\\
+				\hline
+				8001&Schraubendreher 5mm\\
+				8005&Schraubendreher 8mm\\
+				8007&Schraubendreher-Set\\
+				\vphantom{0}&\\
+				\vphantom{0}&\\
+				\vphantom{0}&\\
+				\vphantom{0}&\\
+			\end{tabular}
+		\end{minipage}
+		\begin{minipage}{0.2\textwidth}
+			\begin{tabular}{lll}
+				\multicolumn{3}{c}{\lstinline!bestellung!}\\
+				\hline
+				\underline{\lstinline!kundeNR!}&\underline{\lstinline!artNR!}&\lstinline!anzahl!\\
+				\hline
+				5001&8001&10\\
+				5001&8005&15\\
+				5001&8007&15\\
+				5004&8001&20\\
+				5004&8006&20\\
+				5004&8007&10\\
+				5007&8007&25\\
+			\end{tabular}
+		\end{minipage}
+	\end{minipage}
+\end{Answer}

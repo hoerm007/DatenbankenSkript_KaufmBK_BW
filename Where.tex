@@ -1,0 +1,80 @@
+\cohead{\Large\textbf{WHERE-Klausel}}
+\section[WHERE-Klausel]{SQL - Die WHERE-Klausel}
+Im letzten Abschnitt haben wir gelernt, wie wir alle Einträge einer ganzen Tabelle oder eines/mehrerer Attribute anzeigen lassen können. Oft sind die Tabellen jedoch so groß, dass es sehr mühsam wäre, alle Einträge von Hand zu durchsuchen. Daher kann man das SELECT-Statement mit Hilfe der WHERE-Klausel einschränken. Die WHERE-Klausel kann auch an viele andere Statements angehängt werden, wie z.B. beim später noch einzuführenden DELETE-Statement.\\
+Der grundsätzliche Aufbau ist denkbar einfach:
+\begin{tcolorbox}[title=WHERE-Klausel]
+	\lstinline!SQL-STATEMENT WHERE bedingungen;!
+\end{tcolorbox}
+Der Teufel steckt wie so oft im Detail, hier im Aufbau der Bedingungen. Einige wichtige Beispiele:
+\begin{itemize}
+	\item \lstinline!=! gleich, \lstinline!<! kleiner, \lstinline!>! größer, \lstinline!<=! kleiner gleich, \lstinline!>=! größer gleich, \lstinline&!=& ungleich\\
+	Insbesondere für den Vergleich von Attributen mit dem Datentyp INT geeignet.\\
+	Beispiel: \lstinline!SELECT * FROM schueler where schuelerNR<=10;! gibt alle Schueler, deren \lstinline!schuelerNR! kleiner oder gleich 10 ist aus.
+	\item \lstinline!IS! bzw. \lstinline!IS NOT!\\
+	Wird normalerweise für den Vergleich für Attribute mit dem Datentyp \lstinline!TEXT! verwendet und fungiert dort wie ein Gleichzeichen bzw. Ungleichzeichen.\\
+	Beispiele: 	\lstinline!SELECT * FROM schueler WHERE vorname IS 'Carsten';! gibt alle Schueler aus, deren \lstinline!vorname! Carsten ist.\\
+	Hinweis: NULL kann als Wert verwendet werden: \lstinline!SELECT * FROM schueler WHERE geburtsdatum IS NULL;! gibt alle Schüler aus, die beim Attribut \lstinline!geburtsdatum! keinen Wert eingetragen haben. (Es sollten fünf Schüler ohne Geburtsdatum vorhanden sein.)
+	\item \lstinline!LIKE muster!\\
+	Wird normalerweise für den Vergleich für Attributen mit dem Datentyp \lstinline!TEXT! verwendet. Für das Muster gibt man einen Text mit Platzhaltern an. Das Prozentzeichen steht für beliebig viele (Null oder mehr Zeichen), der Unterstrich für genau ein Zeichen. Beispiele:\\
+	\lstinline!SELECT * FROM schueler WHERE vorname LIKE 'A%';!\\
+	Gibt alle Schüler aus, deren \lstinline!vorname! mit einem A beginnt.\\
+	\lstinline!SELECT * FROM schueler WHERE vorname LIKE 'A%i';!\\
+	Gibt alle Schüler aus, deren \lstinline!vorname! mit einem A beginnt und einem i endet (eine Schülerin).
+	\lstinline!SELECT * FROM schueler WHERE vorname LIKE 'A___';!\\
+	Gibt alle Schüler aus, deren \lstinline!vorname! mit einem A beginnt und insgesamt genau vier Zeichen lang ist (2 Schüler).\\
+	\lstinline!SELECT * FROM schueler WHERE nachname LIKE 'Sch___';!\\
+	Gib alle Schüler aus, deren \lstinline!nachname! mit Sch beginnt und genau 6 Zeichen hat (ein Schüler).
+	\item \lstinline!IN!\\
+	Funktioniert wie mehrere Tests auf Gleichheit (\lstinline!=! oder \lstinline!IS!). Die Vergleichswerte werden als kommaseparierte Liste angegeben:\\
+	\lstinline!SELECT * FROM schueler WHERE schuelerNR in (1,2,5);!\\
+	Gibt die Schüler mit den \lstinline!schuelerNR! 1, 2 und 5 aus.\\
+	\lstinline!SELECT * FROM schueler WHERE nachname IN ('Mayer', 'Maier');!\\
+	Gibt alle Schüler aus, deren \lstinline!nachname! Mayer oder Maier lautet.
+	\item \lstinline!BETWEEN!\\
+	Dem \lstinline!IN! sehr ähnlich, diesmal kann man jedoch gleich auf einen ganzen Bereich prüfen:\\
+	\lstinline!SELECT * FROM schueler WHERE schuelerNR BETWEEN 10 AND 20;!\\
+	Gibt alle Schüler aus, deren \lstinline!schuelerNR! zwischen 10 und 20 liegen (10 und 20 jeweils eingeschlossen).
+\end{itemize}
+\textcolor{red}{ACHTUNG:} Beim Test auf NULL muss immer \lstinline!IS! statt \lstinline!=! verwendet werden, z.B. liefert \lstinline!SELECT * FROM schueler WHERE plz is NULL;! einen Schüler, während \lstinline!SELECT * FROM schueler WHERE plz = NULL;! kein Ergebnis aber auch keine Fehlermeldung liefert.\\
+Es lassen sich mehrere Bedingungen mit einem \lstinline!AND! bzw. \lstinline!OR! verknüpfen:\\
+\lstinline!SELECT * FROM schueler WHERE schuelerNR BETWEEN 10 AND 20!
+\lstinline!OR nachname IN ('Mayer', 'Maier');!\\
+Gibt alle Schüler aus, deren \lstinline!schuelerNR! zwischen 10 und 20 liegen oder deren \lstinline!nachname! Mayer oder Maier lautet.\\
+\lstinline!SELECT * FROM schueler WHERE schuelerNR BETWEEN 10 AND 20!
+\lstinline!AND nachname IN ('Mayer', 'Maier');!\\
+Gibt alle Schüler aus, deren \lstinline!schuelerNR! zwischen 10 und 20 liegen und deren \lstinline!nachname! Mayer oder Maier lautet. (Nur eine Schülerin erfüllt beide Bedingungen gleichzeitig.)\\
+\begin{Exercise}[title={Erstelle ein SELECT-Statement mit WHERE-Klausel, das}, label=Where]
+	\begin{enumerate}
+		\item den Schüler mit der \lstinline!schuelerNR! 31 zurück gibt.
+		\item alle Schüler mit der \lstinline!schuelerNR! 10, 23, 50 und 65 findet.
+		\item alle Schüler findet, deren \lstinline!nachname! auf hein endet.
+		\item alle Schüler findet, deren \lstinline!nachname! nicht auf hein endet.
+		\item den Schüler findet, für den keine \lstinline!klasse! angegeben worden ist.
+		\item alle Schüler findet, deren \lstinline!schuelerNR! kleiner 18 ist.
+		\item alle Schüler findet, deren \lstinline!vorname! aus genau 4 Buchstaben besteht.
+		\item Bonus-Frage: Warum gibt das Statement \lstinline!SELECT * FROM schueler WHERE geburtsdatum BETWEEN '01.01.2000' AND '31.12.2000';! viel zu viele Schüler zurück?\\
+		Tipp: Probiere das Statement \lstinline!SELECT * FROM schueler WHERE geburtsdatum BETWEEN '31.01.2000' AND '31.12.2000';! oder das Statement \lstinline!SELECT geburtsdatum FROM schueler ORDER BY geburtsdatum;! aus.\\
+	\end{enumerate}
+\end{Exercise}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{Answer}[ref=Where]
+	\begin{enumerate}
+		\item den Schüler mit der \lstinline!schuelerNR! 31 zurück gibt.\\
+		\lstinline!SELECT * FROM schueler WHERE schuelerNR = 31;!
+		\item alle Schüler mit der \lstinline!schuelerNR! 10, 23, 50 und 65 findet.\\
+		\lstinline!SELECT * FROM schueler WHERE schuelerNR in (10, 23, 50, 65);!
+		\item alle Schüler findet, deren \lstinline!nachname! auf hein endet.\\
+		\lstinline!SELECT * FROM schueler WHERE nachname LIKE '%hein';!
+		\item alle Schüler findet, deren \lstinline!nachname! nicht auf hein endet.\\
+		\lstinline!SELECT * FROM schueler WHERE nachname NOT LIKE '%hein';!
+		\item alle Schüler findet, für die keine \lstinline!klasse! angegeben worden ist.\\
+		\lstinline!SELECT * FROM schueler WHERE klasse IS NULL;!\\
+		\item alle Schüler findet, deren \lstinline!schuelerNR! kleiner 18 ist.\\
+		\lstinline!SELECT * FROM schueler WHERE schuelerNR < 18;!
+		\item alle Schüler findet, deren \lstinline!vorname! aus genau 4 Buchstaben besteht.\\
+		\lstinline!SELECT * FROM schueler WHERE vorname LIKE '____';!
+		\item Bonus-Frage: Warum gibt das Statement \lstinline!SELECT * FROM schueler WHERE geburtsdatum BETWEEN '01.01.2000' AND '31.12.2000';! viel zu viele Schüler zurück?\\
+		Tipp: Probiere das Statement \lstinline!SELECT * FROM schueler WHERE geburtsdatum BETWEEN '31.01.2000' AND '31.12.2000';! oder das Statement \lstinline!SELECT geburtsdatum FROM schueler ORDER BY geburtsdatum;! aus.\\
+		Das zweite Statement aus dem Tipp zeigt, dass die Geburtsdaten nicht wie erwartet sortiert werden, sondern Zeichen für Zeichen. Da die Punkte bei allen Geburtsdaten an der gleichen Stelle stehen, können wir diese ignorieren. Man kann sich die Geburtsdaten dann einfach als Zahlen vorstellen, z.B. wäre 01.04.1995 die Zahl 1.041.995. Nun werden alle \lstinline!schueler! mit Geburtsdaten, deren Zahl zw. 1.012.000 und 31.122.000 liegen, zurückgegeben. Z.B. enspricht das Geburtsdatum der Schülerin mit \lstinline!schuelerNR! 100 10.07.1997 der Zahl 10.071.997. Da diese Zahl zwischen den beiden Grenzen 1.012.000 und 31.122.000 liegt, wird sie \textit{fälschlicherweise} ausgegeben.
+	\end{enumerate}
+\end{Answer}
