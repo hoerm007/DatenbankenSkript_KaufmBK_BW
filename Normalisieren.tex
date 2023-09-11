@@ -1,7 +1,7 @@
 \subsection[Normalisieren]{Normalisieren von Datenbanken}
 Um Anomalien sowie Redundanzen möglichst zu vermeiden und die Datenbank einfach zu verwalten, muss diese normalisiert werden:
 \begin{tcolorbox}[title=Erste Normalform]
-	Eine Tabelle liegt in der ersten Normalform vor, wenn jeder Attributswert atomar vorliegt, d.h. jeder Wert ist nicht (sinnvoll) weiter zerlegbar.
+	Eine Tabelle liegt in der ersten Normalform vor, wenn jeder Attributswert atomar vorliegt, d.h. jeder Wert ist nicht (sinnvoll) weiter zerlegbar. Zudem muss jeder Entitätstyp über einen Primärschlüssel verfügen (Ob als einzelnes Schlüsselattribut oder als Kombination mehrerer Attribute, ist zweitrangig).
 \end{tcolorbox}
 Betrachten wir folgenden Sachverhalt. Ein DVD-Verleih legt folgende Tabelle an. Der Primärschlüssel besteht hier aus der \underline{\lstinline!kNR!} und \underline{\lstinline!filmID!}.
 \begin{tabular}{lllllll}
@@ -89,6 +89,9 @@ In diesem Fall ist in der Tabelle \lstinline!kunden! der \lstinline!ort! nicht v
 	\end{minipage}
 \end{minipage}
 
+\begin{Exercise}[title=Normalisiere die Tabelle \lstinline|projektinfos| aus dem Kapitel \ref{Anomalien}., label=Normal0]
+
+\end{Exercise}
 \begin{Exercise}[title=Normalisiere folgende Tabelle und markiere die Primärschlüssel in deinem Ergebnis., label=Normal1]
 	Ein Bauunternehmer hat die folgende Tabelle erstellt, in der Daten über Bauaufträge und Daten zu den beteiligten Mitarbeitern gespeichert sind:\\
 	\begin{tabular}{lllllllll}
@@ -120,6 +123,77 @@ In diesem Fall ist in der Tabelle \lstinline!kunden! der \lstinline!ort! nicht v
 	\end{tabular}
 \end{Exercise}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{Answer}[ref=Normal0]
+	\begin{minipage}[t]{\textwidth}
+		\begin{minipage}{0.33\textwidth}
+			\begin{tabular}{lll}
+				\multicolumn{3}{c}{\lstinline!schueler!}\\
+				\hline
+				\underline{\lstinline!schNR!}&\lstinline!name!&\lstinline!vorname!\\
+				\hline
+				1&Käfer&Karl\\
+				2&Witzig&Willi\\
+				3&Sonne&Susi\\
+				4&Mond&Moni\\
+			\end{tabular}
+		\end{minipage}
+		\begin{minipage}[t]{0.33\textwidth}
+			\begin{tabular}{ll}
+				\multicolumn{2}{c}{\lstinline!projekte!}\\
+				\hline
+				\underline{\lstinline!projektNR!}&\lstinline!probez!\\
+				\hline
+				1&Homepage\\
+				2&Foyergestaltung\\
+				3&Schulfest\\
+				\phantom{text}&\\
+			\end{tabular}
+		\end{minipage}
+		\begin{minipage}[t]{0.33\textwidth}
+			\begin{tabular}{lll}
+				\multicolumn{3}{c}{\lstinline!klasse!}\\
+				\hline
+				\underline{\lstinline!klasseNR!}&\lstinline!klasse!&\lstinline!klassenbez!\\
+				\hline
+				1&BK14&Kaufm. BK1\\
+				2&BK22&Kaufm. BK2\\
+				\phantom{text}&&\\
+				\phantom{text}&&\\
+			\end{tabular}
+		\end{minipage}
+	\end{minipage}
+	\begin{minipage}{\textwidth}
+		\begin{minipage}{0.33\textwidth}
+			\begin{tabular}{ll}
+				\multicolumn{2}{c}{\lstinline!klassenzug!}\\
+				\hline
+				\underline{\lstinline!schNR!}&\lstinline!klasseNR!\\
+				\hline
+				1&2\\
+				2&1\\
+				3&1\\
+				4&2\\
+				\phantom{text}&\\
+				\phantom{text}&\\
+			\end{tabular}
+		\end{minipage}
+		\begin{minipage}{0.66\textwidth}
+			\begin{tabular}{lll}
+				\multicolumn{3}{c}{\lstinline!projektteilnahme!}\\
+				\hline
+				\underline{\lstinline!schNR!}&\underline{\lstinline!projektNR!}&\lstinline!prostd!\\
+				\hline
+				1&1&30\\
+				2&2&25\\
+				3&1&10\\
+				3&2&15\\
+				4&1&15\\
+				4&3&35\\
+			\end{tabular}
+		\end{minipage}
+	\end{minipage}
+\end{Answer}
+
 \begin{Answer}[ref=Normal1]
 	\begin{minipage}{\textwidth}
 		\begin{minipage}{0.33\textwidth}
