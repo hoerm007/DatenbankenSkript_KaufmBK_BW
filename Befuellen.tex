@@ -1,3 +1,4 @@
+\cohead{\Large\textbf{Anlegen einer DB}}
 \cohead{\Large\textbf{Anlegen/Befüllen einer DB}}
 \subsection[Anlegen/Befüllen einer DB]{SQL - Anlegen und Befüllen einer Datenbank}
 Erinnerung: Wir werden das Programm SQLite als Datenbankmanagementsystem (DBMS) verwenden. Nach dem Starten von SQLite sind nur noch SQLite-spezifische Befehle, die immer mit einem Punkt beginnen oder SQL-Anweisungen erlaubt.
@@ -21,8 +22,8 @@ Neue Tabellen/Entitätstypen lassen sich mit dem SQL-Befehl \lstinline!CREATE TA
 	\lstinline[breaklines=true]!CREATE TABLE name_tabelle (name_attribut1 datentyp1 einschränkung1, name_attribut2 datentyp2 einschränkung2, ...);!
 \end{tcolorbox}
 \textcolor{red}{ACHTUNG: Bei SQL-Befehlen den Strichpunkt am Ende der Zeile nicht vergessen!} Man kann SQL-Befehle auch auf mehrere Zeilen aufteilen.\\
-Als Datentypen werden wir \lstinline!INT! für ganze Zahlen, \lstinline!TEXT! für Texte, \lstinline!BLOB! für Bilder u.ä., \lstinline!REAL! für Fließkommazahlen und \lstinline!DATE! für Geburtsdaten u.ä. benutzen. Dem interessierten Leser seien die restlichen Datentypen zum Selbststudium ans Herz gelegt.\\
-Als Einschränkungen werden wir uns zumindest zu Beginn auf \lstinline!PRIMARY KEY! und \lstinline!NOT NULL! beschränken. \lstinline!PRIMARY KEY! markiert das Attribut als Primärschlüssel und sollte als erstes Attribut angelegt werden. \lstinline!NOT NULL! zeigt an, dass dieses Attribut beim Füllen der Tabelle mit Daten nicht leer bleiben darf. Die Angabe von Einschränkungen ist optional.\\
+Als Datentypen werden wir \lstinline!INT! für ganze Zahlen und \lstinline!TEXT! für Texte oder Geburtsdaten verwenden. Dem interessierten Leser seien die restlichen Datentypen zum Selbststudium ans Herz gelegt.\\
+Als Einschränkungen werden wir uns auf \lstinline!PRIMARY KEY! und \lstinline!NOT NULL! beschränken. \lstinline!PRIMARY KEY! markiert das Attribut als Primärschlüssel und sollte als erstes Attribut angelegt werden. \lstinline!NOT NULL! zeigt an, dass dieses Attribut beim Füllen der Tabelle mit Daten nicht leer bleiben darf. Die Angabe von Einschränkungen ist optional.\\
 Bestehende Tabellen lassen sich mit dem Befehl \lstinline!DROP TABLE name_tabelle! wieder löschen:
 \begin{tcolorbox}[title=Tabellen löschen]
 	\lstinline[breaklines=true]!DROP TABLE name_tabelle !

@@ -29,6 +29,7 @@
 %YellowOrange		RGB(250,162, 26)
 
 \usepackage[T1]{fontenc}		%Umlaute
+\usepackage[utf8]{inputenc}
 \usepackage{wrapfig}
 \usepackage{caption}
 
@@ -77,13 +78,15 @@
 	breakatwhitespace=false,
 	breaklines=false,
 	captionpos=b,
-	keepspaces=true,
+	keepspaces=false,
+	extendedchars=true,
 	numbers=left,
 	numbersep=5pt,
 	showspaces=false,
 	showstringspaces=false,
 	showtabs=false,
-	tabsize=2
+	tabsize=2,
+	columns=fullflexible %erzeugt keine komischen Leerzeichen mehr, die man erst beim Kopieren sieht
 }
 \lstset{literate=%
 	{Ö}{{\"O}}1
@@ -155,7 +158,6 @@
 \renewcommand{\AnswerHeader}{
 	\medskip\textbf{L{\"o}sung zu \ExerciseName\ \ExerciseHeaderNB}\smallskip}
 
-\usepackage{lscape}			%Seiten im Querformat mit \begin{landscape} \end{landscape}
 
 %Farbe für die Lösungen, die die Schüler selbst ausfüllen sollen
 \definecolor{loes}{rgb}{1,1,1}
@@ -189,7 +191,7 @@
 	%Header
 	\lohead{Datenbanken}
 	%\cohead{} %im Arbeitsblatt
-	\rohead{Datum \phantom{00.00.0000}}
+	\rohead{}
 	\lehead{lehead}
 	\cehead{cehead}
 	\rehead{rehead}
@@ -198,11 +200,29 @@
 	Ein Skript für das Berufskolleg}
 	\author{Hermann Maier}
 	\maketitle
+	\thispagestyle{empty}
+	\newpage
+	\null\vfill
+	\copyright 2023 Maier, Hermann, maier(at)privatemail.com\\
+	Dieses Werk unterliegt der CC BY-NC-SA 4.0 Lizenz \href{https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.en}{https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.en}.\\
+	Sie dürfen:\\
+	\begin{itemize}
+		\item Teilen — das Material in jedwedem Format oder Medium vervielfältigen und weiterverbreiten
+		\item Bearbeiten — das Material remixen, verändern und darauf aufbauen
+	\end{itemize}
+	Unter folgenden Bedingungen:
+	\begin{itemize}
+		\item Namensnennung - Sie müssen angemessene Urheber- und Rechteangaben machen , einen Link zur Lizenz beifügen und angeben, ob Änderungen vorgenommen wurden. Diese Angaben dürfen in jeder angemessenen Art und Weise gemacht werden, allerdings nicht so, dass der Eindruck entsteht, der Lizenzgeber unterstütze gerade Sie oder Ihre Nutzung besonders.
+		\item Nicht kommerziell - Sie dürfen das Material nicht für kommerzielle Zwecke nutzen.
+		\item Weitergabe unter gleichen Bedingungen - Wenn Sie das Material remixen, verändern oder anderweitig direkt darauf aufbauen, dürfen Sie Ihre Beiträge nur unter derselben Lizenz wie das Original verbreiten.
+	\end{itemize}
 	\newpage
 	\tableofcontents
+	\thispagestyle{empty}
 	\newpage
 	%\setlength\extrarowheight{10pt} %Horizontales padding für Tabellen
 	\def\pics{./pics}
+	\rohead{Entity-Relationship-Modell}
 	\input{ERM.tex}
 	\newpage
 	\input{DarstellungDB.tex}
@@ -214,23 +234,24 @@
 	\input{Optimieren.tex}
 	\newpage
 	\input{Datentypen.tex}
-%	\newpage
+	\newpage
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\rohead{DBMS und SQL}
 	\input{DBMS.tex}
-%	\newpage
+	\newpage
 	\input{Befuellen.tex}
-%	\newpage
+	\newpage
 	\input{Select.tex}
-%	\newpage
+	\newpage
 	\input{Where.tex}
-%	\newpage
+	\newpage
 	\input{Delete.tex}
-%	\newpage
 	\input{Update.tex}
-%	\newpage
+	\newpage
 	\input{Funktionen.tex}
-%	\newpage
+	\newpage
 	\input{Join.tex}
-%	\newpage
+	\newpage
 
 %\begin{tcolorbox}[title=]
 %
@@ -244,8 +265,14 @@
 
 \newpage
 \cohead{\Large\textbf{Lösungen}}
+\rohead{Lösungen}
 \section{Lösungen der Aufgaben}
 \shipoutAnswer
+\newpage
+\cohead{\Large\textbf{Anhang}}
+\rohead{Anhang}
+\section{Anhang: Im Skript verwendete Datenbanken}
+\input{Anhang.tex}
 \end{document}
 
 

@@ -1,5 +1,5 @@
 \cohead{\Large\textbf{JOIN-Statement}}
-\subsection[JOIN-Statement]{SQL - Das JOIN-Statement}
+\subsection[JOIN-Statement]{SQL - Das JOIN-Statement}\label{join}
 Öffne die Datenbank \texttt{schuleOptimiert.db} mit dem Datenbank-Browser oder sqlite3.exe.\\
 Die Datenbank beinhaltet die gleichen Informationen wie \texttt{schule.db}, jedoch wurde die Datenbank dahingehend optimiert, dass alle zu-1-Beziehungen keine eigene Beziehungstabelle mehr haben. Dies wird das Erstellen der JOIN-Statements erleichtern.
 Bisher haben sich unsere SQL-Abfragen immer auf eine einzelne Tabelle bezogen. Viele Fragen lassen sich damit aber nicht oder nicht zufriedenstellend beantworten, z.B. gibt die Tabelle \lstinline!lehrer! indirekt über die \lstinline!abteilungNR! an, welche Lehrer welcher Abteilung zugeordnet sind. Der Anwender möchte jedoch gerne die Zuordnung der Lehrer-Namen zu den Abteilungsbezeichnungen haben, statt der Zuordnung zur \lstinline!abteilungNR!. Dies kann man mit Hilfe des JOIN-Zusatzes erreichen:

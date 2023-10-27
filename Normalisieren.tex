@@ -1,3 +1,4 @@
+\cohead{\Large\textbf{Normalisieren}}
 \subsection[Normalisieren]{Normalisieren von Datenbanken}
 Um Anomalien sowie Redundanzen möglichst zu vermeiden und die Datenbank einfach zu verwalten, muss diese normalisiert werden:
 \begin{tcolorbox}[title=Erste Normalform]
@@ -17,7 +18,7 @@ Die Tabelle liegt nicht in der ersten Hauptform vor, da man den Namen noch in Vo
 \begin{tabular}{llllllll}
 	\multicolumn{8}{c}{\lstinline!dvdVerleih!}\\
 	\hline
-	\underline{\lstinline!kNR!}&\underline{\lstinline!filmID!}&\lstinline!voname!&\lstinline!nachname!&\lstinline!plz!&\lstinline!ort!&\lstinline!filmname!&\lstinline!ausg!\\
+	\underline{\lstinline!kNR!}&\underline{\lstinline!filmID!}&\lstinline!vorname!&\lstinline!nachname!&\lstinline!plz!&\lstinline!ort!&\lstinline!filmname!&\lstinline!ausg!\\
 	\hline
 	5&1002&Keanu&Reeves&70180&Stuttgart&Rambo&01.02.2023\\
 	5&1003&Keanu&Reeves&70180&Stuttgart&Rambo2&06.02.2023\\
@@ -65,9 +66,9 @@ In diesem Fall ist der \lstinline!filmname! nicht von \underline{\lstinline!kNR!
 \begin{tcolorbox}[title=Dritte Normalform]
 	Eine Tabelle liegt in der dritten Normalform vor, wenn sie in der zweiten Normalform ist und zusätzlich keine Attribute enthält, die transitiv abhängig sind, d.h. Attribute, die nicht direkt vom Primärschlüssel abhängen.
 \end{tcolorbox}
-In diesem Fall ist in der Tabelle \lstinline!kunden! der \lstinline!ort! nicht von der \lstinline!kNR!, sondern von der \lstinline!plz! abhängig. Auch hier schafft eine Aufteilung in zwei Tabellen Abhilfe:
+In diesem Fall ist in der Tabelle \lstinline!kunden! der \lstinline!ort! nicht von der \lstinline!kNR!, sondern von der \lstinline!plz! abhängig. Auch hier schafft eine Aufteilung in zwei Tabellen Abhilfe. Die vollständig normalisierte Datenbank sieht dann wie folgt aus:
 \begin{minipage}{\textwidth}
-	\begin{minipage}{0.66\textwidth}
+	\begin{minipage}{0.4\textwidth}
 		\begin{tabular}{llll}
 			\multicolumn{4}{c}{\lstinline!kunden!}\\
 			\hline
@@ -77,7 +78,7 @@ In diesem Fall ist in der Tabelle \lstinline!kunden! der \lstinline!ort! nicht v
 			7&Will&Smith&72070\\
 		\end{tabular}
 	\end{minipage}
-	\begin{minipage}{0.33\textwidth}
+	\begin{minipage}{0.25\textwidth}
 		\begin{tabular}{ll}
 			\multicolumn{2}{c}{\lstinline!ort!}\\
 			\hline
@@ -87,6 +88,28 @@ In diesem Fall ist in der Tabelle \lstinline!kunden! der \lstinline!ort! nicht v
 			72070&Tübingen\\
 		\end{tabular}
 	\end{minipage}
+\end{minipage}
+\begin{minipage}{0.4\textwidth}
+	\begin{tabular}{ll}
+		\multicolumn{2}{c}{\lstinline!filme!}\\
+		\hline
+		\underline{\lstinline!filmID!}&\lstinline!filmname!\\
+		\hline
+		1002&Rambo\\
+		1003&Rambo2\\
+		2018&LotR\\
+	\end{tabular}
+\end{minipage}
+		\begin{minipage}{0.3\textwidth}
+	\begin{tabular}{lll}
+		\multicolumn{3}{c}{\lstinline!leiht!}\\
+		\hline
+		\underline{\lstinline!kNR!}&\underline{\lstinline!filmID!}&\lstinline!ausg!\\
+		\hline
+		5&1002&01.02.2023\\
+		5&1003&06.02.2023\\
+		7&2018&04.02.2023\\
+	\end{tabular}
 \end{minipage}
 
 \begin{Exercise}[title=Normalisiere die Tabelle \lstinline|projektinfos| aus dem Kapitel \ref{Anomalien}., label=Normal0]
@@ -105,7 +128,7 @@ In diesem Fall ist in der Tabelle \lstinline!kunden! der \lstinline!ort! nicht v
 	\end{tabular}
 \end{Exercise}
 \begin{Exercise}[title=Normalisiere folgende Tabelle und markiere die Primärschlüssel in deinem Ergebnis., label=Normal2]
-	Eine Firma legt ihre Bestellungen wie folgt in einer Datenbank ab. Normalisiere die Tabelle:\\
+	%Eine Firma legt ihre Bestellungen wie folgt in einer Datenbank ab. Normalisiere die Tabelle:\\
 	\begin{tabular}{lllll}
 		\multicolumn{5}{c}{\lstinline!bestellungen!}\\
 		\hline
@@ -131,10 +154,10 @@ In diesem Fall ist in der Tabelle \lstinline!kunden! der \lstinline!ort! nicht v
 				\hline
 				\underline{\lstinline!schNR!}&\lstinline!name!&\lstinline!vorname!\\
 				\hline
-				1&Käfer&Karl\\
-				2&Witzig&Willi\\
-				3&Sonne&Susi\\
-				4&Mond&Moni\\
+				1&Müller&Marius\\
+				2&Kryof&Yuri\\
+				3&Abadi&Ali\\
+				4&Sanbei&Sarah\\
 			\end{tabular}
 		\end{minipage}
 		\begin{minipage}[t]{0.33\textwidth}
@@ -193,7 +216,6 @@ In diesem Fall ist in der Tabelle \lstinline!kunden! der \lstinline!ort! nicht v
 		\end{minipage}
 	\end{minipage}
 \end{Answer}
-
 \begin{Answer}[ref=Normal1]
 	\begin{minipage}{\textwidth}
 		\begin{minipage}{0.33\textwidth}
