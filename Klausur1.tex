@@ -156,7 +156,7 @@
 	%Header
 	\lohead{Datenbanken}
 	%\cohead{} %im Arbeitsblatt
-	\rohead{08.12.23}
+	\rohead{\phantom{08.12.23}}
 	\lehead{lehead}
 	\cehead{cehead}
 	\rehead{rehead}
@@ -175,31 +175,34 @@
 		78&Adan Keck&Tennis		   &JG2&Rost\\
 	\end{tabular}\\
 	
-	\begin{Exercise}[title={Definiere die folgenden Begriffe und gib jeweils ein Beispiel aus der Tabelle \lstinline!Schüler! an. (6P)}, label=KABegriffeDefinieren]\\
+	\begin{Exercise}[title={Definiere die folgenden Begriffe und gib jeweils ein Beispiel aus der Tabelle \lstinline!Schüler! an. (6P)}, label=KABegriffeDefinieren]
 		\begin{enumerate}
 			\item Entitätstyp
 			\item Entität
 			\item Attribut
 			\item Attributswert
 		\end{enumerate}
-	\end{Exercise}
-	\begin{Exercise}[title={Gib eine der drei im Untericht besprochenen Anomalien an und erkläre diese an Hand eines selbst gewählten Beispiels aus der Tabelle \lstinline!Schüler!. (3P)}, label=KAAnomalien]\\
-	\end{Exercise}
-	\begin{Exercise}[title={Normalisiere die Tabelle \lstinline!Schüler!. (10P)}, label=KANormalisieren]\\
-	\end{Exercise}
+	\end{Exercise}%
+	\begin{Exercise}[title={Gib eine der drei im Untericht besprochenen Anomalien an und erkläre diese an Hand eines selbst gewählten Beispiels aus der Tabelle \lstinline!Schüler!. (3P)}, label=KAAnomalien]
+	\end{Exercise}%
+	\begin{Exercise}[title={Normalisiere die Tabelle \lstinline!Schüler!. (10P)}, label=KANormalisieren]
+	\end{Exercise}%
 
 	
-	\begin{Exercise}[title={Erstelle ein ERM zu folgendem Sachverhalt. (9P)}, label=KAERMAufstellen]\\
-		Die Superbank möchte die Informationen zu ihren Azubis auf einer Datenbank ablegen.\\
+	\begin{Exercise}[title={Erstelle ein ERM zu folgendem Sachverhalt. (9P)}, label=KAERMAufstellen]
+		
+		Die Superbank möchte die Informationen zu ihren Azubis auf einer Datenbank ablegen.
+		
 		\textbf{Anforderungsdefinition}\\
-		Jeder Azubi ist genau einem Ressort (z.B. Controlling, Beratung, EDV) zugeordnet. Ein Azubi kann in mehreren Filialen tätig sein.\\
-		\textbf{Daten}\\
+		Jeder Azubi ist genau einem Ressort (z.B. Controlling, Beratung, EDV) zugeordnet. Ein Azubi kann in mehreren Filialen tätig sein.
+		
+		\textbf{Daten:}
 		\begin{itemize}
 			\item Für jeden Azubi sollen Vor- und Nachname sowie das Ausbildungsjahr gespeichert werden.
 			\item Für jedes Ressort soll die Bezeichnung gespeichert werden.
 			\item Für die Filialen soll die Adresse gespeichert werden.
 		\end{itemize}	
-	\end{Exercise}
+	\end{Exercise}%
 
 	
 	
@@ -209,24 +212,23 @@
 	
 	
 	
-	\begin{Answer}[ref=KABegriffeDefinieren]\\
+	\begin{Answer}[ref=KABegriffeDefinieren]
 		\begin{enumerate}
 			\item Entitätstyp: Ein Entitätstyp ist die abstrakter Beschreibung von Objekten mit gleichen Eigenschaften, z.B. beschreibt der Entitätstyp \lstinline!Schüler! die verschiedenen Schüler, die alle die Eigenschaften \lstinline!Name!, \lstinline!Arbeitsgemeinschaft!, usw. haben.
 			\item Entität: Eine tatsächliche Ausprägung eines Entitätstyps, z.B. stellt die erste Zeile die Entität des Schülers Max Kurz mit seinen weiteren Eigenschaften dar.
 			\item Attribut: Ein Attribut ist eine Eigenschaft von meist mehreren eines Entitätstyps, z.B. hat der Entitätstyp \lstinline!Schüler! unter anderem  das Attribut Entitätstyp \lstinline!Klasse!.
 			\item Attributswert: Wie der Name schon sagt ein spezifischer Wert, den das Attribut annimmt, z.B. nimmt das Attribut Entitätstyp \lstinline!Klasse! des Schülers Max Kurz den Wert BK21 an.
 		\end{enumerate}
-	\end{Answer}
-	\begin{Answer}[ref=KAAnomalien]\\
+	\end{Answer}%
+	\begin{Answer}[ref=KAAnomalien]
 		\begin{enumerate}
 			\item Änderungsanomalie: Tritt dann auf, wenn man einen Attributswert ändern will, aber nicht alle betroffenen Werte ändert, z.B. könnte man den Wert Tennis auf Hallentennis ändern wollen und ändert dann nur den Eintrag bei \lstinline!SNR! 78, vergisst jedoch den Eintrag bei \lstinline!SNR! 15 zu ändern.
 			\item Einfügeanomalie: Tritt dann auf, wenn man Werte in die Datenbank einfügen will, aber wichtige Werte wie z.B. der Primärschlüssel fehlen. Dies könnte im Beispiel auftreten, wenn man eine neue AG gründen und eintragen möchte wie z.B. Fußball aber noch keine Schüler teilnehmen. In diesem Fall würde ein eintragen von Fußball unter \lstinline!Arbeitsgemeinschaft! zu dem Problem führen, dass der Primärschlüssel, die \lstinline!SNR! fehlt.
 			\item Löschanomalie: Tritt dann auf, wenn man Daten aus der Datenbank löscht und dabei aus Versehen Daten löscht, die man behalten möchte. Verlässt im Beispiel der Schüler Max Kurz die Schule und wird aus der Datenbank gelöscht, so wird ebenfalls die Information gelöscht, dass es eine Theater-AG gibt.
 		\end{enumerate}
+	\end{Answer}%
+	\begin{Answer}[ref=KANormalisieren]
 		
-		
-	\end{Answer}
-	\begin{Answer}[ref=KANormalisieren]\\
 		\begin{tabular}{llll}
 			\multicolumn{4}{c}{\lstinline!Schüler!}\\
 			\hline
@@ -271,13 +273,12 @@
 		\begin{minipage}{0.8\textwidth}
 			Hinweis: Bei der Tabelle \lstinline!Klassen! kann man auch einen neuen Primärschlüssel wie \lstinline!KlassenNR! oder ähnliches verwenden. Bei der Tabelle \lstinline!AGTeilnahme! kann man statt des zusammengesetzten Primärschlüssels auch einen neuen Primärschlüssel wie \lstinline!AGTeilnahmeNR! verwenden.
 		\end{minipage}
-		
-	\end{Answer}
-	\begin{Answer}[ref=KAERMAufstellen]\\
+	\end{Answer}%
+	\begin{Answer}[ref=KAERMAufstellen]
 		\begin{minipage}{\textwidth}\centering
-			\includegraphics[width=.95\linewidth]{./pics/KlausurNR4.png}
-		\end{minipage}
-	\end{Answer}
+			\includegraphics[width=\linewidth]{./pics/KlausurNR4.png}
+		\end{minipage}%
+	\end{Answer}%
 
 
 
