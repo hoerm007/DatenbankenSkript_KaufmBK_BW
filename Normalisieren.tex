@@ -1,3 +1,4 @@
+% !TeX root = ./Skript_DB.tex
 \cohead{\Large\textbf{Normalisieren}}
 \subsection[Normalisieren]{Normalisieren von Datenbanken}
 Um Anomalien sowie Redundanzen möglichst zu vermeiden und die Datenbank einfach zu verwalten, muss diese normalisiert werden:
@@ -23,11 +24,13 @@ Die Tabelle liegt nicht in der ersten Hauptform vor, da man den Namen noch in Vo
 	5&1002&Keanu&Reeves&70180&Stuttgart&Rambo&01.02.2023\\
 	5&1003&Keanu&Reeves&70180&Stuttgart&Rambo2&06.02.2023\\
 	7&2018&Will&Smith&72070&Tübingen&LotR&04.02.2023\\
-\end{tabular}\\
+\end{tabular}
+
 \begin{tcolorbox}[title=Zweite Normalform]
 	Eine Tabelle liegt in der zweiten Normalform vor, wenn sie in der ersten Normalform ist und zusätzlich keine Attribute enthält, die bereits von einem Teil eines Schlüsselkandidaten eindeutig bestimmt werden. Somit muss jedes Nichtschlüsselattribut voll funktional (d.h. ausschließlich) abhängig vom Primärschlüssel sein.
 \end{tcolorbox}
-In diesem Fall ist der \lstinline!filmname! nicht von \underline{\lstinline!kNR!} und \underline{\lstinline!filmID!} abhängig, sondern nur von einem Teil des Primärschlüssels, nämlich der \underline{\lstinline!filmID!}. Selbiges gilt für \lstinline!vorname! und \lstinline!nachname!, die nur von \lstinline!kNR! abhängig sind. Um dieses Problem zu lösen, legen wir zwei zusätzliche Tabelle an:\\
+In diesem Fall ist der \lstinline!filmname! nicht von \underline{\lstinline!kNR!} und \underline{\lstinline!filmID!} abhängig, sondern nur von einem Teil des Primärschlüssels, nämlich der \underline{\lstinline!filmID!}. Selbiges gilt für \lstinline!vorname! und \lstinline!nachname!, die nur von \lstinline!kNR! abhängig sind. Um dieses Problem zu lösen, legen wir zwei zusätzliche Tabelle an:
+
 \begin{minipage}{\textwidth}
 	\begin{minipage}{0.3\textwidth}
 		\begin{tabular}{lll}
@@ -116,7 +119,8 @@ In diesem Fall ist in der Tabelle \lstinline!kunden! der \lstinline!ort! nicht v
 
 \end{Exercise}
 \begin{Exercise}[title=Normalisiere folgende Tabelle und markiere die Primärschlüssel in deinem Ergebnis., label=Normal1]
-	Ein Bauunternehmer hat die folgende Tabelle erstellt, in der Daten über Bauaufträge und Daten zu den beteiligten Mitarbeitern gespeichert sind:\\
+	Ein Bauunternehmer hat die folgende Tabelle erstellt, in der Daten über Bauaufträge und Daten zu den beteiligten Mitarbeitern gespeichert sind:
+
 	\begin{tabular}{lllllllll}
 		\multicolumn{9}{c}{\lstinline!bauunternehmer!}\\
 		\hline
@@ -128,7 +132,6 @@ In diesem Fall ist in der Tabelle \lstinline!kunden! der \lstinline!ort! nicht v
 	\end{tabular}
 \end{Exercise}
 \begin{Exercise}[title=Normalisiere folgende Tabelle und markiere die Primärschlüssel in deinem Ergebnis., label=Normal2]
-	%Eine Firma legt ihre Bestellungen wie folgt in einer Datenbank ab. Normalisiere die Tabelle:\\
 	\begin{tabular}{lllll}
 		\multicolumn{5}{c}{\lstinline!bestellungen!}\\
 		\hline

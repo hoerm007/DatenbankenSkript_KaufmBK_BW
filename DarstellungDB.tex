@@ -1,10 +1,15 @@
+% !TeX root = ./Skript_DB.tex
 \cohead{\Large\textbf{Darstellung auf der DB}}
 \subsection[Darstellung auf der DB]{Darstellung auf der Datenbank}
-Einerseits ist die Darstellung eines ERMs auf der Datenbank simpel. Jeder Entitätstyp und jede Beziehung kann als Tabelle dargestellt werden. Andererseits ergeben sich aus der Darstellung bestimmte Regeln zum Erstellen eines guten ERMs, die wir unter dem Kapitel Normalisierung besprechen werden.\\
+Einerseits ist die Darstellung eines ERMs auf der Datenbank simpel. Jeder Entitätstyp und jede Beziehung kann als Tabelle dargestellt werden. Andererseits ergeben sich aus der Darstellung bestimmte Regeln zum Erstellen eines guten ERMs, die wir unter dem Kapitel Normalisierung besprechen werden.
+
 \begin{tcolorbox}[title=Entitäten/-typen und Beziehungen auf der Datenbank]
 	Entitäten bzw. Entitätstypen und Beziehungen werden als Tabellen auf der Datenbank vorgestellt. Eine Tabelle besteht aus einer Überschrift, die den Entitätstyp bzw. die Beziehung angibt, den Spaltenüberschriften, die die Attribute darstellen und den Zeilen mit konkreten Werten. Die Werte einzelner Zellen stehen dabei für die Attributswerte während eine ganze Zeile eine Entität repräsentiert.
 \end{tcolorbox}
-Beispiel für die Entitätstypen Schüler, Lehrer und Abteilung. Für die Namen auf der Datenbank wird im Skript folgende Notation verwendet: \lstinline!schueler!\\\phantom{ }\\
+Beispiel für die Entitätstypen Schüler, Lehrer und Abteilung. Für die Namen auf der Datenbank wird im Skript folgende Notation verwendet: \lstinline!schueler!
+
+\bigskip
+
 \begin{tabular}{llll}
 	\multicolumn{4}{c}{\lstinline!schueler!}\\
 	\hline
@@ -33,7 +38,8 @@ Beispiel für die Entitätstypen Schüler, Lehrer und Abteilung. Für die Namen 
 	30&Skinner&SKI\\
 	31&Hoover&HOO\\
 \end{tabular}\\
-Wie wir später sehen werden, ist das gewählte ERM noch stark verbesserungsfähig. Vorerst wollen wir aber jeden Lehrer genau einer Abteilung zuordnen. Diese Beziehung kann ebenfalls über eine Tabelle dargestellt werden:\\
+Wie wir später sehen werden, ist das gewählte ERM noch stark verbesserungsfähig. Vorerst wollen wir aber jeden Lehrer genau einer Abteilung zuordnen. Diese Beziehung kann ebenfalls über eine Tabelle dargestellt werden:
+
 \begin{tabular}{lll}
 	\multicolumn{3}{c}{\lstinline!abteilung_lehrer!}\\
 	\hline
@@ -42,8 +48,10 @@ Wie wir später sehen werden, ist das gewählte ERM noch stark verbesserungsfäh
 	1&1&24\\
 	2&1&30\\
 	3&2&31\\
-\end{tabular}\\
-In der Tabelle \lstinline!abteilung_lehrer! könnte man die \lstinline!lfdNR! als Primärschlüssel auch streichen und stattdessen die \lstinline!abteilungNR! und \lstinline!lehrerNR! zusammen als Primärschlüssel verwenden. Außer dem geringfügig größeren Speicherbedarf spricht aber für unsere Zwecke nichts gegen das Hinzufügen einer laufenden Nummer als Primärschlüssel. Die erste Entität bzw. Zeile sagt nun aus, dass der Abteilung mit der \lstinline!abteilungNR! 1, also dem Berufskolleg, der Lehrer mit der \lstinline!lehrerNR! 24, also Krabappel, angehört. In der zweiten Zeile bzw. Entität steht, dass dem Berufskolleg außerdem auch Skinner angehört. Und die dritte Zeile besagt, dass dem Wirtschaftsgymnasium Hoover angehört.\\
+\end{tabular}
+
+In der Tabelle \lstinline!abteilung_lehrer! könnte man die \lstinline!lfdNR! als Primärschlüssel auch streichen und stattdessen die \lstinline!abteilungNR! und \lstinline!lehrerNR! zusammen als Primärschlüssel verwenden. Außer dem geringfügig größeren Speicherbedarf spricht aber für unsere Zwecke nichts gegen das Hinzufügen einer laufenden Nummer als Primärschlüssel. Die erste Entität bzw. Zeile sagt nun aus, dass der Abteilung mit der \lstinline!abteilungNR! 1, also dem Berufskolleg, der Lehrer mit der \lstinline!lehrerNR! 24, also Krabappel, angehört. In der zweiten Zeile bzw. Entität steht, dass dem Berufskolleg außerdem auch Skinner angehört. Und die dritte Zeile besagt, dass dem Wirtschaftsgymnasium Hoover angehört.
+
 Beachte, dass der Primärschlüssel auch hier unterstrichen ist und aus Gründen der Übersichtlichkeit immer an erster Stelle steht.
 \begin{Exercise}[title=Erstelle zu den ERMs aus Aufgabe \ref{ERMErstellen1} passende Tabellen., label=TabelleErstellen1]
 
@@ -74,8 +82,10 @@ Beachte, dass der Primärschlüssel auch hier unterstrichen ist und aus Gründen
 			\hline
 			1&15&18498451&01.09.2023&03.09.2023\\
 			2&15&89415456&01.09.2023&03.09.2023\\
-		\end{tabular}\\
-		\item Ein befreundeter Autohändler bittet uns beim Aufbau einer Kundendatenbank zu helfen. Zuerst soll diese in einem ERM modelliert werden. Darin erscheinen sollen Kunde, Auto, Karosserietyp und Reifen. Ein Auto gehört dabei zu einem Kunden, ein Kunde kann aber mehrere Autos haben.\\
+		\end{tabular}
+
+		\item Ein befreundeter Autohändler bittet uns beim Aufbau einer Kundendatenbank zu helfen. Zuerst soll diese in einem ERM modelliert werden. Darin erscheinen sollen Kunde, Auto, Karosserietyp und Reifen. Ein Auto gehört dabei zu einem Kunden, ein Kunde kann aber mehrere Autos haben.
+
 		\begin{tabular}{lll}
 			\multicolumn{3}{c}{\lstinline!kunde!}\\
 			\hline
@@ -110,8 +120,10 @@ Beachte, dass der Primärschlüssel auch hier unterstrichen ist und aus Gründen
 			\underline{\lstinline!laufendeNR!}&\lstinline!fahrzeugID!&\lstinline!kundenNR!&\lstinline!preis!&\lstinline!datum!\\
 			\hline
 			119&189765465451&15&43000&10.08.2023\\
-		\end{tabular}\\
-		\item Ein DVD-Verleiher betreibt mehrere Filialen (id, strasse, plz), wo es jeweils mehrere Medien (DVDs, BluRays, Spiele) zu leihen gibt. Jeder Kunde kann nur einer Filiale zugeordnet sein. Jeder Kunde kann mehrere Medien ausleihen. Ein Mitarbeiter kann nur in einer Filiale arbeiten.\\
+		\end{tabular}
+
+		\item Ein DVD-Verleiher betreibt mehrere Filialen (id, strasse, plz), wo es jeweils mehrere Medien (DVDs, BluRays, Spiele) zu leihen gibt. Jeder Kunde kann nur einer Filiale zugeordnet sein. Jeder Kunde kann mehrere Medien ausleihen. Ein Mitarbeiter kann nur in einer Filiale arbeiten.
+
 		\begin{tabular}{lll}
 			\multicolumn{3}{c}{\lstinline!filiale!}\\
 			\hline
@@ -160,6 +172,6 @@ Beachte, dass der Primärschlüssel auch hier unterstrichen ist und aus Gründen
 			\underline{\lstinline!laufendeNR!}&\lstinline!kundenNR!&\lstinline!medienID!&\lstinline!beginn!&\lstinline!beginn!\\
 			\hline
 			99&50&1002&01.01.2023&14.01.2023\\
-		\end{tabular}\\
+		\end{tabular}
 	\end{enumerate}
 \end{Answer}

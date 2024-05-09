@@ -1,13 +1,15 @@
+% !TeX root = ./Skript_DB.tex
 \cohead{\Large\textbf{Optimieren}}
 \subsection[Optimierung]{Optimierung von Datenbanken}
 Bisher wurde jeder Entitätstyp und jede Beziehung als eigene Tabelle auf der Datenbank dargestellt. Für alle Beziehungen, die von der Kardinalität 1:X oder X:1 sind, kann man die Informationen der Beziehungstabelle in die Tabelle eines der beiden Entitätstypen verschieben.
 \begin{tcolorbox}[title=Optimierung]
-	Für 1:X oder X:1 Beziehungen kann die Beziehungstabelle in einer der Entitätstyptabellen integriert werden, indem man den Primärschlüssel des einen Entitätstyps in die Tabelle des anderen Entitätstyps als Fremdschlüssel hinzufügt.
+	Für 1:X oder X:1 Beziehungen kann die Beziehungstabelle in einer der Entitätstyp-Tabellen integriert werden, indem man den Primärschlüssel des einen Entitätstyps in die Tabelle des anderen Entitätstyps als Fremdschlüssel hinzufügt.
 \end{tcolorbox}
 Betrachten wir folgendes Beispiel:
 \begin{minipage}{\textwidth}
-	\centering\includegraphics[width=\textwidth]{\pics/Optimierung.png}\\
+	\centering\includegraphics[width=\textwidth]{\pics/Optimierung.png}
 \end{minipage}
+
 Bildet man jeden Entitätstyp und jede Beziehung als eine eigene Tabelle ab, so erhält man z.B.:
 \begin{minipage}{\textwidth}
 	\begin{minipage}{0.5\textwidth}
@@ -121,12 +123,16 @@ Die N:M Beziehung zwischen \lstinline!klasse! und \lstinline!lehrer! kann so nic
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{Answer}[ref=Optimierung]
 	\begin{itemize}
-		\item Fahrradverleih:\\
+		\item Fahrradverleih:
+
 		Die Beziehungstabelle zur Beziehung \lstinline!mietet! kann wegoptimiert werden, indem man das Attribut \lstinline!kundenNR! als Fremdschlüssel zur Tabelle \lstinline!fahrrad! hinzufügt.
-		\item Autohändler:\\
-		Die Beziehungstabelle zur Beziehung \lstinline!gekauft! kann wegoptimiert werden, indem man das Attribut \lstinline!kundenNR! als Fremdschlüssel zur Tabelle \lstinline!auto! hinzufügt.\\
+		\item Autohändler:
+
+		Die Beziehungstabelle zur Beziehung \lstinline!gekauft! kann wegoptimiert werden, indem man das Attribut \lstinline!kundenNR! als Fremdschlüssel zur Tabelle \lstinline!auto! hinzufügt.
+
 		Die Beziehungstabelle zur Beziehung \lstinline!verfuegt! kann wegoptimiert werden, indem man das Attribut \lstinline!fahrzeugID! als Fremdschlüssel zur Tabelle \lstinline!reifen! hinzufügt.
-		\item DVD-Verleih:\\
+		\item DVD-Verleih:
+
 		Die Beziehungstabelle zur Beziehung \lstinline!arbeitet_in! kann wegoptimiert werden, indem man das Attribut \lstinline!filiale.id! als Fremdschlüssel zur Tabelle \lstinline!mitarbeiter! hinzufügt.
 	\end{itemize}
 \end{Answer}

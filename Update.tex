@@ -1,3 +1,4 @@
+% !TeX root = ./Skript_DB.tex
 \cohead{\Large\textbf{DELETE/UPDATE-Statement}}
 \subsection[UPDATE-Statement]{SQL - Das UPDATE-Statement}\label{update}
 Mit Hilfe des UPDATE-Statements lassen sich einzelne Werte eines Eintrags in einer Tabelle nachträglich ändern:
@@ -15,11 +16,14 @@ Mit Hilfe des UPDATE-Statements lassen sich einzelne Werte eines Eintrags in ein
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{Answer}[ref=Update]
 	\begin{enumerate}
-		\item Der Schüler mit der \lstinline!schuelerNR! 19 soll mit \lstinline!vornamen! Hans Gustav Adalbert heißen.\\
+		\item Der Schüler mit der \lstinline!schuelerNR! 19 soll mit \lstinline!vornamen! Hans Gustav Adalbert heißen.
+
 		\lstinline!UPDATE schueler SET vorname = 'Hans Gustav Adalbert' WHERE schuelerNR = 19;!
-		\item Die Bezeichnung der \lstinline!klasse! soll von BK2 auf BK22 geändert werden.\\
+		\item Die Bezeichnung der \lstinline!klasse! soll von BK2 auf BK22 geändert werden.
+
 		\lstinline!UPDATE schueler SET klasse = 'BK22' WHERE klasse IS 'BK2';!
-		\item Bei einigen Schülern ist ein Problem beim Eintragen der \lstinline!plz! aufgetreten. Bei allen Schülern mit einer 4-stelligen \lstinline!plz! soll diese auf NULL geändert werden.\\
+		\item Bei einigen Schülern ist ein Problem beim Eintragen der \lstinline!plz! aufgetreten. Bei allen Schülern mit einer 4-stelligen \lstinline!plz! soll diese auf NULL geändert werden.
+
 		\lstinline!UPDATE schueler SET plz = NULL WHERE plz < 10000;!
 	\end{enumerate}
 \end{Answer}

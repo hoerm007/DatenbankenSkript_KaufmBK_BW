@@ -1,6 +1,8 @@
+% !TeX root = ./Skript_DB.tex
 \cohead{\Large\textbf{Anomalien}}
 \subsection[Anomalien]{Anomalien}\label{Anomalien}
-Von Anomalien spricht man, wenn die Daten auf der Datenbank inkonsistent sind, also fehlerhaft. Wir unterscheiden folgende Anomalien:\\
+Von Anomalien spricht man, wenn die Daten auf der Datenbank inkonsistent sind, also fehlerhaft. Wir unterscheiden folgende Anomalien:
+
 \begin{tcolorbox}[title=Anomalien]
 	\begin{enumerate}
 		\item \textbf{Änderungs-Anomalien}: Diese können auftreten, wenn Attributswerte an mehreren Stellen geändert werden sollen, jedoch nicht alle Stellen geändert werden.
@@ -8,7 +10,8 @@ Von Anomalien spricht man, wenn die Daten auf der Datenbank inkonsistent sind, a
 		\item \textbf{Lösch-Anomalien}: Diese können auftreten, wenn das Löschen einer Entität das ungewollte Löschen wichtiger Infos (Attributswerte) mit sich bringt.
 	\end{enumerate}
 \end{tcolorbox}
-Zudem entspricht es dem Best Practice Redundanzen (das Speichern der gleichen Information an mehreren Stellen in der Datenbank) zu vermeiden. Betrachten wir folgendes Beispiel:\\
+Zudem entspricht es dem Best Practice Redundanzen (das Speichern der gleichen Information an mehreren Stellen in der Datenbank) zu vermeiden. Betrachten wir folgendes Beispiel:
+
 Unsere Schüler engagieren sich in unterschiedlichen Schulprojekten. Der Verbindungslehrer Herr KeinDBProfi hat zu Verwaltungszwecken folgende Tabelle angelegt:
 \begin{tabular}{llllllll}
 	\multicolumn{8}{c}{\lstinline!projektinfos!}\\
@@ -49,7 +52,8 @@ Unsere Schüler engagieren sich in unterschiedlichen Schulprojekten. Der Verbind
 	Homepage,&
 	15,  \\
 	&&&&&&Schulfest&35\\
-\end{tabular}\\
+\end{tabular}
+
 Nun will man folgende Änderungen vornehmen:
 \begin{enumerate}
 	\item \textcolor{red}{Da es sich um die ÜFA-Homepage handelt, soll die Projekt-Bezeichnung entsprechend geändert werden.}

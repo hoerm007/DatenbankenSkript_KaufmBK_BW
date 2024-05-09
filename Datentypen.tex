@@ -1,6 +1,8 @@
+% !TeX root = ./Skript_DB.tex
 \cohead{\Large\textbf{Datentypen}}
 \subsection{Datentypen}
-Eine relationale Datenbank besteht aus verschiedenen \textcolor{red}{Entitätstypen} und \textcolor{red}{Beziehungen} zwischen diesen, die jeweils als Tabellen abgebildet werden. Die \textcolor{red}{Entitätstypen} und \textcolor{red}{Beziehungen} sind dabei sozusagen die Überschriften der Tabellen, die einzelnen Spalten bezeichnet man als \textcolor{blue}{Attribute} und die Zeilen als Entitäten:\\
+Eine relationale Datenbank besteht aus verschiedenen \textcolor{red}{Entitätstypen} und \textcolor{red}{Beziehungen} zwischen diesen, die jeweils als Tabellen abgebildet werden. Die \textcolor{red}{Entitätstypen} und \textcolor{red}{Beziehungen} sind dabei sozusagen die Überschriften der Tabellen, die einzelnen Spalten bezeichnet man als \textcolor{blue}{Attribute} und die Zeilen als Entitäten:
+
 \begin{table}[h]
 	\centering
 	\begin{tabular}{llll}
@@ -24,7 +26,6 @@ SQLite ist ein beliebtes DBMS, da es klein und relativ simpel ist. Wir werden se
 	\end{itemize}
 \end{tcolorbox}
 
-
 \begin{Exercise}[title={Beantworte folgende Fragen; Du kannst das Internet zu Rate ziehen.}, label=Datentypen]
 	\begin{enumerate}
 		\item Informiere dich über den NULL-Wert, der oben in der Datenbank vorkommt. Für was steht dieser Wert? Was ist der Unterschied zwischen Null bzw. 0 und NULL?
@@ -35,16 +36,24 @@ SQLite ist ein beliebtes DBMS, da es klein und relativ simpel ist. Wir werden se
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{Answer}[ref=Datentypen]
 	\begin{enumerate}
-		\item Informiere dich über den NULL-Wert, der oben in der Datenbank vorkommt. Für was steht dieser Wert? Was ist der Unterschied zwischen Null bzw. 0 und NULL?\\
+		\item Informiere dich über den NULL-Wert, der oben in der Datenbank vorkommt. Für was steht dieser Wert? Was ist der Unterschied zwischen Null bzw. 0 und NULL?
+
 		Der Wert NULL bedeutet, dass kein Wert vorhanden ist. Ein ähnliches Konzept kennen wir aus der Mathematik. Die Gleichung \(x^2=0\) hat die Lösung \(x=0\), während die Gleichung \(x^2=-1\) keine Lösung hat, was wir durch das Blitzsymbol \Lightning\normalsize anzeigen. Im obigen Beispiel steht ein Wert von 0 für das Alter für eine Person, die ihren ersten Geburtstag noch nicht hatte. Ein Wert von NULL bedeutet, dass das Alter unbekannt ist.
-		\item Was ist ein Byte?\\
+		\item Was ist ein Byte?
+
 		Ein Byte ist eine Informationseinheit, die normalerweise aus 8 Bit besteht. Ein Bit kann die beiden Zustände 1 oder 0 annehmen. Ein Byte kann also \(2^8=256\) verschiedene Zustände annehmen. Ältere Zeichensätze haben jeweils ein Zeichen in ein Byte gespeichert. So konnten also 256 verschiedene Zeichen (z.B. a, b, c, A, B, C, §, +, usw.) unterschieden werden.
-		\item Wie werden INTEGER auf der Datenbank gespeichert?\\
-		Im Alltag verwenden wir das Dezimalsystem, d.h. jede Zahl wird in Form von Potenzen von 10 dargestellt:\\
-		\(123=1\cdot10^2+2\cdot 10^1+3\cdot 10^0=100+20+3\)\\
-		INTEGER werden einfach vom Dezimalsystem auf das Binärsystem übertragen:\\
-		\(123=1111011_{BIN}=1\cdot2^6+1\cdot2^5+1\cdot2^4+0\cdot2^3+1\cdot2^2+1\cdot2^1+1\cdot2^0\)\\
-		\(=64+32+16+8+2+1=123\).\\
+		\item Wie werden INTEGER auf der Datenbank gespeichert?
+
+		Im Alltag verwenden wir das Dezimalsystem, d.h. jede Zahl wird in Form von Potenzen von 10 dargestellt:
+
+		\(123=1\cdot10^2+2\cdot 10^1+3\cdot 10^0=100+20+3\)
+
+		INTEGER werden einfach vom Dezimalsystem auf das Binärsystem übertragen:
+
+		\(123=1111011_{BIN}=1\cdot2^6+1\cdot2^5+1\cdot2^4+0\cdot2^3+1\cdot2^2+1\cdot2^1+1\cdot2^0\)
+
+		\(=64+32+16+8+2+1=123\).
+
 		Das erste Bit kann als Vorzeichen verwendet werden. Dann kann man in einem Byte Zahlen von \(-128\) bis \(127\) speichern. Je mehr Byte man für eine Zahl verwendet, desto mehr Speicherplatz benötigt man. Jedoch lassen sich dann auch größere Zahlen speichern.
 	\end{enumerate}
 \end{Answer}

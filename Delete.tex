@@ -1,3 +1,4 @@
+% !TeX root = ./Skript_DB.tex
 \cohead{\Large\textbf{DELETE/UPDATE-Statement}}
 \subsection[DELETE-Statement]{SQL - Das DELETE-Statement}\label{delete}
 Mit Hilfe des DELETE-Statements lassen sich Einträge aus einer Tabelle löschen (Das DROP-Statement war zum Löschen der kompletten Tabelle):
@@ -16,11 +17,14 @@ Mit Hilfe des DELETE-Statements lassen sich Einträge aus einer Tabelle löschen
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{Answer}[ref=Delete]
 	\begin{enumerate}
-		\item Den Schüler mit der \lstinline!schuelerNR! 40.\\
+		\item Den Schüler mit der \lstinline!schuelerNR! 40.
+
 		\lstinline!DELETE FROM schueler WHERE schuelerNR = 40;!
-		\item Alle Schüler mit der \lstinline!schuelerNR! 10, 20, 50 und 60.\\
+		\item Alle Schüler mit der \lstinline!schuelerNR! 10, 20, 50 und 60.
+
 		\lstinline!DELETE FROM schueler WHERE schuelerNR IN (10, 20, 50, 60);!
-		\item Alle Schüler, deren \lstinline!vorname! auf ia endet.\\
+		\item Alle Schüler, deren \lstinline!vorname! auf ia endet.
+
 		\lstinline!DELETE FROM schueler WHERE vorname LIKE '%ia';!
 	\end{enumerate}
 \end{Answer}

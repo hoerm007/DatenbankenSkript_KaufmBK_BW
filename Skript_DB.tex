@@ -1,72 +1,38 @@
 \documentclass[a4paper,12pt, headsepline, ngerman]{scrartcl}
 
+%%%%%%%%%%%%%%%%%%%%%%% PACKAGES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{scrlayer-scrpage}
-\usepackage[nodisplayskipstretch]{setspace} %vspace before/after math mode
-%\setstretch{5}
-\raggedbottom
-\raggedright
-\onehalfspacing
-%\renewcommand*{\familydefault}{\sfdefault}
-
-
-
-\pagestyle{headings} %KOMA-Script mit Kopf-Fuß-Zeilen
-\usepackage{hyperref}			%Hyperlinks setzen
-\usepackage[answerdelayed]{exercise}			%Nach hyperref einbinden!
-\usepackage{babel}				%Silbentrennung mit ngerman
-
-\usepackage{booktabs} 			% For prettier tables
-
-\usepackage{mathtools}  		%Mathe-Paket
-\usepackage{amssymb}			%Symbole
-\usepackage{bbm}				%\mathbbm{N} für natürliche Zahlen o.ä.
-%\usepackage{graphicx}			%Optionen für \includegraphics{imagefile}
-%Solte in mathtools beinhaltet sein
-\usepackage{color}				%\textcolor{blue}{text...}
-\usepackage[dvipsnames]{xcolor}
-%Häufig verwendetet Farben
-%ForestGreen 		RGB(  0,155, 85)
-%YellowOrange		RGB(250,162, 26)
-
-\usepackage[T1]{fontenc}		%Umlaute
+\usepackage[nodisplayskipstretch]{setspace}     %vspace before/after math mode
+\usepackage{geometry}
+\usepackage{listings}                           %\lstinline[language=C]!while{$a || $b}!
+\usepackage{babel}				                %Silbentrennung mit ngerman
+\usepackage{booktabs} 			                % For prettier tables
+\usepackage{mathtools}  		                %Mathe-Paket
+\usepackage{color}				                %\textcolor{blue}{text...}
+\usepackage[dvipsnames]{xcolor}                 %Mehr Auswahl bei Farben
+\usepackage[T1]{fontenc}		                %Umlaute
 \usepackage[utf8]{inputenc}
 \usepackage{wrapfig}
 \usepackage{caption}
-
-
-\usepackage{ulem}
-%\uline{important} underlined text
-%\uuline{urgent} double-underlined text
-%\uwave{boat} wavy underline
-%\sout{wrong} line struck through word
-%\xout{removed} marked over like //////////
-%\dashuline{dashing} dashed underline
-%\dotuline{dotty} dotted underline
-\usepackage{cancel}					%Durchstreichen von Dingen in Formeln
-\usepackage{enumitem}				%Aufzählungen [label=\alph*)]
-\setlist[enumerate]{nosep, topsep=0pt}	%Kleinere Abstände bei Aufzählungen
-\setlist[itemize]{noitemsep, topsep=0pt}
-
-\usepackage{framed}                 %Rahmen machen \begin{framed} ... \end{framed}
-
-\usepackage{tcolorbox} 				%Für Boxen um Text
-\usepackage{array}
-%Plots
-\usepackage{tikz}
-\usepackage{pgf}
-\usepackage{pgfmath}
-
-\usepackage{bm}						%\bm{xxx} for bold in math mode
-
-\usepackage{geometry}
-\geometry{a4paper, portrait, left=1.5cm, right=2cm, top=1cm, bottom=2cm, headsep=0.2cm, includehead, head=27.30193pt}
-\usepackage{listings} %\lstinline[language=C]!while{$a || $b}!
+\usepackage{ulem}                               %Durchstreichen von Wörtern mit \sout{text}
+\usepackage{enumitem}				            %Aufzählungen [label=\alph*)]
+\usepackage{tcolorbox} 				            %Merkboxen
+\usepackage{marvosym}                           %\Lightning
+\usepackage{multirow}
+\usepackage{hyperref}			                %Hyperlinks setzen
+\usepackage[answerdelayed]{exercise}	        %Nach hyperref einbinden!
+%%%%%%%%%%%%%% FARBEN %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \definecolor{codegreen}{rgb}{0,0.6,0}
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
 \definecolor{codepurple}{rgb}{0.58,0,0.82}
 \definecolor{backcolour}{rgb}{0.95,0.95,0.92}
 \definecolor{basiccolour}{rgb}{0.9,0,0.6}
-
+\definecolor{tcback}{rgb}{.95,.95,.95}          %tcolorbox Hintergrund
+\definecolor{tcframe}{rgb}{.89,.15,.21}         %tcolorbox Umrandung
+%%%%%%%%%%%%%%% KONFIGURATION VON PACKAGES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\geometry{a4paper, portrait, left=1.5cm, right=2cm, top=1cm, bottom=2cm, headsep=0.2cm, includehead, head=27.30193pt}
+\setlist[enumerate]{nosep, topsep=0pt}	        %Kleinere Abstände bei Aufzählungen
+\setlist[itemize]{noitemsep, topsep=0pt}
 \lstdefinestyle{mystyle}{
 	language=SQL,
 	backgroundcolor=\color{backcolour},
@@ -88,6 +54,7 @@
 	tabsize=2,
 	columns=fullflexible %erzeugt keine komischen Leerzeichen mehr, die man erst beim Kopieren sieht
 }
+\lstset{style=mystyle}
 \lstset{literate=%
 	{Ö}{{\"O}}1
 	{Ä}{{\"A}}1
@@ -98,51 +65,7 @@
 	{ö}{{\"o}}1
 	{~}{{\textasciitilde}}1
 }
-\lstset{style=mystyle}
-
-\usepackage{marvosym} %\Lightning
-\usepackage{multirow}
-\renewcommand{\mvchr}[1]{\Large{\mbox{\mvs\symbol{#1}}}} %\Lightning in math mode
-
-\usetikzlibrary{intersections}
-
 \setkomafont{headsepline}{\color{black}}
-
-\usepackage{amsthm}					%Definitionsumgebung für \newtheorem{defi}{Definition}[section] usw.
-\theoremstyle{definition}
-\newtheorem{defi}{Definition}[subsection]
-\newtheorem*{bsp}{Beispiel}
-\newtheorem{kon}[defi]{Konstruktion}
-\newtheorem{nota}[defi]{Notation}
-\newtheorem{cha}[defi]{Charakterisierung}
-\newtheorem{norm}[defi]{Normierung}
-\newtheorem{bem}[defi]{Bemerkung}
-\newtheorem{folg}[defi]{Folgerung}
-\newtheorem{beob}[defi]{Beobachtung}
-\newtheorem{erin}[defi]{Erinnerung}
-\newtheorem{sit}[defi]{Situation}
-%Einheiten
-\newcommand{\ms}{\frac{m}{s}}
-\newcommand{\kmh}{\frac{km}{h}}
-%Mathebefehle
-\newcommand{\beq}{\begin{align}}
-\newcommand{\eeq}{\end{align}}
-\newcommand{\beqn}{\begin{align*}}
-\newcommand{\eeqn}{\end{align*}}
-\newcommand{\td}{\text{d}}
-\newcommand{\ul}{\underline}
-\newcommand{\tTr}{\text{Tr}}
-\newcommand{\bra}[1]{\langle #1|}
-\newcommand{\braa}{\langle}
-\newcommand{\ket}[1]{|#1\rangle}
-\newcommand{\kett}{\rangle}
-\newcommand{\braket}[2]{\langle #1|#2\rangle}
-\newcommand{\mH}{\mathcal{H}}
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\N}{\mathbb{N}}
-\newcommand{\Z}{\mathbb{Z}}
-\newcommand{\Q}{\mathbb{Q}}
-
 %Exercise-Paket Umbenennungen
 \renewcommand{\listexercisename}{Liste der Aufgaben}%
 \renewcommand{\ExerciseName}{Aufgabe}%
@@ -151,22 +74,12 @@
 \renewcommand{\AnswerListName}{L{\"o}sung}%
 \renewcommand{\ExePartName}{Teil}%
 \renewcommand{\ArticleOf}{von\ }%
-%\renewcommand{\ExerciseHeaderTitle}{\ExerciseTitle}
 \renewcommand{\ExerciseHeader}{%
 	\textbf{\large\ExerciseHeaderDifficulty\ExerciseName\ %
 	\ExerciseHeaderNB\normalsize\ExerciseHeaderTitle\ExerciseHeaderOrigin}\medskip}
 \renewcommand{\AnswerHeader}{
 	\medskip\textbf{L{\"o}sung zu \ExerciseName\ \ExerciseHeaderNB}\smallskip}
-
-
-%Farbe für die Lösungen, die die Schüler selbst ausfüllen sollen
-\definecolor{loes}{rgb}{1,1,1}
-\definecolor{tcback}{rgb}{.95,.95,.95}
-\definecolor{tcframe}{rgb}{.89,.15,.21}
-\definecolor{loestc}{rgb}{.95,.95,.95}
-%Arbeitsblatt-Modus
-\definecolor{loes}{rgb}{.36,.58,.93}
-\definecolor{loestc}{rgb}{1, .4, 1}
+%tcolorbox Konfiguration
 \tcbset{
 %	frame code={}
 %	center title,
@@ -182,9 +95,13 @@
 %	boxsep=5pt,
 %	arc=0pt,outer arc=0pt,
 }
-\tcbuselibrary{raster}
+%%%%%%%%%%%%%%%%%%%%%% STYLE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagestyle{headings} %KOMA-Script mit Kopf-Fuß-Zeilen
+\raggedbottom
+\raggedright
+\onehalfspacing
 
-%\sqrt[\leftroot{0}\uproot{2}n]{x}
+
 \begin{document}
 	\setlength\parindent{0pt} %keine Einrückungen beim Start eines Paragraphen
 
@@ -192,11 +109,9 @@
 	\lohead{Datenbanken}
 	%\cohead{} %im Arbeitsblatt
 	\rohead{}
-	\lehead{lehead}
-	\cehead{cehead}
-	\rehead{rehead}
 	\cofoot[\pagemark]{\pagemark}
-	\title{Datenbanken\\
+	\title{Datenbanken
+
 	Ein Skript für das Berufskolleg}
 	\author{Hermann Maier}
 	\maketitle
@@ -224,7 +139,6 @@
 	\tableofcontents
 	\thispagestyle{empty}
 	\newpage
-	%\setlength\extrarowheight{10pt} %Horizontales padding für Tabellen
 	\def\pics{./pics}
 	\rohead{Entity-Relationship-Modell}
 	\input{ERM.tex}
@@ -255,49 +169,15 @@
 	\input{Funktionen.tex}
 	\newpage
 	\input{Join.tex}
-	\newpage
-
-%\begin{tcolorbox}[title=]
-%
-%\end{tcolorbox}
-
-%\cohead{\Large\textbf{ERM}}
-%\section[Enity-Relationship-Modell]{Enity-Relationship-Modell}
-
-
-
-
-\newpage
-\cohead{\Large\textbf{Lösungen}}
-\rohead{Lösungen}
-\section{Lösungen der Aufgaben}
-\shipoutAnswer
-\newpage
-\cohead{\Large\textbf{Anhang}}
-\rohead{Anhang}
-\section{Anhang: Im Skript verwendete Datenbanken}
-\input{Anhang.tex}
+    \newpage
+    \cohead{\Large\textbf{Lösungen}}
+    \rohead{Lösungen}
+    \section{Lösungen der Aufgaben}
+    \shipoutAnswer
+    \newpage
+    \cohead{\Large\textbf{Anhang}}
+    \rohead{Anhang}
+    \section{Anhang: Im Skript verwendete Datenbanken}
+    \input{Anhang.tex}
 \end{document}
 
-
-
-%\begin{Exercise}[title={xxxx}, label=xxxx]\\
-%xxxx
-%\end{Exercise}
-%\newpage
-%\begin{Answer}[ref=xxx]\\
-%xxxx
-%\end{Answer}
-%\begin{Exercise}[title=xxxx}, label=xxxx]\\
-%xxxx
-%\end{Exercise}
-%\newpage
-%\begin{Answer}[ref=xxx]\\
-%xxxx
-%\end{Answer}
-
-
-%\begin{figure}[h]
-%	\centering
-%	\includegraphics[width=0.8\textwidth]{\quadFkt/pics/steigungswinkel.png}
-%\end{figure}
