@@ -22,7 +22,7 @@ Bildet man jeden Entitätstyp und jede Beziehung als eine eigene Tabelle ab, so 
 			106&Charles&Leclerc\\
 			110&Lewis&Hamilton\\
 		\end{tabular}
-	\end{minipage}
+	\end{minipage}%
 	\begin{minipage}{0.5\textwidth}
 		\begin{tabular}{ll}
 			\multicolumn{2}{c}{\lstinline!klasse!}\\
@@ -32,7 +32,7 @@ Bildet man jeden Entitätstyp und jede Beziehung als eine eigene Tabelle ab, so 
 			1&BK22\\
 			2&BK13\\
 		\end{tabular}
-	\end{minipage}
+	\end{minipage}%
 \end{minipage}
 \begin{minipage}{0.3\textwidth}
 	\begin{tabular}{lll}
@@ -55,7 +55,7 @@ Bildet man jeden Entitätstyp und jede Beziehung als eine eigene Tabelle ab, so 
 			106&1\\
 			110&2\\
 		\end{tabular}
-	\end{minipage}
+	\end{minipage}%
 	\begin{minipage}{0.5\textwidth}
 		\begin{tabular}{ll}
 			\multicolumn{2}{c}{\lstinline!lehrer_klasse!}\\
@@ -67,7 +67,7 @@ Bildet man jeden Entitätstyp und jede Beziehung als eine eigene Tabelle ab, so 
 			2&12\\
 			2&13\\
 		\end{tabular}
-	\end{minipage}
+	\end{minipage}%
 \end{minipage}
 Die Tabelle \lstinline!schueler_klasse! beschreibt die N:1 Beziehung zwischen den Entitätstypen \lstinline!schueler! und \lstinline!klasse!. Da jedem Schüler genau eine Klasse zugeordnet wird, kann man diese Tabelle einsparen, indem man in der Tabelle Schüler als zusätzliches Attribut den Fremdschlüssel \lstinline!klasseNR! einfügt, die direkt die Klasse angibt, in die der Schüler geht:
 \begin{minipage}{\textwidth}
@@ -81,7 +81,7 @@ Die Tabelle \lstinline!schueler_klasse! beschreibt die N:1 Beziehung zwischen de
 			106&Charles&Leclerc&1\\
 			110&Lewis&Hamilton&2\\
 		\end{tabular}
-	\end{minipage}
+	\end{minipage}%
 	\begin{minipage}{0.4\textwidth}
 		\begin{tabular}{ll}
 			\multicolumn{2}{c}{\lstinline!klasse!}\\
@@ -91,7 +91,7 @@ Die Tabelle \lstinline!schueler_klasse! beschreibt die N:1 Beziehung zwischen de
 			1&BK22\\
 			2&BK13\\
 		\end{tabular}
-	\end{minipage}
+	\end{minipage}%
 \end{minipage}
 \begin{minipage}{\textwidth}
 	\begin{minipage}{0.5\textwidth}
@@ -103,7 +103,7 @@ Die Tabelle \lstinline!schueler_klasse! beschreibt die N:1 Beziehung zwischen de
 			12&Christian&Horner\\
 			13&Frederic&Vasseur\\
 		\end{tabular}
-	\end{minipage}
+	\end{minipage}%
 	\begin{minipage}{0.5\textwidth}
 		\begin{tabular}{ll}
 			\multicolumn{2}{c}{\lstinline!lehrer_klasse!}\\
@@ -115,7 +115,7 @@ Die Tabelle \lstinline!schueler_klasse! beschreibt die N:1 Beziehung zwischen de
 			2&12\\
 			2&13\\
 		\end{tabular}
-	\end{minipage}
+	\end{minipage}%
 \end{minipage}
 Die N:M Beziehung zwischen \lstinline!klasse! und \lstinline!lehrer! kann so nicht eingespart werden. Ein Lehrer unterrichtet im Normalfall mehrere Klassen, also müsste man in der Tabelle Klasse mehrere Einträge hinzufügen und umgekehrt wird eine Klasse von mehreren verschiedenen Lehrern unterrichtet.
 \begin{Exercise}[title={Überlege dir welche Beziehungstabellen man in Aufgabe \ref{ERMErstellen1} wegoptimieren kann und gib an, welches Attribut man an welchen Entitätstyp als Fremdschlüssel hinzufügen muss.}, label=Optimierung]

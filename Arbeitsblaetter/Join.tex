@@ -57,15 +57,15 @@ liefert als erste Zeile \lstinline!Olaf|Scholz|WG!.
 	\begin{enumerate}
 		\item Erzeuge eine Ausgabe, die dem Vor- und Nachnamen der Lehrer jeweils die passenden Abteilungsbezeichnungen zuordnet.
 
-		\lstinline!SELECT lehrer.vorname, lehrer.nachname, abteilung.bezeichnung FROM lehrer INNER JOIN abteilung ON lehrer.abteilungNR = abteilung.abteilungNR;!
+		\lstinline[breaklines=true]!SELECT lehrer.vorname, lehrer.nachname, abteilung.bezeichnung FROM lehrer INNER JOIN abteilung ON lehrer.abteilungNR = abteilung.abteilungNR;!
 		\item Erzeuge eine Ausgabe, die dem Vor- und Nachnamen aller Schüler jeweils die Bezeichnung der passenden Klasse zuordnet.
 
-		\lstinline!SELECT schueler.vorname, schueler.nachname, klasse.bezeichnung FROM schueler INNER JOIN klasse ON schueler.klasseNR = klasse.klasseNR;!
+		\lstinline[breaklines=true]!SELECT schueler.vorname, schueler.nachname, klasse.bezeichnung FROM schueler INNER JOIN klasse ON schueler.klasseNR = klasse.klasseNR;!
 		\item Erzeuge eine Ausgabe, die jeder Klassenbezeichnung die Anzahl der Schüler der Klasse zuordnet. Tipp: COUNT-Funktion verwenden.
 
-		\lstinline!SELECT klasse.bezeichnung, COUNT(klasse.bezeichnung) FROM schueler INNER JOIN klasse ON schueler.klasseNR = klasse.klasseNR GROUP BY klasse.bezeichnung;!
+		\lstinline[breaklines=true]!SELECT klasse.bezeichnung, COUNT(klasse.bezeichnung) FROM schueler INNER JOIN klasse ON schueler.klasseNR = klasse.klasseNR GROUP BY klasse.bezeichnung;!
 		\item Erzeuge eine Ausgabe, die dem Vor- und Nachnamen aller Schüler jeweils den passenden Schultyp zuordnet. Tipp: Man muss zwei JOIN-Statements verwenden.
 
-		\lstinline!SELECT schueler.vorname, schueler.nachname, abteilung.bezeichnung FROM schueler INNER JOIN klasse ON schueler.klasseNR = klasse.klasseNR INNER JOIN abteilung ON klasse.abteilungNR = abteilung.abteilungNR;!
+		\lstinline[breaklines=true]!SELECT schueler.vorname, schueler.nachname, abteilung.bezeichnung FROM schueler INNER JOIN klasse ON schueler.klasseNR = klasse.klasseNR INNER JOIN abteilung ON klasse.abteilungNR = abteilung.abteilungNR;!
 	\end{enumerate}
 \end{Answer}

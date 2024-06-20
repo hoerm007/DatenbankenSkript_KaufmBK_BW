@@ -79,9 +79,9 @@ Gibt alle Schüler aus, deren \lstinline!schuelerNR! zwischen 10 und 20 liegen u
 		\item den Schüler findet, für den keine \lstinline!klasse! angegeben worden ist.
 		\item alle Schüler findet, deren \lstinline!schuelerNR! kleiner 18 ist.
 		\item alle Schüler findet, deren \lstinline!vorname! aus genau 4 Buchstaben besteht.
-		\item Bonus-Frage: Warum gibt das Statement \lstinline!SELECT * FROM schueler WHERE geburtsdatum BETWEEN '01.01.2000' AND '31.12.2000';! viel zu viele Schüler zurück?
+		\item Bonus-Frage: Warum gibt das Statement \lstinline[breaklines=true]!SELECT * FROM schueler WHERE geburtsdatum BETWEEN '01.01.2000' AND '31.12.2000';! viel zu viele Schüler zurück?
 
-		Tipp: Probiere das Statement \lstinline!SELECT * FROM schueler WHERE geburtsdatum BETWEEN '31.01.2000' AND '31.12.2000';! oder das Statement \lstinline!SELECT geburtsdatum FROM schueler ORDER BY geburtsdatum;! aus.
+		Tipp: Probiere das Statement \lstinline[breaklines=true]!SELECT * FROM schueler WHERE geburtsdatum BETWEEN '31.01.2000' AND '31.12.2000';! oder das Statement \lstinline!SELECT geburtsdatum FROM schueler ORDER BY geburtsdatum;! aus.
 	\end{enumerate}
 \end{Exercise}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -109,9 +109,9 @@ Gibt alle Schüler aus, deren \lstinline!schuelerNR! zwischen 10 und 20 liegen u
 		\item alle Schüler findet, deren \lstinline!vorname! aus genau 4 Buchstaben besteht.
 
 		\lstinline!SELECT * FROM schueler WHERE vorname LIKE '____';!
-		\item Bonus-Frage: Warum gibt das Statement \lstinline!SELECT * FROM schueler WHERE geburtsdatum BETWEEN '01.01.2000' AND '31.12.2000';! viel zu viele Schüler zurück?
+		\item Bonus-Frage: Warum gibt das Statement \lstinline[breaklines=true]!SELECT * FROM schueler WHERE geburtsdatum BETWEEN '01.01.2000' AND '31.12.2000';! viel zu viele Schüler zurück?
 
-		Tipp: Probiere das Statement \lstinline!SELECT * FROM schueler WHERE geburtsdatum BETWEEN '31.01.2000' AND '31.12.2000';! oder das Statement \lstinline!SELECT geburtsdatum FROM schueler ORDER BY geburtsdatum;! aus.
+		Tipp: Probiere das Statement \lstinline[breaklines=true]!SELECT * FROM schueler WHERE geburtsdatum BETWEEN '31.01.2000' AND '31.12.2000';! oder das Statement \lstinline!SELECT geburtsdatum FROM schueler ORDER BY geburtsdatum;! aus.
 
 		Das zweite Statement aus dem Tipp zeigt, dass die Geburtsdaten nicht wie erwartet sortiert werden, sondern Zeichen für Zeichen. Da die Punkte bei allen Geburtsdaten an der gleichen Stelle stehen, können wir diese ignorieren. Man kann sich die Geburtsdaten dann einfach als Zahlen vorstellen, z.B. wäre 01.04.1995 die Zahl 1.041.995. Nun werden alle \lstinline!schueler! mit Geburtsdaten, deren Zahl zw. 1.012.000 und 31.122.000 liegen, zurückgegeben. Z.B. entspricht das Geburtsdatum der Schülerin mit \lstinline!schuelerNR! 100 10.07.1997 der Zahl 10.071.997. Da diese Zahl zwischen den beiden Grenzen 1.012.000 und 31.122.000 liegt, wird sie \textit{fälschlicherweise} ausgegeben.
 	\end{enumerate}
