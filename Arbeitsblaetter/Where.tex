@@ -3,7 +3,7 @@
 \subsection[WHERE-Klausel]{SQL - Die WHERE-Klausel}\label{where}
 Im letzten Abschnitt haben wir gelernt, wie wir alle Einträge einer ganzen Tabelle oder eines/mehrerer Attribute anzeigen lassen können. Oft sind die Tabellen jedoch so groß, dass es sehr mühsam wäre, alle Einträge von Hand zu durchsuchen. Daher kann man das SELECT-Statement mit Hilfe der WHERE-Klausel einschränken. Die WHERE-Klausel kann auch an viele andere Statements angehängt werden, wie z.B. beim später noch einzuführenden DELETE-Statement.
 
-Der grundsätzliche Aufbau ist denkbar einfach:
+Der grundsätzliche Aufbau ist simpel:
 \begin{tcolorbox}[title=WHERE-Klausel]
 	\lstinline!SQL-STATEMENT WHERE bedingungen;!
 \end{tcolorbox}
@@ -11,34 +11,35 @@ Der Teufel steckt wie so oft im Detail, hier im Aufbau der Bedingungen. Einige w
 \begin{itemize}
 	\item \lstinline!=! gleich, \lstinline!<! kleiner, \lstinline!>! größer, \lstinline!<=! kleiner gleich, \lstinline!>=! größer gleich, \lstinline&!=& ungleich
 
-	Beispiel: \lstinline!SELECT * FROM schueler where schuelerNR<=10;! gibt alle Schueler, deren \lstinline!schuelerNR! kleiner oder gleich 10 ist aus.
+	Beispiel: \lstinline!SELECT * FROM schueler where schuelerNR<=10;! gibt alle Schüler, deren \lstinline!schuelerNR! kleiner oder gleich 10 ist aus.
 	\item \lstinline!IS NULL! bzw. \lstinline!IS NOT NULL!
 
 	Testet, ob ein Attribut den Wert NULL hat oder eben nicht. Ein Test mit \lstinline|= NULL| funktioniert oft nicht so wie erhofft.
 
-	Beispiele: 	\lstinline!SELECT * FROM schueler WHERE vorname IS NOT NULL;! gibt alle Schueler aus, für die beim Vornamen ein beliebiger Wert angegeben wurde. Auch Schüler, deren Vorname aus einem Text mit der Länge 0 Zeichen besteht, würden ausgegeben werden.
+	Beispiele: 	\lstinline!SELECT * FROM schueler WHERE vorname IS NOT NULL;! gibt alle Schüler aus, für die beim Vornamen ein beliebiger Wert angegeben wurde. Auch Schüler, deren Vorname aus einem Text mit der Länge 0 Zeichen besteht, würden ausgegeben werden.
 
 	\lstinline!SELECT * FROM schueler WHERE geburtsdatum IS NULL;! gibt alle Schüler aus, die beim Attribut \lstinline!geburtsdatum! keinen Wert eingetragen haben. (Es sollten fünf Schüler ohne Geburtsdatum vorhanden sein.)
 	\item \lstinline!LIKE muster!
 
-	Wird normalerweise für den Vergleich für Attributen mit dem Datentyp \lstinline!TEXT! verwendet. Für das Muster gibt man einen Text mit Platzhaltern an. Das Prozentzeichen steht für beliebig viele (Null oder mehr Zeichen), der Unterstrich für genau ein Zeichen. Beispiele:
+	Wird normalerweise für den Vergleich für Attributen mit dem Datentyp \lstinline!TEXT! verwendet. Für das Muster gibt man einen Text mit Platzhaltern bzw. Wildcards an. Das Prozentzeichen steht für beliebig viele (Null oder mehr Zeichen), der Unterstrich für genau ein Zeichen. Beispiele:
 
 	\lstinline!SELECT * FROM schueler WHERE vorname LIKE 'A%';!
 
-	Gibt alle Schüler aus, deren \lstinline!vorname! mit einem A beginnt.
+	Gibt alle Schüler aus, deren \lstinline!vorname! mit einem \textit{A} beginnt.
 
 	\lstinline!SELECT * FROM schueler WHERE vorname LIKE 'A%i';!
 
-	Gibt alle Schüler aus, deren \lstinline!vorname! mit einem A beginnt und einem i endet (eine Schülerin).
+	Gibt alle Schüler aus, deren \lstinline!vorname! mit einem \textit{A} beginnt und einem \textit{i} endet (eine Schülerin).
+
 	\lstinline!SELECT * FROM schueler WHERE vorname LIKE 'A___';!
 
-	Gibt alle Schüler aus, deren \lstinline!vorname! mit einem A beginnt und insgesamt genau vier Zeichen lang ist (2 Schüler).\\
+	Gibt alle Schüler aus, deren \lstinline!vorname! mit einem \textit{A} beginnt und insgesamt genau vier Zeichen lang ist (2 Schüler).\\
 	\lstinline!SELECT * FROM schueler WHERE nachname LIKE 'Sch___';!
 
-	Gib alle Schüler aus, deren \lstinline!nachname! mit Sch beginnt und genau 6 Zeichen hat (ein Schüler).
+	Gib alle Schüler aus, deren \lstinline!nachname! mit \textit{Sch} beginnt und genau 6 Zeichen hat (ein Schüler).
 	\item \lstinline!IN!
 
-	Funktioniert wie mehrere Tests auf Gleichheit (\lstinline!=! oder \lstinline!IS!). Die Vergleichswerte werden als kommaseparierte Liste angegeben:
+	Funktioniert wie mehrere Tests auf Gleichheit (\lstinline!=!). Die Vergleichswerte werden als kommaseparierte Liste angegeben:
 
 	\lstinline!SELECT * FROM schueler WHERE schuelerNR in (1,2,5);!
 
@@ -74,8 +75,8 @@ Gibt alle Schüler aus, deren \lstinline!schuelerNR! zwischen 10 und 20 liegen u
 	\begin{enumerate}
 		\item den Schüler mit der \lstinline!schuelerNR! 31 zurück gibt.
 		\item alle Schüler mit der \lstinline!schuelerNR! 10, 23, 50 und 65 findet.
-		\item alle Schüler findet, deren \lstinline!nachname! auf hein endet.
-		\item alle Schüler findet, deren \lstinline!nachname! nicht auf hein endet.
+		\item alle Schüler findet, deren \lstinline!nachname! auf \textit{hein} endet.
+		\item alle Schüler findet, deren \lstinline!nachname! nicht auf \textit{hein} endet.
 		\item den Schüler findet, für den keine \lstinline!klasse! angegeben worden ist.
 		\item alle Schüler findet, deren \lstinline!schuelerNR! kleiner 18 ist.
 		\item alle Schüler findet, deren \lstinline!vorname! aus genau 4 Buchstaben besteht.
@@ -93,10 +94,10 @@ Gibt alle Schüler aus, deren \lstinline!schuelerNR! zwischen 10 und 20 liegen u
 		\item alle Schüler mit der \lstinline!schuelerNR! 10, 23, 50 und 65 findet.
 
 		\lstinline!SELECT * FROM schueler WHERE schuelerNR in (10, 23, 50, 65);!
-		\item alle Schüler findet, deren \lstinline!nachname! auf hein endet.
+		\item alle Schüler findet, deren \lstinline!nachname! auf \textit{hein} endet.
 
 		\lstinline!SELECT * FROM schueler WHERE nachname LIKE '%hein';!
-		\item alle Schüler findet, deren \lstinline!nachname! nicht auf hein endet.
+		\item alle Schüler findet, deren \lstinline!nachname! nicht auf \textit{hein} endet.
 
 		\lstinline!SELECT * FROM schueler WHERE nachname NOT LIKE '%hein';!
 		\item alle Schüler findet, für die keine \lstinline!klasse! angegeben worden ist.

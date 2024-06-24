@@ -1,28 +1,29 @@
 % !TeX root = ../Skript_DB.tex
 \cohead{\Large\textbf{Datentypen}}
 \subsection{Datentypen}
-Eine relationale Datenbank besteht aus verschiedenen \textcolor{red}{Entitätstypen} und \textcolor{red}{Beziehungen} zwischen diesen, die jeweils als Tabellen abgebildet werden. Die \textcolor{red}{Entitätstypen} und \textcolor{red}{Beziehungen} sind dabei sozusagen die Überschriften der Tabellen, die einzelnen Spalten bezeichnet man als \textcolor{blue}{Attribute} und die Zeilen als Entitäten:
+Eine kurze Wiederholung: Eine relationale Datenbank besteht aus verschiedenen \textcolor{red}{Entitätstypen} und \textcolor{red}{Beziehungen} zwischen diesen, die jeweils als Tabellen abgebildet werden. Die \textcolor{red}{Entitätstypen} und \textcolor{red}{Beziehungen} sind dabei sozusagen die Überschriften der Tabellen, die einzelnen Spalten bezeichnet man als \textcolor{blue}{Attribute} und die Zeilen als Entitäten:
 
 \begin{table}[h]
 	\centering
 	\begin{tabular}{llll}
-		\multicolumn{4}{c}{\textcolor{red}{\textbf{Schüler}}}\\
+		\multicolumn{4}{c}{\textcolor{red}{\textbf{schüler}}}\\
 		\textcolor{blue}{\underline{schNr}} 	& \textcolor{blue}{vorname} 	& \textcolor{blue}{nachname}	& \textcolor{blue}{alter}  \\
 		\midrule
 		23&Heinz&Huber&15\\
 		24&Max&Power&NULL\\
 	\end{tabular}
 \end{table}
-\textcolor{red}{Schüler} ist hier der \textcolor{red}{Entitätstyp} mit den \textcolor{blue}{Attributen schNr, vorname, nachname} und \textcolor{blue}{alter}. Der Schüler mit der \textcolor{blue}{schNr} 23, Heinz, Huber, 15 ist eine Entität.
-Datenbanken benötigten meist bereits beim Erstellen eines \textcolor{red}{Entitätstyps}/Tabelle eine Angabe zum Datentyp der jeweiligen Attribute. Wir beschränken uns hier auf wenige "große" Datentypen. Je nach Datenbankmanagementsystem lassen sich die Datentypen nochmals in mehrere kleinere Untertypen aufspalten.
-SQLite ist ein beliebtes DBMS, da es klein und relativ simpel ist. Wir werden selbst mit SQLite arbeiten, weil außerdem eine portable Version gibt. SQLite beschränkt sich darüber hinaus bereits selbst auf wenige Datentypen:
+\textcolor{red}{schüler} ist hier der \textcolor{red}{Entitätstyp} mit den \textcolor{blue}{Attributen schNr, vorname, nachname} und \textcolor{blue}{alter}. Der Schüler mit der \textcolor{blue}{schNr} 23, Heinz, Huber, 15 ist eine Entität.
+Datenbanken benötigten meist bereits beim Erstellen eines \textcolor{red}{Entitätstyps}/Tabelle eine Angabe zum Datentyp der jeweiligen Attribute. Wir beschränken uns hier auf wenige \glqq große\grqq{ }Datentypen. Je nach Datenbankmanagementsystem lassen sich die Datentypen nochmals in mehrere kleinere Untertypen aufspalten.
+
+SQLite ist ein beliebtes DBMS, da es klein und relativ simpel ist. Wir werden selbst mit SQLite arbeiten, weil außerdem eine portable Version verfügbar ist, d.h. es ist keine Installation notwendig. SQLite beschränkt sich darüber hinaus bereits selbst auf wenige Datentypen:
 \begin{tcolorbox}[title=Datentypen]
 	\begin{itemize}
-		\item INTEGER (ganze Zahl)
-		\item REAL (oft auch float genannt, Flließkommazahl)
-		\item TEXT (oft auch char oder string genannt)
-		\item BLOB
-		\item DATE/DATETIME (Anmerkung: SQLite hat hierfür keinen eigenen Datentyp, die meisten DBMS jedoch schon. SQLite speichert ein Datum als Text oder Zahl ab)
+		\item INTEGER: ganze Zahlen, also 0, 1, -1, 2, -2, 3, -3,\dots
+		\item REAL (oft auch float genannt): Fließkommazahlen, z.B. 1,25 oder -13,9
+		\item TEXT (oft auch char oder string genannt): Text, z.B. Berufskolleg
+		\item BLOB: Als sog. Binary Large Objects werden z.B. Bilder oder Videos auf Datenbanken gespeichert. Zum Betrachten oder weiteren Verarbeiten müssen andere Programme als das DBMS verwendet werden.
+		\item DATE/DATETIME (Anmerkung: SQLite hat hierfür keinen eigenen Datentyp, die meisten DBMS jedoch schon. SQLite speichert ein Datum als Text oder Zahl ab): Datum bzw. Zeitstempel.
 	\end{itemize}
 \end{tcolorbox}
 

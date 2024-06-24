@@ -25,7 +25,7 @@ Bildet man jeden Entitätstyp und jede Beziehung als eine eigene Tabelle ab, so 
 	\end{minipage}%
 	\begin{minipage}{0.5\textwidth}
 		\begin{tabular}{ll}
-			\multicolumn{2}{c}{\lstinline!klasse!}\\
+			\multicolumn{2}{c}{\lstinline!klassen!}\\
 			\hline
 			\underline{\lstinline!klasseNR!}&\lstinline!bezeichnung!\\
 			\hline
@@ -69,7 +69,7 @@ Bildet man jeden Entitätstyp und jede Beziehung als eine eigene Tabelle ab, so 
 		\end{tabular}
 	\end{minipage}%
 \end{minipage}
-Die Tabelle \lstinline!schueler_klasse! beschreibt die N:1 Beziehung zwischen den Entitätstypen \lstinline!schueler! und \lstinline!klasse!. Da jedem Schüler genau eine Klasse zugeordnet wird, kann man diese Tabelle einsparen, indem man in der Tabelle Schüler als zusätzliches Attribut den Fremdschlüssel \lstinline!klasseNR! einfügt, die direkt die Klasse angibt, in die der Schüler geht:
+Die Tabelle \lstinline!schueler_klasse! beschreibt die N:1 Beziehung zwischen den Entitätstypen \lstinline!schueler! und \lstinline!klassen!. Da jedem Schüler genau eine Klasse zugeordnet wird, kann man diese Tabelle einsparen, indem man in der Tabelle \lstinline!schueler! als zusätzliches Attribut den Fremdschlüssel \lstinline!klasseNR! einfügt, der direkt die Klasse angibt, in die der Schüler geht:
 \begin{minipage}{\textwidth}
 	\begin{minipage}{0.6\textwidth}
 		\begin{tabular}{llll}
@@ -84,7 +84,7 @@ Die Tabelle \lstinline!schueler_klasse! beschreibt die N:1 Beziehung zwischen de
 	\end{minipage}%
 	\begin{minipage}{0.4\textwidth}
 		\begin{tabular}{ll}
-			\multicolumn{2}{c}{\lstinline!klasse!}\\
+			\multicolumn{2}{c}{\lstinline!klassen!}\\
 			\hline
 			\underline{\lstinline!klasseNR!}&\lstinline!bezeichnung!\\
 			\hline
@@ -117,22 +117,22 @@ Die Tabelle \lstinline!schueler_klasse! beschreibt die N:1 Beziehung zwischen de
 		\end{tabular}
 	\end{minipage}%
 \end{minipage}
-Die N:M Beziehung zwischen \lstinline!klasse! und \lstinline!lehrer! kann so nicht eingespart werden. Ein Lehrer unterrichtet im Normalfall mehrere Klassen, also müsste man in der Tabelle Klasse mehrere Einträge hinzufügen und umgekehrt wird eine Klasse von mehreren verschiedenen Lehrern unterrichtet.
-\begin{Exercise}[title={Überlege dir welche Beziehungstabellen man in Aufgabe \ref{ERMErstellen1} wegoptimieren kann und gib an, welches Attribut man an welchen Entitätstyp als Fremdschlüssel hinzufügen muss.}, label=Optimierung]
+Die N:M Beziehung zwischen \lstinline!klassen! und \lstinline!lehrer! kann so nicht eingespart werden. Ein Lehrer unterrichtet im Normalfall mehrere Klassen, also müsste man in der Tabelle \lstinline!klassen! mehrere Einträge hinzufügen und umgekehrt wird eine Klasse von mehreren verschiedenen Lehrern unterrichtet.
+\begin{Exercise}[title={Überlege dir welche Beziehungstabellen man in Aufgabe \ref{ERMErstellen1} durch Optimierung einsparen kann und gib an, welches Attribut man an welchen Entitätstyp als Fremdschlüssel hinzufügen muss.}, label=Optimierung]
 \end{Exercise}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{Answer}[ref=Optimierung]
 	\begin{itemize}
 		\item Fahrradverleih:
 
-		Die Beziehungstabelle zur Beziehung \lstinline!mietet! kann wegoptimiert werden, indem man das Attribut \lstinline!kundenNR! als Fremdschlüssel zur Tabelle \lstinline!fahrrad! hinzufügt.
+		Die Beziehungstabelle zur Beziehung \lstinline!mietet! kann eingespart werden, indem man das Attribut \lstinline!kundenNR! als Fremdschlüssel zur Tabelle \lstinline!fahrraeder! hinzufügt.
 		\item Autohändler:
 
-		Die Beziehungstabelle zur Beziehung \lstinline!gekauft! kann wegoptimiert werden, indem man das Attribut \lstinline!kundenNR! als Fremdschlüssel zur Tabelle \lstinline!auto! hinzufügt.
+		Die Beziehungstabelle zur Beziehung \lstinline!gekauft! kann eingespart werden, indem man das Attribut \lstinline!kundenNR! als Fremdschlüssel zur Tabelle \lstinline!autos! hinzufügt.
 
-		Die Beziehungstabelle zur Beziehung \lstinline!verfuegt! kann wegoptimiert werden, indem man das Attribut \lstinline!fahrzeugID! als Fremdschlüssel zur Tabelle \lstinline!reifen! hinzufügt.
+		Die Beziehungstabelle zur Beziehung \lstinline!verfuegt! kann eingespart werden, indem man das Attribut \lstinline!fahrzeugID! als Fremdschlüssel zur Tabelle \lstinline!reifen! hinzufügt.
 		\item DVD-Verleih:
 
-		Die Beziehungstabelle zur Beziehung \lstinline!arbeitet_in! kann wegoptimiert werden, indem man das Attribut \lstinline!filiale.id! als Fremdschlüssel zur Tabelle \lstinline!mitarbeiter! hinzufügt.
+		Die Beziehungstabelle zur Beziehung \lstinline!arbeitet_in! kann eingespart werden, indem man das Attribut \lstinline!filiale.id! als Fremdschlüssel zur Tabelle \lstinline!mitarbeiter! hinzufügt.
 	\end{itemize}
 \end{Answer}

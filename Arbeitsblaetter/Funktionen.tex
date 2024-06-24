@@ -21,10 +21,10 @@ Verwendung als SQL-Statements:
 \begin{itemize}
 	\item \lstinline!SELECT COUNT(schuelerNR) FROM schueler;!
 
-	Gibt die Anzahl der Einträge in der Tabelle schueler zurück.
+	Gibt die Anzahl der Einträge in der Tabelle \lstinline!schueler! zurück.
 	\item \lstinline!SELECT COUNT(schuelerNR) FROM schueler WHERE plz=70806;!
 
-	Gibt die Anzahl der Schüler zurück, die die plz 70806 haben.
+	Gibt die Anzahl der Schüler zurück, die die PLZ 70806 haben.
 	\item \lstinline!SELECT COUNT(lehrerNR) FROM lehrer WHERE nachname LIKE 'S%';!
 
 	Gibt die Anzahl an Lehrern zurück, deren Nachname mit einem S beginnt.
@@ -69,7 +69,7 @@ Mit dem Zusatz \lstinline!GROUP BY! kann man Datensätze, die in einem Attribut 
 			3|6
 			6|7
 			8|3\end{lstlisting}
-		\lstinline!SELECT abteilungNR, bezeichnung FROM abteilung;!\\
+		\lstinline!SELECT abteilungNR, bezeichnung FROM abteilungen;!\\
 		\begin{lstlisting}
 			3|WG
 			6|Berufskolleg

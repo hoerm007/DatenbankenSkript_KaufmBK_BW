@@ -50,13 +50,19 @@ Bestehende Tabellen lassen sich mit dem Befehl \lstinline!DROP TABLE name_tabell
 Um einer Tabelle eine neue Entität/Zeile hinzuzufügen, verwendet man den \lstinline!INSERT INTO! Befehl:
 
 \begin{tcolorbox}[title=Befüllen einer Tabelle]
-	\lstinline!INSERT INTO name_tabelle VALUES(wert1, wert2, wert3, ...);!
+    Werte für alle Attribute vorhanden:
+
+	\lstinline!INSERT INTO name_tabelle VALUES(wert1, wert2, wert3,...);!
+
+    Nur bestimmte Attribute sollen mit Werten belegt werden:
+
+    \lstinline!INSERT INTO name_tabelle(attribut1, attribut3,...) VALUES(wert1, wert3,...);!
 \end{tcolorbox}
 \begin{itemize}
 	\item Alle Attribute angegeben: Sollen für alle Attribute Werte angegeben werden, so kann man einfach die Werte als kommaseparierte Liste angeben:\\
 	\lstinline!INSERT INTO schueler VALUES(1,'Heinz','Huber','01.01.2000','BKFH');!
 
-	Beachte, dass Texte mit Anführungszeichen (neben dem \#-Zeichen) angegeben werden müssen.
+	Beachte, dass Texte mit Anführungszeichen (auf der Tastatur beim \#-Zeichen) angegeben werden müssen.
 	\item Manche Attribute ohne Wert: Hat man für manche Attribute keinen Wert zur Hand, so kann man die Entität trotzdem anlegen, indem man hinter den Namen der Entität die Liste der Attribute angibt, für die man Werte zur Hand hat:
 
 	\lstinline!INSERT INTO schueler(schuelerNR, vorname, nachname, klasse) VALUES (20,!
@@ -108,5 +114,7 @@ Um einer Tabelle eine neue Entität/Zeile hinzuzufügen, verwendet man den \lsti
 		\lstinline!CREATE TABLE schueler(schuelerNR INT PRIMARY KEY NOT NULL,!
 
 		\lstinline!name TEXT, plz INT, klasse TEXT);!
+
+        .tables gibt also nur die Namen der Tabellen aus und .schema gibt zusätzlich den SQL-Befehl zum erstellen der Tabellen aus. So lassen sich die Attribute mit ihren jeweiligen Einschränkungen und Datentypen ablesen.
 	\end{enumerate}
 \end{Answer}

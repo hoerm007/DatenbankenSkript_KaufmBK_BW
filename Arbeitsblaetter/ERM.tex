@@ -2,15 +2,16 @@
 \cohead{\Large\textbf{Grundlagen ERM}}
 \section[Enity-Relationship-Modell]{Enity-Relationship-Modell}
 \subsection[Datenbanken]{Datenbanken - Einführung}
-Datenbanken enthalten, wie der Name schon sagt, große Mengen an Daten, z.B. eine Firma, die ihre Kunden mit Anschrift und die zugehörigen Bestellungen speichern muss. Das Verwalten und Durchsuchen von großen Mengen an Daten ist nicht trivial, z.B. würde Excel schnell an seine Grenzen stoßen, wenn z.B. eine Firma ihre Produkte, Kunden, Bestellungen, usw. speichern will. Datenbanken wurden genau zu diesem Zweck, dem Speichern und Bearbeiten von großen Mengen an Daten entwickelt.
+Datenbanken enthalten, wie der Name schon sagt, große Mengen an Daten, z.B. eine Firma, die ihre Kunden mit Anschrift und die zugehörigen Bestellungen speichern muss. Das Verwalten und Durchsuchen von großen Mengen an Daten ist nicht trivial, z.B. würde Excel schnell an seine Grenzen stoßen, wenn z.B. eine Firma ihre Produkte, Kunden, Bestellungen, usw. speichern will. Datenbanken wurden genau zu diesem Zweck, dem Speichern, Durchsuchen und Bearbeiten von großen Mengen an Daten entwickelt.
 
-Die Daten sollen übersichtlich gespeichert werden und so, dass man sie bearbeiten und durchsuchen kann. Dafür benötigt man eine Struktur. Stellen wir uns vor, eine Firma würde alle Daten, also Bestellungen, Kundendaten, Produktbeschreibungen, Preise, Rechnungen, Daten zu Angestellten, usw. einfach ausdrucken und in einen riesigen Container zusammen werfen. Die Daten wären zwar vorhanden, aber sucht man nun nach der Bestellung von John Wick, weil er sich beschwert, einen Toaster statt eines Eierkochers bekommen zu haben, so würde dies exorbitant viel Zeit in Anspruch nehmen. Würde man jedoch alle Bestellungen zusammen in einem Ordner sammeln, wäre die Suche deutlich einfacher. Die Daten sind dann strukturiert und damit übersichtlicher und einfacher zu bearbeiten. Etwas Ähnliches macht man auch mit den Daten in einer Datenbank. Sehr häufig wird das Enity-Relationship-Modell (ERM) verwendet, um die Daten zu strukturieren.
+Die Daten sollen übersichtlich gespeichert werden und so, dass man sie bearbeiten und durchsuchen kann. Dafür benötigt man eine Struktur. Stellen wir uns vor, eine Firma würde alle Daten, also Bestellungen, Kundendaten, Produktbeschreibungen, Preise, Rechnungen, Daten zu Angestellten, usw. einfach ausdrucken und in einen riesigen Container zusammen werfen. Die Daten wären zwar vorhanden, aber sucht man nun nach der Bestellung von John Wick, weil er sich beschwert, einen Toaster statt eines Eierkochers bekommen zu haben, so würde dies exorbitant viel Zeit in Anspruch nehmen. Würde man jedoch alle Bestellungen zusammen in einem Ordner sammeln, wäre die Suche deutlich einfacher. Die Daten sind dann strukturiert und damit übersichtlicher und einfacher zu durchsuchen bzw. zu bearbeiten. Etwas Ähnliches macht man auch mit den Daten in einer Datenbank. Sehr häufig wird das Enity-Relationship-Modell (ERM) verwendet, um die Daten zu strukturieren.
 \subsection[Grundlagen]{Enity-Relationship-Modell}
-Das Enity-Relationship-Modell (ERM) dient dazu die Struktur von Daten darzustellen, z.B., dass ein Kunde über einen Namen, Vornamen und eine Adresse verfügt. Wie genau ein bestimmter Kunde heißt oder wo er wohnt spielt für das ERM keine Rolle. Dazu wird eine Grafik, das ER-Diagramm angefertigt sowie eine Beschreibung der Elemente dieser Grafik. In unseren Beispielen werden die Elemente selbsterklärend sein und wir werden uns die Beschreibung sparen (Im obigen Beispiel ist klar, was Name, Vorname und Adresse des Kunden sind. Es ist keine zusätzliche Beschreibung notwendig).
+Das Enity-Relationship-Modell (ERM) dient dazu die Struktur von Daten darzustellen, z.B., dass ein Kunde über einen Namen, Vornamen und eine Adresse verfügt. Wie genau ein bestimmter Kunde heißt oder wo er wohnt spielt für das ERM keine Rolle. Das ERM stellt also nur die Struktur dar, nicht aber den Inhalt. Dazu wird eine Grafik, das ER-Diagramm angefertigt sowie eine Beschreibung der Elemente dieser Grafik. In unseren Beispielen werden die Elemente selbsterklärend sein und wir werden uns die Beschreibung sparen (Im obigen Beispiel ist klar, was Name, Vorname und Adresse des Kunden sind. Es ist keine zusätzliche Beschreibung notwendig).
 
 Für die grafische Darstellungen werden wir die \texttt{Chen-Notation} verwenden. Die wesentlichen Elemente eines ERMs sind:
 \begin{tcolorbox}[title=Entitätstypen und Entitäten]
-	Darstellung eines meistens in der Realität vorhandenen Objekts auf der Datenbank, z.B. Kunde, Schüler oder Rechnung. Der Entitätstyp ist die abstrakte Darstellung, z.B. Schüler, während eine Entität eine konkrete Ausprägung, also ein Beispiel ist. So wäre der Schüler Momen Subotic eine Entität in der Datenbank.
+	Darstellung eines meistens in der Realität vorhandenen Objekts auf der Datenbank, z.B. Kunden, Schüler oder Rechnungen. Der Entitätstyp ist die abstrakte Darstellung, z.B. Schüler, während eine Entität eine konkrete Ausprägung, also ein Beispiel ist. So wäre der Schüler Momen Subotic eine Entität in der Datenbank des Entitätstyps Schüler.
+
 	Weitere Beispiele für Entitäten sind:
 	\begin{itemize}
 		\item Individuen: Person Heinrich Müller, Firma GehtganzGut, Kunde Maria Meyer
@@ -18,8 +19,9 @@ Für die grafische Darstellungen werden wir die \texttt{Chen-Notation} verwenden
 		\item Ereignis: Buchung, Mahnung, Vermietung
 		\item Abstraktes: Unterricht, Klasse, Zahlungsart, Tagesplan
 	\end{itemize}
-	Eine Entität ist immer Mitglied einer Gruppe, des Entitätstyps. Diese kategorisiert also Entitäten mit gleichen Eigenschaften. So sind z.B. die Schülerin Christine Adler und der Schüler Christopher Jäger konkrete individuell identifizierbare Objekte, zu denen Informationen gespeichert werden. Da sie aber die gleichen Eigenschaften haben, gehören sie zum Entitätstyp Schüler. Welche Objekte so wichtig sind, dass sie als Entitätstyp in das Datenbankmodell aufgenommen werden sollen, muss sich an den funktionellen und informatorischen Zusammenhängen der zu speichernden Daten orientieren.
-	Der Entitätstyp, also die Menge der Entitäten, wird in der grafischen Darstellung des ER-Modells, dem ER-Diagramm, als Rechteck dargestellt und die Bezeichnung eines Entitätstyps ist immer ein Substantiv.
+	Eine Entität ist immer Mitglied einer Gruppe, auch Entitätstyp genannt. Diese kategorisiert also Entitäten mit gleichen Eigenschaften. So sind z.B. die Schülerin Christine Adler und der Schüler Christopher Jäger konkrete individuell identifizierbare Objekte, zu denen Informationen gespeichert werden. Da sie aber die gleichen Eigenschaften haben, gehören sie zum Entitätstyp Schüler. Welche Objekte so wichtig sind, dass sie als Entitätstyp in das Datenbankmodell aufgenommen werden sollen, muss sich an den funktionellen und informatorischen Zusammenhängen der zu speichernden Daten orientieren.
+
+	Der Entitätstyp, also die Menge der Entitäten, wird in der grafischen Darstellung des ER-Modells, dem ER-Diagramm, als Rechteck dargestellt und die Bezeichnung eines Entitätstyps ist immer ein Substantiv, das wir im Plural verwenden.
 \end{tcolorbox}
 \begin{tcolorbox}[title=Beziehungen]
 	Verknüpfungen von Entitäten, z.B. ist eine Rechnung immer einem bestimmten Kunden zugeordnet. Oft kann ein Entitätstyp Beziehungen zu vielen anderen Entitätstypen haben. So könnte die Rechnung nicht nur mit einem Kunden, sondern auch mit dem Entitätstyp Produkt verknüpft sein, der die bestellten Waren angibt.
@@ -35,7 +37,7 @@ Für die grafische Darstellungen werden wir die \texttt{Chen-Notation} verwenden
 	Der Beziehungstyp wird grafisch durch eine Raute dargestellt, die durch zwei Kanten mit den Entitätstypen verbunden ist. In der Raute steht der Name des Beziehungstyps.
 \end{tcolorbox}
 \begin{tcolorbox}[title=Attribute]
-	Attribute, auch als Eigenschaft oder Merkmal bezeichnet, beschreiben die Entitäten näher. Alle Entitäten eines Entitätstyps besitzen dieselben Attribute, jedoch sind die Attributswerte unterschiedlich. Attribute charakterisieren also eine Entität, einen Entitätstyp, eine Beziehung bzw. einen Beziehungstyp.
+	Attribute, auch als Eigenschaft oder Merkmal bezeichnet, beschreiben die Entitäten näher. Alle Entitäten eines Entitätstyps besitzen dieselben Attribute, jedoch sind die Attributswerte unterschiedlich. Attribute bzw. die Werte der Attribute charakterisieren also einen Entitätstyp bzw. eine Entität oder einen Beziehungstyp bzw. eine Beziehung.
 
 	Beispiele für Attribute:
 	\begin{itemize}
@@ -111,7 +113,7 @@ Für die grafische Darstellungen werden wir die \texttt{Chen-Notation} verwenden
 \end{Answer}
 
 \subsection{Primärschlüssel und Kardinalitäten}
-Der Primärschlüssel löst das Problem der Eindeutigkeit. Jede Entität, die auf der Datenbank gespeichert wird, muss eindeutig identifizierbar sein. Speichert z.B. eine Firma die Entität Kunde, so muss jeder Kunde eindeutig identifizierbar sein. Würde man als Attribute nur den Namen und Vornamen anhängen, so könnte man Diego Maradonna aus Bremen nicht von Diego Maradonna aus Stuttgart unterscheiden. Man kann natürlich einfach zusätzliche Attribute hinzufügen, wie z.B. das Geburtsdatum oder die Adresse, bis man sich sicher ist, dass es nicht zu Verwechslungen kommen kann, aber es gibt einen eleganteren Weg. Im Normalfall hängt man eine Nummer an (z.B. die Kundennummer), die für jede Entität eine andere sein muss. So kann man jede Entität eindeutig an Hand der Nummer identifizieren. Diego mit der Kundennummer 44445 ist dann eine andere Person als Diego mit der Kundennummer 85417. Diese Nummer bezeichnet man Primärschlüssel.
+Der Primärschlüssel löst das Problem der Eindeutigkeit. Jede Entität, die auf der Datenbank gespeichert wird, muss eindeutig identifizierbar sein. Speichert z.B. eine Firma eine Entität  vom Typ Kunden, so muss jeder Kunde eindeutig identifizierbar sein. Würde man als Attribute nur den Namen und Vornamen anhängen, so könnte man Diego Maradonna aus Bremen nicht von Diego Maradonna aus Stuttgart unterscheiden. Man kann natürlich einfach zusätzliche Attribute hinzufügen, wie z.B. das Geburtsdatum oder die Adresse, bis man sich sicher ist, dass es nicht zu Verwechslungen kommen kann, aber es gibt einen eleganteren Weg. Im Normalfall hängt man eine Nummer an (z.B. die Kundennummer), die für jede Entität eine andere sein muss. So kann man jede Entität eindeutig an Hand der Nummer identifizieren. Diego mit der Kundennummer 44445 ist dann eine andere Person als Diego mit der Kundennummer 85417. Diese Nummer bezeichnet man Primärschlüssel.
 \begin{tcolorbox}[title=Primärschlüssel]
 	Attribut, das eine Entität eindeutig identifizierbar macht. Im Normalfall eine laufende Nummer, d.h. bei jeder neu hinzukommenden Entität wird die Nummer einfach um eins größer gemacht. Der Primärschlüssel wird im ERM durch Unterstreichen kenntlich gemacht.
 \end{tcolorbox}
@@ -135,7 +137,7 @@ Die Kardinalität gehört zu Beziehungen und gibt an, wie viele Entitäten jewei
 	\begin{minipage}{0.8\textwidth}
 		\centering\includegraphics[width=\textwidth]{\pics/ERMBeziehungen1N.png}
 
-		Grafische Darstellung einer 1:1 Beziehung.
+		Grafische Darstellung einer 1:N Beziehung.
 	\end{minipage}
 	\item N:M Beziehung
 
@@ -144,7 +146,7 @@ Die Kardinalität gehört zu Beziehungen und gibt an, wie viele Entitäten jewei
 	\begin{minipage}{0.8\textwidth}
 		\centering\includegraphics[width=\textwidth]{\pics/ERMBeziehungenNM.png}
 
-		Grafische Darstellung einer 1:1 Beziehung.
+		Grafische Darstellung einer N:M Beziehung.
 	\end{minipage}
 \end{itemize}
 
@@ -157,9 +159,9 @@ Die Kunden einer Firma können Bestellungen aufgeben, die ein oder mehrere Artik
 
 Beispiel für ein ERM. Die Primärschlüssel sind jeweils unterstrichen. Die Kardinalitäten der Beziehungen ergeben sich aus folgenden Überlegungen:
 \begin{itemize}
-	\item Kunde zu Bestellung eine 1:N Beziehung. Ein Kunde kann mehrere Bestellungen aufgeben, aber jede Bestellung ist genau einem Kunden zugeordnet.
-	\item Rechnung zu Bestellung eine 1:1 Beziehung. Hinter jeder Rechnung verbirgt sich genau eine Bestellung und zu jeder Bestellung wird genau eine Rechnung erstellt.
-	\item Bestellung zu Artikel eine N:M Beziehung. In jeder Bestellung können mehrere (M verschiedene) Artikel vorkommen und umgekehrt kann ein Artikel in verschiedenen Bestellungen (N verschiedene) vorkommen.
+	\item Kunden zu Bestellungen eine 1:N Beziehung. Ein Kunde kann mehrere Bestellungen aufgeben, aber jede Bestellung ist genau einem Kunden zugeordnet.
+	\item Rechnungen zu Bestellungen eine 1:1 Beziehung. Hinter jeder Rechnung verbirgt sich genau eine Bestellung und zu jeder Bestellung wird genau eine Rechnung erstellt.
+	\item Bestellungeb zu Artikel eine N:M Beziehung. In jeder Bestellung können mehrere (M verschiedene) Artikel vorkommen und umgekehrt kann ein Artikel in verschiedenen Bestellungen (N verschiedene) vorkommen.
 \end{itemize}
 \begin{Exercise}[title=Vervollständige die ERMs aus Aufgabe \ref{ERMErstellen1}. Jeder Entitätstyp muss einen Primärschlüssel haben und ergänze die Kardinalitäten., label=ERMErstellen2]
 	\phantom{ }

@@ -7,7 +7,7 @@ Von Anomalien spricht man, wenn die Daten auf der Datenbank inkonsistent sind, a
 	\begin{enumerate}
 		\item \textbf{Änderungs-Anomalien}: Diese können auftreten, wenn Attributswerte an mehreren Stellen geändert werden sollen, jedoch nicht alle Stellen geändert werden.
 		\item \textbf{Einfüge-Anomalien}: Diese können auftreten, wenn das Einfügen eines Attributswertes zum zwingenden Einfügen weiterer Attributswerte führt.
-		\item \textbf{Lösch-Anomalien}: Diese können auftreten, wenn das Löschen einer Entität das ungewollte Löschen wichtiger Infos (Attributswerte) mit sich bringt.
+		\item \textbf{Lösch-Anomalien}: Diese können auftreten, wenn das Löschen einer Entität das ungewollte Löschen wichtiger Informationen (Attributswerte) mit sich bringt.
 	\end{enumerate}
 \end{tcolorbox}
 Zudem entspricht es dem Best Practice Redundanzen (das Speichern der gleichen Information an mehreren Stellen in der Datenbank) zu vermeiden. Betrachten wir folgendes Beispiel:
@@ -109,10 +109,10 @@ Die geänderte Tabelle sieht nun wie folgt aus:
 	\textcolor{blue}{Abschlussfeier}&
 	\\
 \end{tabular}\newpage
-Es sind drei verschiedene Anomlien aufgetreten
+Es sind drei verschiedene Anomalien aufgetreten
 \begin{enumerate}
 	\item \textcolor{red}{Die Projektbezeichnung wurde nicht an allen Stellen von Homepage zu ÜFA-Homepage geändert. Es ist eine Änderungs-Anomalie aufgetreten.}
 	\item \textcolor{blue}{Das Einfügen des Projekts Abschlussfeier hat zu einer Einfüge-Anomlie geführt. Da noch kein Schüler an dem Projekt arbeitet, muss der Primärschlüssel \lstinline!schNR! leer bleiben, was verboten ist. Die Entität bzw. Zeile wäre dann nicht mehr an Hand des Primärschlüssels eindeutig identifizierbar.}
 	\item \textcolor{ForestGreen}{Es ist eine Lösch-Anomalie aufgetreten. Löscht man die Schüler aus der BK22 aus der Tabelle, so wird auch das Projekt \texttt{Schulfest} gelöscht.}
 \end{enumerate}
-Zudem verfügt die Tabelle über Redundanzen, z.B. werden die Klassenbezeichnungen und Projektbezeichnungen mehrfach gespeichert.
+Zudem verfügt die Tabelle über Redundanzen, z.B. werden die Klassenbezeichnungen und Projektbezeichnungen mehrfach gespeichert. Ein besserer Aufbau des der Datenbank zu Grunde liegenden ERMs kann das Auftreten von Anomalien minimieren.

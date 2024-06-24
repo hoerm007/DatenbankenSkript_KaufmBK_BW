@@ -7,6 +7,8 @@ Die für die Übungsaufgaben verwendeten Datenbanken sind
 	\item \lstinline!schule.db! für das Kapitel \nameref{funktionen}
 	\item \lstinline!schuleOptimiert.db! für das Kapitel \nameref{join}
 \end{itemize}
+\textcolor{red}{Die verwendeten Datenbanken finden sich auch unter
+    {\small\href{https://github.com/hoerm007/DatenbankenSkript\_KaufmBK\_BW/tree/main/Datenbanken}{https://github.com/hoerm007/DatenbankenSkript\_KaufmBK\_BW/tree/main/Datenbanken}}}
 \subsubsection{\lstinline!vieleSchueler.db!}
 \begin{lstlisting}[breaklines=True, numbers=none, basicstyle=\tiny, keepspaces=false]
 	CREATE TABLE schueler(schuelerNR INT PRIMARY KEY NOT NULL, vorname TEXT, nachname TEXT, plz INT, geburtsdatum TEXT, klasse TEXT);
@@ -434,18 +436,18 @@ Die für die Übungsaufgaben verwendeten Datenbanken sind
 	INSERT INTO schueler VALUES(3180,'Herrmann','Babette','Danziger Strasse 274',72458,'10.10.2000');
 	INSERT INTO schueler VALUES(4817,'Lisegateweiner','Nora','Klosterstrasse 74b',72458,'06.11.2002');
 	INSERT INTO schueler VALUES(3749,'Tätiplaumeiner','Micha','Tannenstrasse 41',72469,'08.08.1997');
-	CREATE TABLE klasse(klasseNR INT PRIMARY KEY NOT NULL,bezeichnung TEXT,schultyp TEXT);
-	INSERT INTO klasse VALUES(3,'WO1','Vollzeit');
-	INSERT INTO klasse VALUES(7,'WO2','Vollzeit');
-	INSERT INTO klasse VALUES(19,'BKFH','Vollzeit');
-	INSERT INTO klasse VALUES(22,'BK11','Vollzeit');
-	INSERT INTO klasse VALUES(24,'BK12','Vollzeit');
-	INSERT INTO klasse VALUES(38,'BK21','Vollzeit');
-	INSERT INTO klasse VALUES(105,'BK22','Vollzeit');
-	INSERT INTO klasse VALUES(48,'1LA01','Berufsschule');
-	INSERT INTO klasse VALUES(50,'1LA02','Berufsschule');
-	INSERT INTO klasse VALUES(52,'2LA01','Berufsschule');
-	INSERT INTO klasse VALUES(96,'2LA02','Berufsschule');
+	CREATE TABLE klassen(klasseNR INT PRIMARY KEY NOT NULL,bezeichnung TEXT,schultyp TEXT);
+	INSERT INTO klassen VALUES(3,'WO1','Vollzeit');
+	INSERT INTO klassen VALUES(7,'WO2','Vollzeit');
+	INSERT INTO klassen VALUES(19,'BKFH','Vollzeit');
+	INSERT INTO klassen VALUES(22,'BK11','Vollzeit');
+	INSERT INTO klassen VALUES(24,'BK12','Vollzeit');
+	INSERT INTO klassen VALUES(38,'BK21','Vollzeit');
+	INSERT INTO klassen VALUES(105,'BK22','Vollzeit');
+	INSERT INTO klassen VALUES(48,'1LA01','Berufsschule');
+	INSERT INTO klassen VALUES(50,'1LA02','Berufsschule');
+	INSERT INTO klassen VALUES(52,'2LA01','Berufsschule');
+	INSERT INTO klassen VALUES(96,'2LA02','Berufsschule');
 	CREATE TABLE lehrer(lehrerNR INT PRIMARY KEY NOT NULL,vorname TEXT,nachname TEXT);
 	INSERT INTO lehrer VALUES(5,'Olaf','Scholz');
 	INSERT INTO lehrer VALUES(20,'Robert','Habeck');
@@ -464,10 +466,10 @@ Die für die Übungsaufgaben verwendeten Datenbanken sind
 	INSERT INTO lehrer VALUES(148,'Svenja','Schulze');
 	INSERT INTO lehrer VALUES(155,'Klara','Geywitz');
 	INSERT INTO lehrer VALUES(159,'Wolfgang','Schmidt');
-	CREATE TABLE abteilung(abteilungNR INT PRIMARY KEY NOT NULL,bezeichnung TEXT,abteilungsleiter TEXT);
-	INSERT INTO abteilung VALUES(3,'WG','Scholz');
-	INSERT INTO abteilung VALUES(6,'Berufskolleg','Habeck');
-	INSERT INTO abteilung VALUES(8,'Berufsschule','Lindner');
+	CREATE TABLE abteilungen(abteilungNR INT PRIMARY KEY NOT NULL,bezeichnung TEXT,abteilungsleiter TEXT);
+	INSERT INTO abteilungen VALUES(3,'WG','Scholz');
+	INSERT INTO abteilungen VALUES(6,'Berufskolleg','Habeck');
+	INSERT INTO abteilungen VALUES(8,'Berufsschule','Lindner');
 	CREATE TABLE schueler_klasse(lfdNR INT PRIMARY KEY NOT NULL,schuelerNR INT, klasseNR INT);
 	INSERT INTO schueler_klasse VALUES(3,1587,3);
 	INSERT INTO schueler_klasse VALUES(13,4293,3);
@@ -1190,18 +1192,18 @@ Die für die Übungsaufgaben verwendeten Datenbanken sind
 	INSERT INTO schueler VALUES(3180,'Herrmann','Babette','Danziger Strasse 274',72458,'10.10.2000',96);
 	INSERT INTO schueler VALUES(4817,'Lisegateweiner','Nora','Klosterstrasse 74b',72458,'06.11.2002',96);
 	INSERT INTO schueler VALUES(3749,'Tätiplaumeiner','Micha','Tannenstrasse 41',72469,'08.08.1997',96);
-	CREATE TABLE klasse(klasseNR INT PRIMARY KEY NOT NULL,bezeichnung TEXT NOT NULL,schultyp TEXT,abteilungNR INT);
-	INSERT INTO klasse VALUES(3,'WO1','Vollzeit',3);
-	INSERT INTO klasse VALUES(7,'WO2','Vollzeit',3);
-	INSERT INTO klasse VALUES(19,'BKFH','Vollzeit',6);
-	INSERT INTO klasse VALUES(22,'BK11','Vollzeit',6);
-	INSERT INTO klasse VALUES(24,'BK12','Vollzeit',6);
-	INSERT INTO klasse VALUES(38,'BK21','Vollzeit',6);
-	INSERT INTO klasse VALUES(105,'BK22','Vollzeit',6);
-	INSERT INTO klasse VALUES(48,'1LA01','Berufsschule',8);
-	INSERT INTO klasse VALUES(50,'1LA02','Berufsschule',8);
-	INSERT INTO klasse VALUES(52,'2LA01','Berufsschule',8);
-	INSERT INTO klasse VALUES(96,'2LA02','Berufsschule',8);
+	CREATE TABLE klassen(klasseNR INT PRIMARY KEY NOT NULL,bezeichnung TEXT NOT NULL,schultyp TEXT,abteilungNR INT);
+	INSERT INTO klassen VALUES(3,'WO1','Vollzeit',3);
+	INSERT INTO klassen VALUES(7,'WO2','Vollzeit',3);
+	INSERT INTO klassen VALUES(19,'BKFH','Vollzeit',6);
+	INSERT INTO klassen VALUES(22,'BK11','Vollzeit',6);
+	INSERT INTO klassen VALUES(24,'BK12','Vollzeit',6);
+	INSERT INTO klassen VALUES(38,'BK21','Vollzeit',6);
+	INSERT INTO klassen VALUES(105,'BK22','Vollzeit',6);
+	INSERT INTO klassen VALUES(48,'1LA01','Berufsschule',8);
+	INSERT INTO klassen VALUES(50,'1LA02','Berufsschule',8);
+	INSERT INTO klassen VALUES(52,'2LA01','Berufsschule',8);
+	INSERT INTO klassen VALUES(96,'2LA02','Berufsschule',8);
 	CREATE TABLE lehrer(lehrerNR INT PRIMARY KEY NOT NULL,vorname TEXT,nachname TEXT,abteilungNR INT);
 	INSERT INTO lehrer VALUES(5,'Olaf','Scholz',3);
 	INSERT INTO lehrer VALUES(20,'Robert','Habeck',3);
@@ -1220,10 +1222,10 @@ Die für die Übungsaufgaben verwendeten Datenbanken sind
 	INSERT INTO lehrer VALUES(148,'Svenja','Schulze',8);
 	INSERT INTO lehrer VALUES(155,'Klara','Geywitz',8);
 	INSERT INTO lehrer VALUES(159,'Wolfgang','Schmidt',8);
-	CREATE TABLE abteilung(abteilungNR INT PRIMARY KEY NOT NULL,bezeichnung TEXT,abteilungsleiter TEXT);
-	INSERT INTO abteilung VALUES(3,'WG','Scholz');
-	INSERT INTO abteilung VALUES(6,'Berufskolleg','Habeck');
-	INSERT INTO abteilung VALUES(8,'Berufsschule','Lindner');
+	CREATE TABLE abteilungen(abteilungNR INT PRIMARY KEY NOT NULL,bezeichnung TEXT,abteilungsleiter TEXT);
+	INSERT INTO abteilungen VALUES(3,'WG','Scholz');
+	INSERT INTO abteilungen VALUES(6,'Berufskolleg','Habeck');
+	INSERT INTO abteilungen VALUES(8,'Berufsschule','Lindner');
 	CREATE TABLE unterrichtet(lfdNR INT PRIMARY KEY NOT NULL,lehrerNR INT, klasseNR INT);
 	INSERT INTO unterrichtet VALUES(100,5,3);
 	INSERT INTO unterrichtet VALUES(103,20,3);

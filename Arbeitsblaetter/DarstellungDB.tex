@@ -3,10 +3,10 @@
 \subsection[Darstellung auf der DB]{Darstellung auf der Datenbank}
 Einerseits ist die Darstellung eines ERMs auf der Datenbank simpel. Jeder Entitätstyp und jede Beziehung kann als Tabelle dargestellt werden. Andererseits ergeben sich aus der Darstellung bestimmte Regeln zum Erstellen eines guten ERMs, die wir unter dem Kapitel Normalisierung besprechen werden.
 
-\begin{tcolorbox}[title=Entitäten/-typen und Beziehungen auf der Datenbank]
-	Entitäten bzw. Entitätstypen und Beziehungen werden als Tabellen auf der Datenbank vorgestellt. Eine Tabelle besteht aus einer Überschrift, die den Entitätstyp bzw. die Beziehung angibt, den Spaltenüberschriften, die die Attribute darstellen und den Zeilen mit konkreten Werten. Die Werte einzelner Zellen stehen dabei für die Attributswerte während eine ganze Zeile eine Entität repräsentiert.
+\begin{tcolorbox}[title=Entitäten/-stypen und Beziehungen auf der Datenbank]
+	Entitäten bzw. Entitätstypen und Beziehungen werden als Tabellen auf der Datenbank angelegt. Eine Tabelle besteht aus einer Überschrift, die den Entitätstyp bzw. die Beziehung angibt, den Spaltenüberschriften, die die Attribute darstellen und den Zeilen mit konkreten Werten. Die Werte einzelner Zellen stehen dabei für die Attributswerte während eine ganze Zeile eine Entität repräsentiert.
 \end{tcolorbox}
-Beispiel für die Entitätstypen Schüler, Lehrer und Abteilung. Für die Namen auf der Datenbank wird im Skript folgende Notation verwendet: \lstinline!schueler!
+Beispiel für die Entitätstypen Schüler, Lehrer und Abteilungen. Für die Namen auf der Datenbank wird im Skript folgende Notation verwendet: \lstinline!schueler!
 
 \bigskip
 
@@ -22,7 +22,7 @@ Beispiel für die Entitätstypen Schüler, Lehrer und Abteilung. Für die Namen 
 	47&Carl Carlson&BK12&Skinner\\
 \end{tabular}\\
 \begin{tabular}{lll}
-	\multicolumn{3}{c}{\lstinline!abteilung!}\\
+	\multicolumn{3}{c}{\lstinline!abteilungen!}\\
 	\hline
 	\underline{\lstinline!abteilungNR!}&\lstinline!bezeichnung!&\lstinline!abteilungsleiter!\\
 	\hline
@@ -50,7 +50,7 @@ Wie wir später sehen werden, ist das gewählte ERM noch stark verbesserungsfäh
 	3&2&31\\
 \end{tabular}
 
-In der Tabelle \lstinline!abteilung_lehrer! könnte man die \lstinline!lfdNR! als Primärschlüssel auch streichen und stattdessen die \lstinline!abteilungNR! und \lstinline!lehrerNR! zusammen als Primärschlüssel verwenden. Außer dem geringfügig größeren Speicherbedarf spricht aber für unsere Zwecke nichts gegen das Hinzufügen einer laufenden Nummer als Primärschlüssel. Die erste Entität bzw. Zeile sagt nun aus, dass der Abteilung mit der \lstinline!abteilungNR! 1, also dem Berufskolleg, der Lehrer mit der \lstinline!lehrerNR! 24, also Krabappel, angehört. In der zweiten Zeile bzw. Entität steht, dass dem Berufskolleg außerdem auch Skinner angehört. Und die dritte Zeile besagt, dass dem Wirtschaftsgymnasium Hoover angehört.
+In der Tabelle \lstinline!abteilung_lehrer! könnte man die \lstinline!lfdNR! als Primärschlüssel auch streichen und stattdessen die \lstinline!abteilungNR! und \lstinline!lehrerNR! als zusammengesetzten Primärschlüssel verwenden. Außer dem geringfügig größeren Speicherbedarf spricht aber für unsere Zwecke nichts gegen das Hinzufügen einer laufenden Nummer als Primärschlüssel. Die erste Entität bzw. Zeile sagt nun aus, dass der Abteilung mit der \lstinline!abteilungNR! 1, also dem Berufskolleg, der Lehrer mit der \lstinline!lehrerNR! 24, also Krabappel, angehört. In der zweiten Zeile bzw. Entität steht, dass dem Berufskolleg außerdem auch Skinner angehört. Und die dritte Zeile besagt, dass dem Wirtschaftsgymnasium Hoover angehört.
 
 Beachte, dass der Primärschlüssel auch hier unterstrichen ist und aus Gründen der Übersichtlichkeit immer an erster Stelle steht.
 \begin{Exercise}[title=Erstelle zu den ERMs aus Aufgabe \ref{ERMErstellen1} passende Tabellen., label=TabelleErstellen1]
@@ -61,14 +61,14 @@ Beachte, dass der Primärschlüssel auch hier unterstrichen ist und aus Gründen
 	\begin{enumerate}
 		\item Ein Fahrradverleih am Bodensee verleiht Damen-, Herren- und Kinderfahrräder. Dabei wird für jedes Fahrrad ein eigener Mietvertrag abgeschlossen. Eine Person kann mehrere Fahrräder mieten. Der Fahrradverleih möchte eine Datenbank aufbauen. Helfen Sie dabei.\\
 		\begin{tabular}{lll}
-			\multicolumn{3}{c}{\lstinline!kunde!}\\
+			\multicolumn{3}{c}{\lstinline!kunden!}\\
 			\hline
 			\underline{\lstinline!kundeNR!}&\lstinline!name!&\lstinline!adresse!\\
 			\hline
 			15&Fathi Russdi&Rotgasse 12, 55555 Bielefeld\\
 		\end{tabular}\\
 		\begin{tabular}{ll}
-			\multicolumn{2}{c}{\lstinline!fahrrad!}\\
+			\multicolumn{2}{c}{\lstinline!fahrraeder!}\\
 			\hline
 			\underline{\lstinline!rahmenNR!}&\lstinline!typ!\\
 			\hline
@@ -87,14 +87,14 @@ Beachte, dass der Primärschlüssel auch hier unterstrichen ist und aus Gründen
 		\item Ein befreundeter Autohändler bittet uns beim Aufbau einer Kundendatenbank zu helfen. Zuerst soll diese in einem ERM modelliert werden. Darin erscheinen sollen Kunde, Auto, Karosserietyp und Reifen. Ein Auto gehört dabei zu einem Kunden, ein Kunde kann aber mehrere Autos haben.
 
 		\begin{tabular}{lll}
-			\multicolumn{3}{c}{\lstinline!kunde!}\\
+			\multicolumn{3}{c}{\lstinline!kunden!}\\
 			\hline
 			\underline{\lstinline!kundeNR!}&\lstinline!name!&\lstinline!adresse!\\
 			\hline
 			15&Fathi Russdi&Rotgasse 12, 55555 Bielefeld\\
 		\end{tabular}\\
 		\begin{tabular}{ll}
-			\multicolumn{2}{c}{\lstinline!auto!}\\
+			\multicolumn{2}{c}{\lstinline!autos!}\\
 			\hline
 			\underline{\lstinline!fahrzeugID!}&\lstinline!karosserie!\\
 			\hline
@@ -125,7 +125,7 @@ Beachte, dass der Primärschlüssel auch hier unterstrichen ist und aus Gründen
 		\item Ein DVD-Verleiher betreibt mehrere Filialen (id, strasse, plz), wo es jeweils mehrere Medien (DVDs, BluRays, Spiele) zu leihen gibt. Jeder Kunde kann nur einer Filiale zugeordnet sein. Jeder Kunde kann mehrere Medien ausleihen. Ein Mitarbeiter kann nur in einer Filiale arbeiten.
 
 		\begin{tabular}{lll}
-			\multicolumn{3}{c}{\lstinline!filiale!}\\
+			\multicolumn{3}{c}{\lstinline!filialen!}\\
 			\hline
 			\underline{\lstinline!filialID!}&\lstinline!strasse!&\lstinline!plz!\\
 			\hline
@@ -139,14 +139,14 @@ Beachte, dass der Primärschlüssel auch hier unterstrichen ist und aus Gründen
 			47&Agent 47\\
 		\end{tabular}\\
 		\begin{tabular}{llll}
-			\multicolumn{4}{c}{\lstinline!medium!}\\
+			\multicolumn{4}{c}{\lstinline!medien!}\\
 			\hline
 			\underline{\lstinline!medienID!}&\lstinline!bezeichnung!&\lstinline!anzahl!&\lstinline!typ!\\
 			\hline
 			1002&The matrix&5&DVD\\
 		\end{tabular}\\
 		\begin{tabular}{ll}
-			\multicolumn{2}{c}{\lstinline!kunde!}\\
+			\multicolumn{2}{c}{\lstinline!kunden!}\\
 			\hline
 			\underline{\lstinline!kundenNR!}&\lstinline!name!\\
 			\hline

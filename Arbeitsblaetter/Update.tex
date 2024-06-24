@@ -9,7 +9,7 @@ Mit Hilfe des UPDATE-Statements lassen sich einzelne Werte eines Eintrags in ein
 \begin{Exercise}[title={Ändere folgende Einträge aus der Datenbank:}, label=Update]
 	\begin{enumerate}
 		\item Der Schüler mit der \lstinline!schuelerNR! 19 soll mit \lstinline!vornamen! Hans Gustav Adalbert heißen.
-		\item Die Bezeichnung der \lstinline!klasse! soll von BK2 auf BK22 geändert werden.
+		\item Die Bezeichnung der \lstinline!klasse! BK2 soll auf BK22 geändert werden.
 		\item Bei einigen Schülern ist ein Problem beim Eintragen der \lstinline!plz! aufgetreten. Bei allen Schülern mit einer 4-stelligen \lstinline!plz! soll diese auf NULL geändert werden.
 	\end{enumerate}
 \end{Exercise}
@@ -19,7 +19,7 @@ Mit Hilfe des UPDATE-Statements lassen sich einzelne Werte eines Eintrags in ein
 		\item Der Schüler mit der \lstinline!schuelerNR! 19 soll mit \lstinline!vornamen! Hans Gustav Adalbert heißen.
 
 		\lstinline!UPDATE schueler SET vorname = 'Hans Gustav Adalbert' WHERE schuelerNR = 19;!
-		\item Die Bezeichnung der \lstinline!klasse! soll von BK2 auf BK22 geändert werden.
+		\item Die Bezeichnung der \lstinline!klasse! BK2 soll auf BK22 geändert werden.
 
 		\lstinline!UPDATE schueler SET klasse = 'BK22' WHERE klasse IS 'BK2';!
 		\item Bei einigen Schülern ist ein Problem beim Eintragen der \lstinline!plz! aufgetreten. Bei allen Schülern mit einer 4-stelligen \lstinline!plz! soll diese auf NULL geändert werden.
