@@ -8,7 +8,7 @@ Einerseits ist die Darstellung eines ERMs auf der Datenbank simpel. Jeder Entit�
 \end{tcolorbox}
 Beispiel für die Entitätstypen Schüler, Lehrer und Abteilungen. Für die Namen auf der Datenbank wird im Skript folgende Notation verwendet: \lstinline!schueler!
 
-\bigskip
+\medskip
 
 \begin{tabular}{llll}
 	\multicolumn{4}{c}{\lstinline!schueler!}\\
@@ -20,7 +20,8 @@ Beispiel für die Entitätstypen Schüler, Lehrer und Abteilungen. Für die Name
 	102&Homer Simpson&BK22&Krabappel\\
 	9&Apu Nahasapeemapetilon&WG32&Krabappel\\
 	47&Carl Carlson&BK12&Skinner\\
-\end{tabular}\\
+\end{tabular}
+
 \begin{tabular}{lll}
 	\multicolumn{3}{c}{\lstinline!abteilungen!}\\
 	\hline
@@ -28,7 +29,8 @@ Beispiel für die Entitätstypen Schüler, Lehrer und Abteilungen. Für die Name
 	\hline
 	1&Berufskolleg&Krabappel\\
 	2&Wirtschaftsgymnasium&Hoover\\
-\end{tabular}\\
+\end{tabular}
+
 \begin{tabular}{lll}
 	\multicolumn{3}{c}{\lstinline!lehrer!}\\
 	\hline
@@ -37,8 +39,13 @@ Beispiel für die Entitätstypen Schüler, Lehrer und Abteilungen. Für die Name
 	24&Krabappel&KRB\\
 	30&Skinner&SKI\\
 	31&Hoover&HOO\\
-\end{tabular}\\
+\end{tabular}
+
+\medskip
+
 Wie wir später sehen werden, ist das gewählte ERM noch stark verbesserungsfähig. Vorerst wollen wir aber jeden Lehrer genau einer Abteilung zuordnen. Diese Beziehung kann ebenfalls über eine Tabelle dargestellt werden:
+
+\medskip
 
 \begin{tabular}{lll}
 	\multicolumn{3}{c}{\lstinline!abteilung_lehrer!}\\
@@ -50,6 +57,8 @@ Wie wir später sehen werden, ist das gewählte ERM noch stark verbesserungsfäh
 	3&2&31\\
 \end{tabular}
 
+\medskip
+
 In der Tabelle \lstinline!abteilung_lehrer! könnte man die \lstinline!lfdNR! als Primärschlüssel auch streichen und stattdessen die \lstinline!abteilungNR! und \lstinline!lehrerNR! als zusammengesetzten Primärschlüssel verwenden. Außer dem geringfügig größeren Speicherbedarf spricht aber für unsere Zwecke nichts gegen das Hinzufügen einer laufenden Nummer als Primärschlüssel. Die erste Entität bzw. Zeile sagt nun aus, dass der Abteilung mit der \lstinline!abteilungNR! 1, also dem Berufskolleg, der Lehrer mit der \lstinline!lehrerNR! 24, also Krabappel, angehört. In der zweiten Zeile bzw. Entität steht, dass dem Berufskolleg außerdem auch Skinner angehört. Und die dritte Zeile besagt, dass dem Wirtschaftsgymnasium Hoover angehört.
 
 Beachte, dass der Primärschlüssel auch hier unterstrichen ist und aus Gründen der Übersichtlichkeit immer an erster Stelle steht.
@@ -59,22 +68,30 @@ Beachte, dass der Primärschlüssel auch hier unterstrichen ist und aus Gründen
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{Answer}[ref=TabelleErstellen1]
 	\begin{enumerate}
-		\item Ein Fahrradverleih am Bodensee verleiht Damen-, Herren- und Kinderfahrräder. Dabei wird für jedes Fahrrad ein eigener Mietvertrag abgeschlossen. Eine Person kann mehrere Fahrräder mieten. Der Fahrradverleih möchte eine Datenbank aufbauen. Helfen Sie dabei.\\
-		\begin{tabular}{lll}
-			\multicolumn{3}{c}{\lstinline!kunden!}\\
-			\hline
-			\underline{\lstinline!kundeNR!}&\lstinline!name!&\lstinline!adresse!\\
-			\hline
-			15&Fathi Russdi&Rotgasse 12, 55555 Bielefeld\\
-		\end{tabular}\\
-		\begin{tabular}{ll}
-			\multicolumn{2}{c}{\lstinline!fahrraeder!}\\
-			\hline
-			\underline{\lstinline!rahmenNR!}&\lstinline!typ!\\
-			\hline
-			18498451&Rennrad\\
-			89415456&Kinderrad\\
-		\end{tabular}\\
+		\item Ein Fahrradverleih am Bodensee verleiht Damen-, Herren- und Kinderfahrräder. Dabei wird für jedes Fahrrad ein eigener Mietvertrag abgeschlossen. Eine Person kann mehrere Fahrräder mieten. Der Fahrradverleih möchte eine Datenbank aufbauen. Helfen Sie dabei.
+
+        \medskip
+
+        \begin{minipage}{\linewidth}
+            \adjustbox{valign=t}{\begin{minipage}{.7\linewidth}
+            \begin{tabular}{lll}
+    			\multicolumn{3}{c}{\lstinline!kunden!}\\
+    			\hline
+    			\underline{\lstinline!kundeNR!}&\lstinline!name!&\lstinline!adresse!\\
+    			\hline
+    			15&Fathi Russdi&Rotgasse 12, 55555 Bielefeld
+    		\end{tabular}\end{minipage}}%
+            \adjustbox{valign=t}{\begin{minipage}{.3\linewidth}
+    		\begin{tabular}{ll}
+    			\multicolumn{2}{c}{\lstinline!fahrraeder!}\\
+    			\hline
+    			\underline{\lstinline!rahmenNR!}&\lstinline!typ!\\
+    			\hline
+    			18498451&Rennrad\\
+    			89415456&Kinderrad
+    		\end{tabular}\end{minipage}}%
+        \end{minipage}
+
 		\begin{tabular}{lllll}
 			\multicolumn{5}{c}{\lstinline!mietet!}\\
 			\hline
@@ -84,6 +101,8 @@ Beachte, dass der Primärschlüssel auch hier unterstrichen ist und aus Gründen
 			2&15&89415456&01.09.2023&03.09.2023\\
 		\end{tabular}
 
+        \medskip
+
 		\item Ein befreundeter Autohändler bittet uns beim Aufbau einer Kundendatenbank zu helfen. Zuerst soll diese in einem ERM modelliert werden. Darin erscheinen sollen Kunde, Auto, Karosserietyp und Reifen. Ein Auto gehört dabei zu einem Kunden, ein Kunde kann aber mehrere Autos haben.
 
 		\begin{tabular}{lll}
@@ -92,28 +111,40 @@ Beachte, dass der Primärschlüssel auch hier unterstrichen ist und aus Gründen
 			\underline{\lstinline!kundeNR!}&\lstinline!name!&\lstinline!adresse!\\
 			\hline
 			15&Fathi Russdi&Rotgasse 12, 55555 Bielefeld\\
-		\end{tabular}\\
+		\end{tabular}
+
+        \medskip
+
 		\begin{tabular}{ll}
 			\multicolumn{2}{c}{\lstinline!autos!}\\
 			\hline
 			\underline{\lstinline!fahrzeugID!}&\lstinline!karosserie!\\
 			\hline
 			189765465451&Kübelwagen\\
-		\end{tabular}\\
+		\end{tabular}
+
+        \medskip
+
 		\begin{tabular}{ll}
 			\multicolumn{2}{c}{\lstinline!reifen!}\\
 			\hline
 			\underline{\lstinline!reifenID!}&\lstinline!typ!\\
 			\hline
 			89454115&Winterreifen\\
-		\end{tabular}\\
+		\end{tabular}
+
+        \medskip
+
 		\begin{tabular}{lll}
 			\multicolumn{3}{c}{\lstinline!auto_reifen!}\\
 			\hline
 			\underline{\lstinline!laufendeNR!}&\lstinline!fahrzeugID!&\lstinline!reifenID!\\
 			\hline
 			4&189765465451&89454115\\
-		\end{tabular}\\
+		\end{tabular}
+
+        \medskip
+
 		\begin{tabular}{lllll}
 			\multicolumn{5}{c}{\lstinline!auto_kunde!}\\
 			\hline
@@ -121,6 +152,8 @@ Beachte, dass der Primärschlüssel auch hier unterstrichen ist und aus Gründen
 			\hline
 			119&189765465451&15&43000&10.08.2023\\
 		\end{tabular}
+
+        \medskip
 
 		\item Ein DVD-Verleiher betreibt mehrere Filialen (id, strasse, plz), wo es jeweils mehrere Medien (DVDs, BluRays, Spiele) zu leihen gibt. Jeder Kunde kann nur einer Filiale zugeordnet sein. Jeder Kunde kann mehrere Medien ausleihen. Ein Mitarbeiter kann nur in einer Filiale arbeiten.
 
@@ -130,42 +163,60 @@ Beachte, dass der Primärschlüssel auch hier unterstrichen ist und aus Gründen
 			\underline{\lstinline!filialID!}&\lstinline!strasse!&\lstinline!plz!\\
 			\hline
 			3&Königsbau 4&70174\\
-		\end{tabular}\\
+		\end{tabular}
+
+        \medskip
+
 		\begin{tabular}{ll}
 			\multicolumn{2}{c}{\lstinline!mitarbeiter!}\\
 			\hline
 			\underline{\lstinline!mitarbeiterNR!}&\lstinline!name!\\
 			\hline
 			47&Agent 47\\
-		\end{tabular}\\
+		\end{tabular}
+
+        \medskip
+
 		\begin{tabular}{llll}
 			\multicolumn{4}{c}{\lstinline!medien!}\\
 			\hline
 			\underline{\lstinline!medienID!}&\lstinline!bezeichnung!&\lstinline!anzahl!&\lstinline!typ!\\
 			\hline
 			1002&The matrix&5&DVD\\
-		\end{tabular}\\
+		\end{tabular}
+
+        \medskip
+
 		\begin{tabular}{ll}
 			\multicolumn{2}{c}{\lstinline!kunden!}\\
 			\hline
 			\underline{\lstinline!kundenNR!}&\lstinline!name!\\
 			\hline
 			50&Lucky Luke\\
-		\end{tabular}\\
+		\end{tabular}
+
+        \medskip
+
 		\begin{tabular}{lll}
 			\multicolumn{3}{c}{\lstinline!filiale_mitarbeiter!}\\
 			\hline
 			\underline{\lstinline!laufendeNR!}&\lstinline!filialID!&\lstinline!mitarbeiterNR!\\
 			\hline
 			1&3&47\\
-		\end{tabular}\\
+		\end{tabular}
+
+        \medskip
+
 		\begin{tabular}{llll}
 			\multicolumn{4}{c}{\lstinline!filiale_medium!}\\
 			\hline
 			\underline{\lstinline!laufendeNR!}&\lstinline!filialID!&\lstinline!medienID!&\lstinline!anzahl!\\
 			\hline
 			1&3&1002&2\\
-		\end{tabular}\\
+		\end{tabular}
+
+        \medskip
+
 		\begin{tabular}{lllll}
 			\multicolumn{5}{c}{\lstinline!kunde_medium!}\\
 			\hline

@@ -56,7 +56,7 @@ Der Teufel steckt wie so oft im Detail, hier im Aufbau der Bedingungen. Einige w
 
 	Gibt alle Schüler aus, deren \lstinline!schuelerNR! zwischen 10 und 20 liegen (10 und 20 jeweils eingeschlossen).
 \end{itemize}
-\textcolor{red}{ACHTUNG:} Beim Test auf NULL muss immer \lstinline!IS! statt \lstinline!=! verwendet werden, z.B. liefert \lstinline!SELECT * FROM schueler WHERE plz is NULL;! einen Schüler, während \lstinline!SELECT * FROM schueler WHERE plz = NULL;! kein Ergebnis aber auch keine Fehlermeldung liefert.
+\textcolor{red}{ACHTUNG:} Beim Test auf NULL muss immer \lstinline!IS! statt \lstinline!=! verwendet werden, z.B. liefert \lstinline!SELECT * FROM schueler WHERE plz is NULL;! einen Schüler, während \lstinline!SELECT * FROM schueler WHERE plz = NULL;! kein Ergebnis oder Fehlermeldung liefert.
 
 Es lassen sich mehrere Bedingungen mit einem \lstinline!AND! bzw. \lstinline!OR! verknüpfen:
 

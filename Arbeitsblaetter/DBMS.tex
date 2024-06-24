@@ -4,11 +4,11 @@
 \subsection{Begriffe}
 In einer Datenbank werden Daten oder auch Informationen abgelegt. Für das Erstellen, Ändern oder auch für die Abfrage von Daten benötigt man ein Programm, das sogenannte Datenbankmanagementsystem. So wie es verschiedene Tabellenkalkulationsprogramme wie z.B. Excel, Calc oder Numbers gibt, stehen  verschiedene DBMS wie z.B. Oracle, Postgres oder DB2 zur Auswahl.
 
-Obwohl es kleinere Unterschiede vor allem im Design der Oberfläche gibt, funktionieren alle Tabellenkalkulationsprogramme in großen Teilen gleich, z.B. summiert \lstinline!SUM(A1; B3; C5)! die Werte der angegebenen Zellen zusammen. Etwas ähnliches gibt es für DBMS ebenfalls. Fast alle DBMS verwenden SQL bzw. Structured Query Language für das Verwalten der Datenbank. Will man z.B. eine neue Tabelle in der Datenbank erstellen, so kann man nicht einfach auf \textit{Neu} in einer Oberfläche klicken, so wie man z.B. in Word ein neues Dokument erstellen kann, sondern muss dem DBMS eine Anweisung in Textform als SQL-Befehl geben, wie z.B.
- \lstinline!CREATE TABLE farben(laufendeNR INT PRIMARY KEY, bezeichnung TEXT,!
+Obwohl es kleinere Unterschiede vor allem im Design der Oberfläche gibt, funktionieren alle Tabellenkalkulationsprogramme in großen Teilen gleich, z.B. summiert \lstinline!SUM(A1; B3; C5)! die Werte der angegebenen Zellen zusammen. Etwas ähnliches gibt es für DBMS ebenfalls. Fast alle DBMS verwenden SQL bzw. Structured Query Language für das Verwalten der Datenbank. Will man z.B. eine neue Tabelle in der Datenbank erstellen, so kann man nicht einfach auf \textit{Neu} in einer Oberfläche klicken, so wie man z.B. in Word ein neues Dokument erstellen kann, sondern muss dem DBMS eine Anweisung in Textform als SQL-Befehl geben. Zum Beispiel erstellt folgender Befehl eine Tabelle zum Speichern von Farben in der RGB-Darstellung:
 
-\lstinline!rotanteil INT NOT NULL, blauanteil INT NOT NULL, gruenanteil NOT NULL);!.
-In obiger Tabelle kann man dann Farben in der RGB-Darstellung speichern.
+\lstinline!CREATE TABLE farben(laufendeNR INT PRIMARY KEY, bezeichnung TEXT,!
+
+\lstinline!rotanteil INT NOT NULL, blauanteil INT NOT NULL, gruenanteil NOT NULL);!
 
 Ein sehr entfernt ähnliches Konzept haben wir bei HTML mit den verschiedenen Tags kennengelernt.
 

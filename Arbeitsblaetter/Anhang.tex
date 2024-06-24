@@ -8,8 +8,9 @@ Die für die Übungsaufgaben verwendeten Datenbanken sind
 	\item \lstinline!schuleOptimiert.db! für das Kapitel \nameref{join}
 \end{itemize}
 \textcolor{red}{Die verwendeten Datenbanken finden sich auch unter
-    {\small\href{https://github.com/hoerm007/DatenbankenSkript\_KaufmBK\_BW/tree/main/Datenbanken}{https://github.com/hoerm007/DatenbankenSkript\_KaufmBK\_BW/tree/main/Datenbanken}}}
-\subsubsection{\lstinline!vieleSchueler.db!}
+    {\href{https://github.com/hoerm007/DatenbankenSkript\_KaufmBK\_BW/tree/main/Datenbanken}{https://github.com/hoerm007/DatenbankenSkript\_KaufmBK\_BW/tree/main/Datenbanken}}}
+\newpage\pagestyle{empty}
+\subsubsection{vieleSchueler.db}
 \begin{lstlisting}[breaklines=True, numbers=none, basicstyle=\tiny, keepspaces=false]
 	CREATE TABLE schueler(schuelerNR INT PRIMARY KEY NOT NULL, vorname TEXT, nachname TEXT, plz INT, geburtsdatum TEXT, klasse TEXT);
 	INSERT INTO schueler VALUES(1,'Anica','Nosudohein',6268,'06.11.1998','BKFH');
@@ -113,7 +114,7 @@ Die für die Übungsaufgaben verwendeten Datenbanken sind
 	INSERT INTO schueler VALUES(99,'Cornelius','Neumann',58791,'04.03.2007','BK2');
 	INSERT INTO schueler VALUES(100,'Lisette','Kadedumüller',19417,'10.07.1997','BKFH');
 \end{lstlisting}
-\subsubsection{\lstinline!schule.db!}
+\subsubsection{schule.db}
 \begin{lstlisting}[breaklines=True, numbers=none, basicstyle=\tiny, keepspaces=false]
 	CREATE TABLE schueler(schuelerNR INT PRIMARY KEY NOT NULL,nachname TEXT,vorname TEXT,strasse TEXT,plz INT,geburtsdatum TEXT);
 	INSERT INTO schueler VALUES(1587,'Muteplau','Tilly','Schulstrasse 110d',65549,'10.06.2005');
@@ -869,7 +870,7 @@ Die für die Übungsaufgaben verwendeten Datenbanken sind
 	INSERT INTO klasse_abteilung VALUES(105,52,8);
 	INSERT INTO klasse_abteilung VALUES(112,96,8);
 \end{lstlisting}
-\subsubsection{\lstinline!schuleOptimiert.db!}
+\subsubsection{schuleOptimiert.db}
 \begin{lstlisting}[breaklines=True, numbers=none, basicstyle=\tiny, keepspaces=false]
 	CREATE TABLE schueler(schuelerNR INT PRIMARY KEY NOT NULL,nachname TEXT,vorname TEXT,strasse TEXT,plz INT,geburtsdatum TEXT,klasseNR INT);
 	INSERT INTO schueler VALUES(1587,'Muteplau','Tilly','Schulstrasse 110d',65549,'10.06.2005',3);

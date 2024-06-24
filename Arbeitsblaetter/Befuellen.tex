@@ -5,14 +5,23 @@
 Erinnerung: Wir werden das Programm SQLite als Datenbankmanagementsystem (DBMS) verwenden. Nach dem Starten von SQLite sind nur noch SQLite-spezifische Befehle, die immer mit einem Punkt beginnen oder SQL-Anweisungen erlaubt.
 
 \subsection{Erstellen bzw. Öffnen einer Datenbank}
-\begin{wrapfigure}{r}{6.91cm}
-	\centering
-	\includegraphics[]{\pics/createDB.png}
-	\caption*{Da noch keine Tabellen angelegt sind, geben die Befehle \lstinline!.tables! und \lstinline!.schema! keine Ausgabe zurück.}
-\end{wrapfigure}
-Starte die \texttt{sqlite3.exe}. Mit dem Befehl \lstinline!.open #Name#.db! (z.B. \lstinline!.open meineDatenbank.db!) lässt sich eine bestehende DB öffnen bzw. neu erstellen. Im Verzeichnis, in dem auch \texttt{sqlite3.exe} liegt, sollte nun (falls zuvor noch nicht vorhanden) eine neue Datei \texttt{\#Name\#.db} erstellt worden sein.
 
-Mit dem Befehl \lstinline!.tables! kann man sich alle in der DB vorhandenen Tabellen/Entitätstypen anzeigen lassen.
+\medskip
+
+\begin{minipage}{\textwidth}
+    \adjustbox{valign=t, padding=0ex 0ex 2ex 0ex}{\begin{minipage}{\textwidth-6.91cm-2ex}\raggedright
+        Starte die \texttt{sqlite3.exe}. Mit dem Befehl \lstinline!.open #Name#.db! (z.B. \lstinline!.open meineDatenbank.db!) lässt sich eine bestehende DB öffnen bzw. neu erstellen. Im Verzeichnis, in dem auch \texttt{sqlite3.exe} liegt, sollte nun (falls zuvor noch nicht vorhanden) eine neue Datei \texttt{\#Name\#.db} erstellt worden sein.
+
+        Mit dem Befehl \lstinline!.tables! kann man sich alle in der DB vorhandenen Tabellen/Entitätstypen anzeigen lassen.
+    \end{minipage}}%
+    \adjustbox{valign=t}{\begin{minipage}{6.91cm}
+            \centering
+            \includegraphics[width=\textwidth]{\pics/createDB.png}
+            Da noch keine Tabellen angelegt sind, geben die Befehle \lstinline!.tables! und \lstinline!.schema! keine Ausgabe zurück.
+    \end{minipage}}%
+\end{minipage}
+
+\medskip
 
 Mit dem Befehl \lstinline!.schema! kann man sich die Tabellen mit einer Liste der Attribute anzeigen lassen.
 \begin{tcolorbox}[title=Datenbank öffnen]
@@ -23,7 +32,9 @@ Mit dem Befehl \lstinline!.schema! kann man sich die Tabellen mit einer Liste de
 Neue Tabellen/Entitätstypen lassen sich mit dem SQL-Befehl \lstinline!CREATE TABLE! erzeugen:
 
 \begin{tcolorbox}[title=Tabellen erstellen]
-	\lstinline[breaklines=true]!CREATE TABLE name_tabelle (name_attribut1 datentyp1 einschränkung1, name_attribut2 datentyp2 einschränkung2, ...);!
+	\lstinline!CREATE TABLE name_tabelle (name_attribut1 datentyp1 einschränkung1,!
+
+    \lstinline!name_attribut2 datentyp2 einschränkung2, ...);!
 \end{tcolorbox}
 \textcolor{red}{ACHTUNG: Bei SQL-Befehlen den Strichpunkt am Ende der Zeile nicht vergessen!} Man kann SQL-Befehle auch auf mehrere Zeilen aufteilen.
 
@@ -56,7 +67,7 @@ Um einer Tabelle eine neue Entität/Zeile hinzuzufügen, verwendet man den \lsti
 
     Nur bestimmte Attribute sollen mit Werten belegt werden:
 
-    \lstinline!INSERT INTO name_tabelle(attribut1, attribut3,...) VALUES(wert1, wert3,...);!
+    \lstinline!INSERT INTO name_tabelle(attribut1, attribut3,...)VALUES(wert1, wert3,...);!
 \end{tcolorbox}
 \begin{itemize}
 	\item Alle Attribute angegeben: Sollen für alle Attribute Werte angegeben werden, so kann man einfach die Werte als kommaseparierte Liste angeben:\\
